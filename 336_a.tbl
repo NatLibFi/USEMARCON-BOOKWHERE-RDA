@@ -1,0 +1,113 @@
+336 - sisältötyyppitermien muuntaminen / kääntäminen RDA-termeiksi
+File generated: Mon May 16 15:34:25 2016
+
+B i l d 	| s t i l l k u v a 
+B i l d 0x20 ( k a r t o g r a f i s k 0x20 ; 0x20 a t t 0x20 v i d r 0xc3 0xb6 r a ) 	| k a r t o g r a f i n e n 0x20 t a k t i i l i 0x20 k u v a 
+B i l d 0x20 ( k a r t o g r a f i s k 0x20 ; 0x20 r 0xc3 0xb6 r l i g ) 	| k a r t o g r a f i n e n 0x20 l i i k k u v a 0x20 k u v a 
+B i l d 0x20 ( k a r t o g r a f i s k ) 	| k a r t o g r a f i n e n 0x20 k u v a 
+B i l d 0x20 ( r 0xc3 0xb6 r l i g 0x20 ; 0x20 t r e d i m e n s i o n e l l ) 	| k o l m i u l o t t e i n e n 0x20 l i i k k u v a 0x20 k u v a 
+B i l d 0x20 ( r 0xc3 0xb6 r l i g 0x20 ; 0x20 t v 0xc3 0xa5 d i m e n s i o n e l l ) 	| k a k s i u l o t t e i n e n 0x20 l i i k k u v a 0x20 k u v a 
+B i l d 0x20 ( s t i l l 0x20 ; 0x20 a t t 0x20 v i d r 0xc3 0xb6 r a ) 	| t a k t i i l i 0x20 k u v a 
+B i l d 0x20 ( s t i l l 0x20 ; 0x20 t r e d i m e n s i o n e l l ) 	| s t i l l k u v a 
+B i l d 0x20 ( s t i l l 0x20 ; 0x20 t v 0xc3 0xa5 d i m e n s i o n e l l ) 	| s t i l l k u v a 
+B i l d 0x20 ( s t i l l ) 	| s t i l l k u v a 
+D a t a 	| d i g i t a a l i n e n 0x20 d a t a 
+D a t a 0x20 ( k a r t o g r a f i n e n ) 	| k a r t o g r a f i n e n 0x20 d a t a 
+D a t a s e t 	| d i g i t a a l i n e n 0x20 d a t a 
+D a t a s e t 0x20 ( k a r t o g r a f i s k t ) 	| k a r t o g r a f i n e n 0x20 d a t a 
+D a t o r p r o g r a m 	| t i e t o k o n e o h j e l m a 
+E s i n e 	| k o l m i u l o t t e i n e n 0x20 m u o t o 
+E s i n e 0x20 ( k a r t o g r a f i n e n 0x20 ; 0x20 k o l m i u l o t t e i n e n ) 	| k a r t o g r a f i n e n 0x20 k o l m i u l o t t e i n e n 0x20 m u o t o 
+E s i n e 0x20 ( k a r t o g r a f i n e n 0x20 ; 0x20 k o s k e t e l t a v a ) 	| k a r t o g r a f i n e n 0x20 t a k t i i l i 0x20 k o l m i u l o t t e i n e n 0x20 m u o t o 
+E s i n e 0x20 ( k o l m i u l o t t e i n e n ) 	| k o l m i u l o t t e i n e n 0x20 m u o t o 
+E s i n e 0x20 ( k o s k e t e l t a v a ) 	| t a k t i i l i 0x20 k o l m i u l o t t e i n e n 0x20 m u o t o 
+F l e r a 0x20 i n n e h 0xc3 0xa5 l l s t y p e r 	| m u u 
+F 0xc3 0xb6 r e m 0xc3 0xa5 l 	| k o l m i u l o t t e i n e n 0x20 m u o t o 
+F 0xc3 0xb6 r e m 0xc3 0xa5 l 0x20 ( a t t 0x20 v i d r 0xc3 0xb6 r a ) 	| t a k t i i l i 0x20 k o l m i u l o t t e i n e n 0x20 m u o t o 
+F 0xc3 0xb6 r e m 0xc3 0xa5 l 0x20 ( k a r t o g r a f i s k t 0x20 ; 0x20 a t t 0x20 v i d r 0xc3 0xb6 r a ) 	| k a r t o g r a f i n e n 0x20 t a k t i i l i 0x20 k o l m i u l o t t e i n e n 0x20 m u o t o 
+F 0xc3 0xb6 r e m 0xc3 0xa5 l 0x20 ( k a r t o g r a f i s k t 0x20 ; 0x20 t r e d i m e n s i o n e l l t ) 	| k a r t o g r a f i n e n 0x20 k o l m i u l o t t e i n e n 0x20 m u o t o 
+F 0xc3 0xb6 r e m 0xc3 0xa5 l 0x20 ( t r e d i m e n s i o n e l l t ) 	| k o l m i u l o t t e i n e n 0x20 m u o t o 
+K u v a 	| s t i l l k u v a 
+K u v a 0x20 ( k a r t o g r a f i n e n 0x20 ; 0x20 k o s k e t e l t a v a ) 	| k a r t o g r a f i n e n 0x20 t a k t i i l i 0x20 k u v a 
+K u v a 0x20 ( k a r t o g r a f i n e n 0x20 ; 0x20 l i i k k u v a ) 	| k a r t o g r a f i n e n 0x20 l i i k k u v a 0x20 k u v a 
+K u v a 0x20 ( k a r t o g r a f i n e n ) 	| k a r t o g r a f i n e n 0x20 k u v a 
+K u v a 0x20 ( l i i k k u v a 0x20 ; 0x20 k a k s i u l o t t e i n e n ) 	| k a k s i u l o t t e i n e n 0x20 l i i k k u v a 0x20 k u v a 
+K u v a 0x20 ( l i i k k u v a 0x20 ; 0x20 k o l m i u l o t t e i n e n ) 	| k o l m i u l o t t e i n e n 0x20 l i i k k u v a 0x20 k u v a 
+K u v a 0x20 ( s t i l l 0x20 ; 0x20 k a k s i u l o t t e i n e n ) 	| s t i l l k u v a 
+K u v a 0x20 ( s t i l l 0x20 ; 0x20 k o l m i u l o t t e i n e n ) 	| s t i l l k u v a 
+K u v a 0x20 ( s t i l l 0x20 ; 0x20 k o s k e t e l t a v a ) 	| t a k t i i l i 0x20 k u v a 
+K u v a 0x20 ( s t i l l ) 	| s t i l l k u v a 
+L i i k e 0x20 ( n o t a t o i t u 0x20 ; 0x20 k o s k e t e l t a v a ) 	| t a k t i i l i 0x20 l i i k e n o t a a t i o 
+L i i k e 0x20 ( n o t a t o i t u ) 	| l i i k e n o t a a t i o 
+L j u d 	| 0xc3 0xa4 0xc3 0xa4 n i 
+M u s i i k k i 0x20 ( e s i t e t t y ) 	| e s i t e t t y 0x20 m u s i i k k i 
+M u s i i k k i 0x20 ( n o t a t o i t u 0x20 ; 0x20 k o s k e t e l t a v a ) 	| t a k t i i l i 0x20 n u o t t i k i r j o i t u s 
+M u s i i k k i 0x20 ( n o t a t o i t u ) 	| n u o t t i k i r j o i t u s 
+M u s i k 0x20 ( f r a m f 0xc3 0xb6 r d ) 	| e s i t e t t y 0x20 m u s i i k k i 
+M u s i k 0x20 ( n o t a t i o n 0x20 ; 0x20 a t t 0x20 v i d r 0xc3 0xb6 r a ) 	| t a k t i i l i 0x20 n u o t t i k i r j o i t u s 
+M u s i k 0x20 ( n o t a t i o n ) 	| n u o t t i k i r j o i t u s 
+M u s i k 0x20 ( p e r f o r m a n c e ) 	| e s i t e t t y 0x20 m u s i i k k i 
+M 0xc3 0xa4 0xc3 0xa4 r i t t e l e m 0xc3 0xa4 t 0xc3 0xb6 n 0x20 s i s 0xc3 0xa4 l t 0xc3 0xb6 t y y p p i 	| m 0xc3 0xa4 0xc3 0xa4 r i t t e l e m 0xc3 0xa4 t 0xc3 0xb6 n 
+O b e s t 0xc3 0xa4 m d 0x20 i n n e h 0xc3 0xa5 l l s t y p 	| m 0xc3 0xa4 0xc3 0xa4 r i t t e l e m 0xc3 0xa4 t 0xc3 0xb6 n 
+O s p e c i f i c e r a d 0x20 i n n e h 0xc3 0xa5 l l s t y p 	| m 0xc3 0xa4 0xc3 0xa4 r i t t e l e m 0xc3 0xa4 t 0xc3 0xb6 n 
+P u h e 	| p u h e 
+R 0xc3 0xb6 r e l s e 0x20 ( n o t a t i o n 0x20 ; 0x20 a t t 0x20 v i d r 0xc3 0xb6 r a ) 	| t a k t i i l i 0x20 l i i k e n o t a a t i o 
+R 0xc3 0xb6 r e l s e 0x20 ( n o t a t i o n ) 	| l i i k e n o t a a t i o 
+T a l 	| p u h e 
+T e k s t i 	| t e k s t i 
+T e k s t i 0x20 ( k o s k e t e l t a v a ) 	| t a k t i i l i 0x20 t e k s t i 
+T e x t 	| t e k s t i 
+T e x t 0x20 ( a t t 0x20 v i d r 0xc3 0xb6 r a ) 	| t a k t i i l i 0x20 t e k s t i 
+T i e t o k o n e o h j e l m a 	| t i e t o k o n e o h j e l m a 
+U s e i t a 0x20 s i s 0xc3 0xa4 l t 0xc3 0xb6 t y y p p e j 0xc3 0xa4 	| m u u 
+a n n a n 	| m u u 
+c a r t o g r a p h i c 0x20 d a t a s e t 	| k a r t o g r a f i n e n 0x20 d a t a 
+c a r t o g r a p h i c 0x20 i m a g e 	| k a r t o g r a f i n e n 0x20 k u v a 
+c a r t o g r a p h i c 0x20 m o v i n g 0x20 i m a g e 	| k a r t o g r a f i n e n 0x20 l i i k k u v a 0x20 k u v a 
+c a r t o g r a p h i c 0x20 t a c t i l e 0x20 i m a g e 	| k a r t o g r a f i n e n 0x20 t a k t i i l i 0x20 k u v a 
+c a r t o g r a p h i c 0x20 t a c t i l e 0x20 t h r e e - d i m e n s i o n a l 0x20 f o r m 	| k a r t o g r a f i n e n 0x20 t a k t i i l i 0x20 k o l m i u l o t t e i n e n 0x20 m u o t o 
+c a r t o g r a p h i c 0x20 t h r e e - d i m e n s i o n a l 0x20 f o r m 	| k a r t o g r a f i n e n 0x20 k o l m i u l o t t e i n e n 0x20 m u o t o 
+c o m p u t e r 0x20 d a t a s e t 	| d i g i t a a l i n e n 0x20 d a t a 
+c o m p u t e r 0x20 p r o g r a m 	| t i e t o k o n e o h j e l m a 
+d a t a s e t 	| d i g i t a a l i n e n 0x20 d a t a 
+d a t o r p r o g r a m 	| t i e t o k o n e o h j e l m a 
+f r a m f 0xc3 0xb6 r d 0x20 m u s i k 	| e s i t e t t y 0x20 m u s i i k k i 
+k a r t o g r a f i s k 0x20 b i l d 	| k a r t o g r a f i n e n 0x20 k u v a 
+k a r t o g r a f i s k 0x20 r 0xc3 0xb6 r l i g 0x20 b i l d 	| k a r t o g r a f i n e n 0x20 l i i k k u v a 0x20 k u v a 
+k a r t o g r a f i s k 0x20 t a k t i l 0x20 b i l d 	| k a r t o g r a f i n e n 0x20 t a k t i i l i 0x20 k u v a 
+k a r t o g r a f i s k 0x20 t a k t i l 0x20 t r e d i m e n s i o n e l l 0x20 f o r m 	| k a r t o g r a f i n e n 0x20 t a k t i i l i 0x20 k o l m i u l o t t e i n e n 0x20 m u o t o 
+k a r t o g r a f i s k 0x20 t r e d i m e n s i o n e l l 0x20 f o r m 	| k a r t o g r a f i n e n 0x20 k o l m i u l o t t e i n e n 0x20 m u o t o 
+k a r t o g r a f i s k t 0x20 d a t a s e t 	| k a r t o g r a f i n e n 0x20 d a t a 
+l j u d 	| 0xc3 0xa4 0xc3 0xa4 n i 
+m u s i k n o t a t i o n 	| n u o t t i k i r j o i t u s 
+n o t a t e d 0x20 m o v e m e n t 	| l i i k e n o t a a t i o 
+n o t a t e d 0x20 m u s i c 	| n u o t t i k i r j o i t u s 
+o s p e c i f i c e r a d 	| m 0xc3 0xa4 0xc3 0xa4 r i t t e l e m 0xc3 0xa4 t 0xc3 0xb6 n 
+o t h e r 	| m u u 
+p e r f o r m e d 0x20 m u s i c 	| e s i t e t t y 0x20 m u s i i k k i 
+r 0xc3 0xb6 r e l s e n o t a t i o n 	| l i i k e n o t a a t i o 
+s o u n d s 	| 0xc3 0xa4 0xc3 0xa4 n i 
+s p o k e n 0x20 w o r d 	| p u h e 
+s t i l l 0x20 i m a g e 	| s t i l l k u v a 
+s t i l l b i l d 	| s t i l l k u v a 
+t a c t i l e 0x20 i m a g e 	| t a k t i i l i 0x20 k u v a 
+t a c t i l e 0x20 n o t a t e d 0x20 m o v e m e n t 	| t a k t i i l i 0x20 l i i k e n o t a a t i o 
+t a c t i l e 0x20 n o t a t e d 0x20 m u s i c 	| t a k t i i l i 0x20 n u o t t i k i r j o i t u s 
+t a c t i l e 0x20 t e x t 	| t a k t i i l i 0x20 t e k s t i 
+t a c t i l e 0x20 t h r e e - d i m e n s i o n a l 0x20 f o r m 	| t a k t i i l i 0x20 k o l m i u l o t t e i n e n 0x20 m u o t o 
+t a k t i l 0x20 b i l d 	| t a k t i i l i 0x20 k u v a 
+t a k t i l 0x20 m u s i k n o t a t i o n 	| t a k t i i l i 0x20 n u o t t i k i r j o i t u s 
+t a k t i l 0x20 r 0xc3 0xb6 r e l s e n o t a t i o n 	| t a k t i i l i 0x20 l i i k e n o t a a t i o 
+t a k t i l 0x20 t e x t 	| t a k t i i l i 0x20 t e k s t i 
+t a k t i l 0x20 t r e d i m e n s i o n e l l 0x20 f o r m 	| t a k t i i l i 0x20 k o l m i u l o t t e i n e n 0x20 m u o t o 
+t a l 	| p u h e 
+t e x t 	| t e k s t i
+t h r e e - d i m e n s i o n a l 0x20 f o r m 	| k o l m i u l o t t e i n e n 0x20 m u o t o
+t h r e e - d i m e n s i o n a l 0x20 m o v i n g 0x20 i m a g e 	| k o l m i u l o t t e i n e n 0x20 l i i k k u v a 0x20 k u v a
+t r e d i m e n s i o n e l l 0x20 f o r m 	| k o l m i u l o t t e i n e n 0x20 m u o t o 
+t r e d i m e n s i o n e l l 0x20 r 0xc3 0xb6 r l i g 0x20 b i l d 	| k o l m i u l o t t e i n e n 0x20 l i i k k u v a 0x20 k u v a 
+t v 0xc3 0xa5 d i m e n s i o n e l l 0x20 r 0xc3 0xb6 r l i g 0x20 b i l d 	| k a k s i u l o t t e i n e n 0x20 l i i k k u v a 0x20 k u v a 
+t w o - d i m e n s i o n a l 0x20 m o v i n g 0x20 i m a g e 	| k a k s i u l o t t e i n e n 0x20 l i i k k u v a 0x20 k u v a 
+u n s p e c i f i e d 	| m 0xc3 0xa4 0xc3 0xa4 r i t t e l e m 0xc3 0xa4 t 0xc3 0xb6 n 
+0xc3 0x84 0xc3 0xa4 n i 	| 0xc3 0xa4 0xc3 0xa4 n i 
+#DEFAULT	| COPY

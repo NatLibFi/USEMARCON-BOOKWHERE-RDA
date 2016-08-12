@@ -1,0 +1,12 @@
+338_a_svenska.tbl -- Översättningar för bärartyp
+File generated: Mon Mar 14 10:53:51 2016
+
+e d m   | r e d i g e r a r e 
+f l m 	| r e d i g e r a r e 
+f d s 	| f i l m d i s t r i b u t 0xc3 0xb6 r 
+h i s 	| v 0xc3 0xa4 r d o r g a n i s a t i o n 
+m u s   | e x e k u t 0xc3 0xb6 r 
+p r f 	| e x e k u t 0xc3 0xb6 r 
+p r e 	| f i l m p r e s e n t a t 0xc3 0xb6 r 
+p t f 	| k 0xc3 0xa4 r a n d e 
+#DEFAULT	| COPY
