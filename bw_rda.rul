@@ -1,5 +1,5 @@
 ﻿MARC 21 Bookwhere-siivous + RDA-kentat
-3.6.2013 - Kansalliskirjasto / Päivitetty 12.8.2016 / TV
+3.6.2013 - Kansalliskirjasto / Päivitetty 15.9.2016 / TV
 
 #define version 317
 
@@ -59,131 +59,139 @@
 
 #if ((@000/7/ = 'a' Or @000/7/ = 't') And (Not Exists(@245$h)) And Not Exists(@336))
 008/24/         | 008/24/         | S
+
 008/24/         | 336(new)$a      | If (S = 'f') Then 'taktiili teksti' Else 'teksti'
 008/24/         | 336(newest)$b   | If (S = 'f') Then 'tct' Else 'txt'
 008/24/         | 336(newest)$2   | 'rdacontent'
 
-008/24/         | 337(new)$a      | If (S = ' ' or S = '|' or S = 'd' or S = 'f' or S = 'r') Then 'käytettävissä ilman laitetta'
-008/24/         | 337(newest)$b   | If (S = ' ' or S = '|' or S = 'd' or S = 'f' or S = 'r') Then 'n'
+008/24/         | <A37$a          | Table('008-23-337a.tbl')
+A37$a           | 337(new)$a      | S
+A37$a           | 337(newest)$b   | Table('337_b.tbl')
+A37$a           | 337(newest)$2   | 'rdamedia'
 
-//008/24/         | 338(new)$a      | If (S = ' ' or S = '|' or S = 'd' or S = 'f' or S = 'r') Then 'nide'
-//008/24/         | 338(newest)$b   | If (S = ' ' or S = '|' or S = 'd' or S = 'f' or S = 'r') Then 'nc'
-
-
-008/24/         | 337(new)$a      | If (S = 'a' or S = 'b' or S = 'c') Then 'mikromuoto'
-008/24/         | 337(newest)$b   | If (S = 'a' or S = 'b' or S = 'c') Then 'h'
-
-//008/24/         | 338(new)$a      | If (S = 'b' or S = 'c') Then 'mikrokortti'
-//008/24/         | 338(newest)$b      | If (S = 'b' or S = 'c') Then 'he'
-//
-//008/24/         | 338(new)$a      | If (S = 'a') Then 'mikrofilmi'
-//008/24/         | 338(newest)$b   | If (S = 'a') Then 'h'
-
-008/24/         | 337(new)$a      | If (S = 'o' or S = 'q' or S = 's') Then 'tietokonekäyttöinen'
-008/24/         | 337(new)$b      | If (S = 'o' or S = 'q' or S = 's') Then 'c'
-
-//008/24/         | 338(new)$a      | If (S = 'o') Then 'verkkoaineisto'
-//008/24/         | 338(newest)$b   | If (S = 'o') Then 'cr'
-
-008/24/         | 337(newest)$2   | 'rdamedia'
-//008/24/         | 338(newest)$2   | 'rdacarrier'
+008/24/         | <A38$a          | Table('008-23-338a.tbl')
+A38$a           | 338(new)$a      | S
+A38$a           | 338(newest)$b   | Table('338_b.tbl')
+A38$a           | 338(newest)$2   | 'rdacarrier'
 #endif
 
-#if ((@000/7/ = 'a' Or @000/7/ = 't') And Exists(@245$h) And Exists (@007) And Not Exists(@336))
+#if ((@000/7/ = 'a' Or @000/7/ = 't') And Exists(@245$h) And (Exists (@007)) And (Not Exists(@336)) And (RegFind(@245$h, '[Mm]ultimedia') <0))
 007/1/          | 007/1/          | S
-007/1/          | 336(new)$a      | If ((S = 'c' or S = 'h') And RegFind(@245$h, '[Mm]ultimedia') <0) Then 'teksti'
-007/1/          | 337(new)$a      | If (S = 'c' And RegFind(@245$h, '[Mm]ultimedia') <0) Then 'tietokonekäyttöinen'
-007/1/          | 337(new)$a      | If (S = 'h' And RegFind(@245$h, '[Mm]ultimedia') <0) Then 'mikromuoto'
-007/1/          | 336(new)$a      | If (S = 's' And RegFind(@245$h, '[Mm]ultimedia') <0) Then 'puhe' //Oletus: musiikkia ei ole tehty tekstipohjalla (?)
-007/1/          | 337(new)$a      | If (S = 's' And RegFind(@245$h, '[Mm]ultimedia') <0) Then 'audio'
-007/1/          | 336(new)$a      | If (S = 'q' And RegFind(@245$h, '[Mm]ultimedia') <0) Then 'nuottikirjoitus'
-007/1/          | 337(new)$a      | If (S = 'q' And RegFind(@245$h, '[Mm]ultimedia') <0) Then 'käytettävissä ilman laitetta'
-007/1/          | 336(new)$a      | If (S = 'v' And RegFind(@245$h, '[Mm]ultimedia') <0) Then 'Kuva (liikkuva ; kaksiulotteinen)'
-007/1/          | 337(new)$a      | If (S = 'v' And RegFind(@245$h, '[Mm]ultimedia') <0) Then 'video'
-007/1/          | 336(new)$a      | If (S = 'a' And RegFind(@245$h, '[Mm]ultimedia') <0) Then 'kartografinen kuva'
-007/1/          | 337(new)$a      | If (S = 'a' And RegFind(@245$h, '[Mm]ultimedia') <0) Then 'käytettävissä ilman laitetta'
-007/1/          | 336(new)$a      | If (S = 'k' And RegFind(@245$h, '[Mm]ultimedia') <0) Then 'stillkuva'
-007/1/          | 337(new)$a      | If (S = 'k' And RegFind(@245$h, '[Mm]ultimedia') <0) Then 'käytettävissä ilman laitetta'
-007/1/          | 336(new)$a      | If (S = 'g' And RegFind(@245$h, '[Mm]ultimedia') <0) Then 'stillkuva'
-007/1/          | 337(new)$a      | If (S = 'g' And RegFind(@245$h, '[Mm]ultimedia') <0) Then 'heijastettava'
+007/1/          | <A36            | Table ('007-336a.tbl')
+
+A36             | 336(new)$a      | S
+A36             | 336(newest)$b   | Table('336_b.tbl')
+A36             | 336(newest)$2   | 'rdacontent'
+
+007/1/          | <A37            | If (RegFind(@245$h, '[Mm]ultimedia') <0) Then Table('007-337a.tbl')
+
+A37             | 337(new)$a      | S
+A37             | 337(newest)$b   | Table('337_b.tbl')
+A37             | 337(newest)$2   | 'rdamedia'
 #endif
 
 // NUOTTIJULKAISU JA NUOTTIKÄSIKIRJOITUS
 
 #if (@000/7/ = 'c' Or @000/7/ = 'd'  And Not Exists(@336))
 008/24/         | 008/24/         | S
-008/24/         | 336(new)$a      | If (S != 'f') Then 'nuottikirjoitus'
-008/24          | 336(new)$a      | If (S = 'f') Then 'taktiili nuottikirjoitus'
-008/24/         | 337(new)$a      | If (S = ' ' or S = '|' or S = 'd' or S = 'f' or S = 'r') Then 'käytettävissä ilman laitetta'
-008/24/         | 337(new)$a      | If (S = 'a' or S = 'b' or S = 'c') Then 'mikromuoto'
-008/24/         | 337(new)$a      | If (S = 'o' or S = 'q' or S = 's') Then 'tietokonekäyttöinen'
+008/24/         | 336(new)$a      | If (S != 'f') Then 'nuottikirjoitus' Else 'taktiili nuottikirjoitus'
+008/24/         | 336(newest)$b   | If (S != 'f') Then 'ntm' Else 'tcm'
+008/24/         | 336$2           | 'rdacontent'
+
+008/24/         | <B37$a          | Table ('008-24-337a.tbl')
+B37$a           | 337(new)$a      | S
+B37$a           | 337(newest)$b   | Table ('337_b.tbl')
+
+B37$a           | 337(newest)$2   | 'rdamedia'
+
+008/24/         | 338(new)$a      | 'nide'
+008/24/         | 338(newest)$b   | 'nc'
+008/24/         | 338(newest)$2   | 'rdacarrier'
 #endif
 
 // KARTTA-AINEISTO JA KARTTAKÄSIKIRJOITUS
 
 #if (@000/7/ = 'e' Or @000/7/ = 'f'  And Not Exists(@336))
 007/1-2		| 007/1-2/	  | S
-007/1/		| 336(new)$a	  | If (S = 'a' and @007/2/ != 'q' and @008/30/ = 'f') Then 'kartografinen taktiili kuva'
+
+007/1/		      | <C36$a          | If (S = 'a' and @007/2/ != 'q' and @008/30/ = 'f') Then 'kartografinen taktiili kuva'
+
 008/26/         | 008/26/         | S
-008/26/         | 336(new)$a      | If (S != 'd') Then 'kartografinen kuva'
-008/26/         | 336(new)$a      | If (S = 'd') Then 'kartografinen kolmiulotteinen muoto'
+008/26/         | <C36$a          | If ((S != 'd') And (C36$a != 'kartografinen taktiili kuva')) Then 'kartografinen kuva' Else 'kartografinen kolmiulotteinen muoto'
+
+C36$a           | 336(new)$a      | S
+C36$a           | 336(newest)$b   | Table ('336_b.tbl')
+C36$a           | 336(newest)$2   | 'rdacontent'
+
 008/30/         | 008/30/         | S
-008/30/         | 337(new)$a      | If (S = ' ' or S = '|' or S = 'd' or S = 'f' or S = 'r') Then 'käytettävissä ilman laitetta'
-008/30/         | 337(new)$a      | If (S = 'a' or S = 'b' or S = 'c') Then 'mikromuoto'
-008/30/         | 337(new)$a      | If (S = 'o' or S = 'q' or S = 's') Then 'tietokonekäyttöinen'
+
+008/30/         | <C37$a          | Table ('008-29-337a.tbl')
+C37$a           | 337(new)$a      | S
+C37$a           | 337(newest)$b   | Table ('337_b.tbl')
+C37$a           | 337(newest)$2   | 'rdamedia'
 #endif
 
 
 // HEIJASTETTAVA KUVA TAI VIESTIN
 
-#if (@000/7/ = 'g') And (@007/1/ = 'g' Or @007/1/ = 'm' Or @007/1/ = 'v' Or @007/1/ = 'c')  And Not Exists(@336)
+#if (@000/7/ = 'g') And (@007/1/ = 'g' Or @007/1/ = 'm' Or @007/1/ = 'v' Or @007/1/ = 'c') And (Not Exists(@336))
 007/1/          | 007/1/          | S
-007/1/          | 336(new)$a      | If (S = 'g') Then 'stillkuva'
-007/1/          | 336(new)$a      | If (S = 'm' or S = 'v' or S = 'c') Then 'kaksiulotteinen liikkuva kuva'
-007/1/          | 337(new)$a      | If (S = 'g' or S = 'm') Then 'heijastettava'
-007/1/          | 337(new)$a      | If (S = 'v') Then 'video'
-007/1/          | 337(new)$a      | If (S = 'c') Then 'tietokonekäyttöinen'
+
+007/1/          | <H36$a          | If (S = 'g') Then 'stillkuva' Else 'kaksiulotteinen liikkuva kuva'
+H36$a           | 336(new)$a      | S
+H36$a           | 336(newest)$b   | Table ('336_b.tbl')
+H36$a           | 336(newest)$2   | 'rdacontent'
+
+007/1/          | <H37$a          | Table ('007-0-337a-heijastettava.tbl')
+H37$a           | 337(new)$a      | S
+H37$a           | 337(newest)$b   | Table ('337_b.tbl')
+H37$a           | 337(newest)$2   | 'rdamedia'
 #endif
 
 // PUHEÄÄNITE
 
-#if (@000/7/ = 'i' And Exists(@007) And Not Exists(@336))
-000             | 336(new)$a      | 'puhe'
+#if (@000/7/ = 'i') And (Not Exists(@336))
+
+000             | <D36$a          | 'puhe'
+D36$a           | 336(new)$a      | S
+D36$a           | 336(newest)$b   | Table ('336_b.tbl')
+D36$a           | 336(newest)$2   | 'rdacontent'
+
 007/1/          | 007/1/          | S
-//007/1/          | 336(new)$a      | If (S = 's' and @008/31/ != 's') Then 'puhe'
-//007/1/          | 336(new)$a      | If (S = 's' and @008/31/ = 's') Then 'ääni'
-//onko tuota 008-koodia käytetty koskaan- erotetaan luonnonäänet ja ihmispuhe?
-007/1/          | 337(new)$a      | If (S = 's') Then 'audio'
-007/1/          | 337(new)$a      | If (S = 'c') Then 'tietokonekäyttöinen'
-#endif
+007/1/          | <D37$a          | If (S = 'c') Then 'tietokonekäyttöinen' Else 'audio'
 
-#if (@000/7/ = 'i' And (Not Exists (@007)) And Not Exists(@336))
-000             | 336(new)$a      | 'puhe'
-245$h           | 337(new)$a      | If (RegFind ('nite') >=0) Then 'audio'
+D37$a           | 337(new)$a      | S
+D37$a           | 337(newest)$b   | Table ('337_b.tbl')
+D37$a           | 337(newest)$2   | 'rdamedia'
 #endif
-
 
 // MUSIIKKIÄÄNITE
 
-#if (@000/7/ = 'j') And Exists(@007) And Not Exists(@336)
-000             | 336(new)$a      | 'esitetty musiikki'
+#if (@000/7/ = 'j') And (Not Exists(@336))
+
+000             | <E36$a          | 'esitetty musiikki'
+E36$a           | 336(new)$a      | S
+E36$a           | 336(newest)$b   | Table ('336_b.tbl')
+E36$a           | 336(newest)$2   | 'rdacontent'
+
 007/1/          | 007/1/          | S
-007/1/          | 337(new)$a      | If (S = 's') Then 'audio'
-007/1/          | 337(new)$a      | If (S = 'c') Then 'tietokonekäyttöinen'
-#endif
+007/1/          | <E37$a          | If (S = 's') Or (RegFind(@245$h, 'nite') >= 0) Then 'audio' Else 'tietokonekäyttöinen'
 
-#if (@000/7/ = 'j' And (Not Exists (@007)) And Not Exists(@336))
-000             | 336(new)$a      | 'esitetty musiikki'
-245$h           | 337(new)$a      | If (RegFind ('nite') >=0) Then 'audio'
+E37$a           | 337(new)$a      | S
+E37$a           | 337(newest)$b   | Table ('337_b.tbl')
+E37$a           | 337(newest)$2   | 'rdamedia'
 #endif
-
 
 // KUVA
 
 #if (@000/7/ = 'k'  And Not Exists(@336))
 007/1/          | 007/1/          | S
-007/1/          | 336(new)$a      | If (S = 'k' and @008 != 'f') Then 'stillkuva'
-007/1/          | 336(new)$a      | If (S = 'k' and @008 = 'f') Then 'taktiili kuva'
+
+007/1/          | <G36$a          | If (S = 'k' and @008 = 'f') Then 'taktiili kuva' Else 'stillkuva'
+G36$a           | 336(new)$a      | S
+G36$a           | 336(newest)$b   | Table ('336_b.tbl')
+G36$a           | 336(newest)$2   | 'rdacontent'
+
 008/30/         | 008/30/         | S
 008/30/         | 337(new)$a      | If (S = ' ' or S = '|' or S = 'f' or S = 'r') Then 'käytettävissä ilman laitetta'
 008/30/         | 337(new)$a      | If (S = 'a' or S = 'b' or S = 'c') Then 'mikromuoto'
@@ -192,15 +200,18 @@
 
 // ELEKTRONINEN AINEISTO
 
-#if (@000/7/ = 'm'  And Not Exists(@336))
+#if (@000/7/ = 'm') And (Not Exists(@336))
 008/27/         | 008/27/         | S
-008/27/         | 336(new)$a      | If (S = 'a' or S = 'c') Then 'digitaalinen data'
-008/27/         | 336(new)$a      | If (S = 'b' or S = 'f' or S = 'g') Then 'tietokoneohjelma'
-008/27/         | 336(new)$a      | If (S = 'd' or S = 'e') Then 'teksti'
-008/27/         | 336(new)$a      | If (S = 'h') Then 'ääni'
-008/27/         | 336(new)$a      | If (S = 'i' or S = 'j' or S = 'm') Then 'muu'
-008/27/         | 336(new)$a      | If (S = 'u' or S = 'z' or S = '|') Then 'määrittelemätön'
-008/27/         | 337(new)$a      | 'tietokonekäyttöinen'
+
+008/27/         | <F36$a          | Table ('008-26-336a.tbl')
+F36$a           | 336(new)$a      | S
+F36$a           | 336(newest)$b   | Table ('336_b.tbl')
+F36$a           | 336(newest)$2   | 'rdacontent'
+
+008/27/         | <F37$a          | 'tietokonekäyttöinen'
+F37$a           | 337$a           | S
+F37$a           | 337$b           | Table ('337_b.tbl')
+F37$a           | 337$2           | 'rdamedia'
 #endif
 
 // MONIVIESTIN JA SEKALAINEN AINEISTO
@@ -219,11 +230,18 @@
 
 // ESINE
 
-#if (@000/7/ = 'r'  And Not Exists(@336))
+#if (@000/7/ = 'r') And (Not Exists(@336))
 008/34/         | 008/34/         | S
-008/34/         | 336(new)$a      | 'kolmiulotteinen muoto'
-008/34/         | 337(new)$a      | 'käytettävissä ilman laitetta'
-008/34/         | 337(new)$a      | If (S = 'p') Then 'mikroskooppinen'
+008/34/         | <G36$a          | 'kolmiulotteinen muoto'
+
+G36$a           | 336(new)$a      | S
+G36$a           | 336(newest)$b   | Table ('336_b.tbl')
+G36$a           | 336(newest)$2   | 'rdacontent'
+
+008/34/         | <G37$a          | If (S = 'p') Then 'mikroskooppinen' Else 'käytettävissä ilman laitetta'
+G37$a           | 337(new)$a      | S
+G37$a           | 337(newest)$b   | Table ('337_b.tbl')
+G37$a           | 337(newest)$2   | 'rdamedia'
 #endif
 
 010I1 | <DELI1 | S
@@ -384,10 +402,9 @@
 100I2 | 100I2  | S
 100$e | 100$e  | Table ('Funktiot.tbl')
 100$? | 100$?  | S;
-	         Replace ('[from old catalog]' By '');
-	         Delete (';' ,At Ending)
+                 Replace ('[from old catalog]' By '');
+                 Delete (';' ,At Ending)
 	 
-				 
 110I1 | 110I1  | S
 110I2 | 110I2  | S
 110$a | 110$a  | If Not Exists ($c) Or Not Exists ($d) Then Replace (',' By '.', At Ending) Else S; Delete (' [from old catalog]' ,At Ending) ; Delete (' joint author' ,At Ending); Delete (' joint auth.',At Ending)
@@ -408,10 +425,6 @@
 245$6            | <F45$6          | S
 245$8            | <F45$8          | S
 F45 | 245 | S
-            // Alla oleva sääntö välimerkityksen käsittelyyn sotkee kentän joissain tapauksissa. Se on toistaiseksi kommentoitu pois.
-            //;
-            //RegReplace('\\s*[:/=;\\.]?\\s*$h[^$]*( :| /| =| ;|\\.)', '\\1'); // Säilyttää välimerkit
-            //RegReplace('\\s*[:/=;\\.]?\\s*$h[^$]*', '') // Jos välimerkki puuttuu tai on virheellinen
 
 246I1            | 246I1           | S
 246I2            | 246I2           | S
@@ -424,9 +437,7 @@ F45 | 245 | S
 246$p            | <G46$p          | S
 246$6            | <G46$6          | S
 246$8            | <G46$8          | S
-G46 | 246 | S //;
-            //RegReplace('\\s*[:/=;\\.]?\\s*$h[^$]*( :| /| =| ;|\\.)', '\\1'); // Säilyttää välimerkit
-            //RegReplace('\\s*[:/=;\\.]?\\s*$h[^$]*', '') // Jos välimerkki puuttuu tai on on virheellinen
+G46 | 246 | S
 
 247I1            | 247I1           | S
 247I2            | 247I2           | S
@@ -439,9 +450,7 @@ G46 | 246 | S //;
 247$x            | <K47$x          | S
 247$6            | <K47$6          | S
 247$8            | <K47$8          | S
-K47 | 247 | S   //;
-            //RegReplace('\\s*[:/=;\\.]?\\s*$h[^$]*( :| /| =| ;|\\.)', '\\1'); // Säilyttää välimerkit
-            //RegReplace('\\s*[:/=;\\.]?\\s*$h[^$]*', '') // Jos välimerkki puuttuu tai on on virheellinen			
+K47 | 247 | S
 			
 249I1 | <DELI1 | S
 249I2 | <DELI2 | S
@@ -560,7 +569,9 @@ T36   | <DEL  | S
 
 // DIA
 
-#if (Not Exists(@338)) And If (RegFind(@300$a, '[Kk]uultokuv|[Dd]iaa') >= 0) And If (Not Exists(@773))
+#if (Not Exists(@338)) \
+     And If ( (RegFind(@300$a, '[Kk]uultokuv|[Dd]iaa') >= 0) Or (RegFind(@245$h, '[Dd]ia') >= 0) ) \
+     And If (Not Exists(@773))
 000 | 338(new)I1 | ' '
 000 | 338(newest)I2 | ' '
 000 | 338(newest)$a | 'dia'
@@ -600,7 +611,7 @@ T36   | <DEL  | S
 
 #if (Not Exists(@338)) \
   And (Not Exists(@773)) \
-  And ( (RegFind(@300$a, '[Aa]rkki') >= 0) Or \
+  And ( (RegFind(@300$a, '[Aa]rkki|1 kartta') >= 0) Or \
         ( (RegFind(@336$a, 'kartograf') >= 0) And (RegFind(@337$a, 'laitetta') >= 0) ) )
 000 | 338(new)I1 | ' '
 000 | 338(newest)I2 | ' '
@@ -651,7 +662,6 @@ T36   | <DEL  | S
 #if (Not Exists(@338)) \
   And (RegFind(@300$a, 'ROM') < 0) \
   And (Not Exists(@773)) \
-  And (RegFind(@337, 'elektroninen') >= 0) \
   And ( \
     (RegFind(@300$a, '[Vv]erkkojulkaisu|[Tt]iedosto') >= 0) \
     Or (RegFind(@516$a, '[Vv]erkkoaineisto') >= 0) \
@@ -674,7 +684,7 @@ T36   | <DEL  | S
 // ÄÄNILEVY
 
 #if (Not Exists(@338)) \
-  And ( (RegFind(@300, '[Cc][Dd]-levy|äänilevy') >= 0) ) \
+  And ( (RegFind(@300, '[Cc][Dd]-levy|(CD)(.*)nilevy') >= 0) ) \
   And (Not Exists(@773))
 000 | 338(new)I1 | ' '
 000 | 338(newest)I2 | ' '
@@ -688,8 +698,8 @@ T36   | <DEL  | S
 #if (Not Exists(@338)) \
   And If ( \
   (RegFind(@300$a, '[Cc]-kas') >= 0) \
-  Or (RegFind(@300$a, '[Dd][Aa][Tt]-kase|[Dd][Cc][Cc]-kas|[Ää]nikas|kasettia') >= 0) \
-  Or (RegFind(@300$e, '[Dd][Aa][Tt]-kase|[Dd][Cc][Cc]-kas|[Ää]nikas|kasettia') >= 0) \
+  Or (RegFind(@300$a, '[Dd][Aa][Tt]-kase|[Dd][Cc][Cc]-kas|nikas|kasettia') >= 0) \
+  Or (RegFind(@300$e, '[Dd][Aa][Tt]-kase|[Dd][Cc][Cc]-kas|nikas|kasettia') >= 0) \
   ) \
   And If (Not Exists(@773))
 000 | 338(new)I1 | ' '

@@ -1,0 +1,630 @@
+Mismatch in rule files:
+Bibliographic:
+RDA-konversio - bibliografiset tietueet
+Authority:
+RDA-konversio - auktoriteettitietueet
+--------------------
+Mismatch in rule files:
+Bibliographic:
+#define macro FUNKTIOT2 | RegReplace('(\\)|[Mm]r\\.|[Mm]rs\\.|[Jj]r\\.|Ph\\.+\\s+D\\.|Dr\\.|Sr\\.|[Rr]ev\\.|\\s[A-Za-z]\\.|\\.[A-Za-z]\\.)($4|$j)', '\\1,\\2', 'g'); \
+Authority:
+#define macro AIKAMAAREET | RegReplace('\\bs[\\b|\\.]', 'syntynyt', 'g'); \
+--------------------
+Mismatch in rule files:
+Bibliographic:
+RegReplace('\\b;$v| ; $v', ' ;$v'); \
+Authority:
+RegReplace('\\bvs[\\b|\\.]', 'vuosisata', 'g')
+--------------------
+Mismatch in rule files:
+Bibliographic:
+If (RegFind(S, 'cop|©|℗|[Cc]|^p') >= 0) \
+Authority:
+If (RegFind(S, 'sovitettu, puhallinkvintetti') >= 0) Or (RegFind(S, ', puhallinkvintetti') < 0) RegReplace('puhallinkvintetti', 'huilu, oboe, klarinetti, käyrätorvi, fagotti')
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+000     | 040$e   | 'rda'
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+// 008/10 = 'z' ja 040$e = 'rda' - poikkeuksena tietueet, joiden 1XX$s-kentässä on merkintä 'Libretto' tai 'Sanat'
+--------------------
+Mismatch in rule files:
+Bibliographic:
+#if (RegFind(@830$a, 'Kvintetot') >= 0)
+Authority:
+#if (RegFind(@530$a, 'Triot') < 0) And (RegFind(@530$a, 'Kvartetot') < 0) And (RegFind(@530$a, 'Kvintetot') < 0)
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+008/1-10/ | 008/1-10/ | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+008/11/ | 008/11/ | 'z'
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+008/12-40/ | 008/12-40/ | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+040I1   | 040I1   | ' '
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+040I2   | 040I2   | ' '
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+040$?   | 040$?   | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+040     | 040     | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+008     | 008     | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+100$a | 100$a  | S; If ((100$c Follows 100$a) And RegFind(@100$c, 'fikt') >= 0) Delete (',', At Ending)
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+100$b | 100$b  | S; If ((100$c Follows 100$b) And RegFind(@100$c, 'fikt') >= 0) Delete (',', At Ending)
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+100$c | 100$c  | FIKTIIVINENHAHMO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+100$d | 100$d  | AIKAMAAREET
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+100$e | 100$e  | Table ('Funktiotermit.tbl')
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+100$m | 100$m | ESITYSKOKOONPANO; ESITYSKOKOONPANO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+100$o | 100$o  | SOVITUSMERKINTO; ESITYSKOKOONPANO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+100$4 | 100$4  | Table ('Funktiokoodit.tbl')
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+100$? | 100$?  | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+110$a | 110$a  | S; If ((110$c Follows 110$a) And RegFind(@110$c, 'fikt') >= 0) Delete (',', At Ending)
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+110$b | 110$b  | S; If ((110$c Follows 110$b) And RegFind(@110$c, 'fikt') >= 0) Delete (',', At Ending)
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+110$c | 110$c  | FIKTIIVINENHAHMO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+110$e | 110$e  | Table ('Funktiotermit.tbl')
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+110$m | 110$m | ESITYSKOKOONPANO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+110$o | 110$o  | SOVITUSMERKINTO; ESITYSKOKOONPANO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+110$4 | 110$4  | Table ('Funktiokoodit.tbl')
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+110$? | 110$?  | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+130$a | 130$a  | S; If ((130$c Follows 130$a) And RegFind(@130$c, 'fikt') >= 0) Delete (',', At Ending)
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+130$b | 130$b  | S; If ((130$c Follows 130$b) And RegFind(@130$c, 'fikt') >= 0) Delete (',', At Ending)
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+130$c | 130$c  | FIKTIIVINENHAHMO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+130$e | 130$e  | Table ('Funktiotermit.tbl')
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+130$m | 130$m | ESITYSKOKOONPANO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+130$o | 130$o  | SOVITUSMERKINTO; ESITYSKOKOONPANO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+130$4 | 130$4  | Table ('Funktiokoodit.tbl')
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+130$? | 130$?  | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+400I1 | 400I1  | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+400I2 | 400I2  | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+400$a | 400$a  | S; If ((400$c Follows 400$a) And RegFind(@400$c, 'fikt') >= 0) Delete (',', At Ending)
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+400$b | 400$b  | S; If ((400$c Follows 400$b) And RegFind(@400$c, 'fikt') >= 0) Delete (',', At Ending)
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+400$c | 400$c  | FIKTIIVINENHAHMO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+400$d | 400$d  | AIKAMAAREET
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+400$e | 400$e  | Table ('Funktiotermit.tbl')
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+400$m | 400$m | ESITYSKOKOONPANO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+400$o | 400$o  | SOVITUSMERKINTO; ESITYSKOKOONPANO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+400$4 | 400$4  | Table ('Funktiokoodit.tbl')
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+400$? | 400$?  | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+410I1 | 410I1  | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+410I2 | 410I2  | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+410$a | 410$a  | S; If ((410$c Follows 410$a) And RegFind(@410$c, 'fikt') >= 0) Delete (',', At Ending)
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+410$b | 410$b  | S; If ((410$c Follows 410$b) And RegFind(@410$c, 'fikt') >= 0) Delete (',', At Ending)
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+410$c | 410$c  | FIKTIIVINENHAHMO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+410$e | 410$e  | Table ('Funktiotermit.tbl')
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+410$m | 410$m | ESITYSKOKOONPANO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+410$o | 410$o  | SOVITUSMERKINTO; ESITYSKOKOONPANO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+410$4 | 410$4  | Table ('Funktiokoodit.tbl')
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+410$? | 410$?  | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+430I1 | 430I1  | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+430I2 | 430I2  | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+430$a | 430$a  | S; If ((430$c Follows 430$a) And RegFind(@430$c, 'fikt') >= 0) Delete (',', At Ending)
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+430$b | 430$b  | S; If ((430$c Follows 430$b) And RegFind(@430$c, 'fikt') >= 0) Delete (',', At Ending)
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+430$c | 430$c  | FIKTIIVINENHAHMO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+430$e | 430$e  | Table ('Funktiotermit.tbl')
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+430$m | 430$m | ESITYSKOKOONPANO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+430$o | 430$o  | SOVITUSMERKINTO; ESITYSKOKOONPANO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+430$4 | 430$4  | Table ('Funktiokoodit.tbl')
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+430$? | 430$?  | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+500I1 | 500I1 | S
+Authority:
+500I1 | 500I1  | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+500I2 | 500I2 | S
+Authority:
+500I2 | 500I2  | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+500$a | 500$a  | S; If ((500$c Follows 500$a) And RegFind(@500$c, 'fikt') >= 0) Delete (',', At Ending)
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+500$b | 500$b  | S; If ((500$c Follows 500$b) And RegFind(@500$c, 'fikt') >= 0) Delete (',', At Ending)
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+500$c | 500$c  | FIKTIIVINENHAHMO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+500$d | 500$d  | AIKAMAAREET
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+500$e | 500$e  | Table ('Funktiotermit.tbl')
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+500$m | 500$m | ESITYSKOKOONPANO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+500$o | 500$o  | SOVITUSMERKINTO; ESITYSKOKOONPANO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+500$4 | 500$4  | Table ('Funktiokoodit.tbl')
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+500$? | 500$?  | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+510I1 | 510I1 | S
+Authority:
+510I1 | 510I1  | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+510I2 | 510I2 | S
+Authority:
+510I2 | 510I2  | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+510$a | 510$a  | S; If ((510$c Follows 510$a) And RegFind(@510$c, 'fikt') >= 0) Delete (',', At Ending)
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+510$b | 510$b  | S; If ((510$c Follows 510$b) And RegFind(@510$c, 'fikt') >= 0) Delete (',', At Ending)
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+510$c | 510$c  | FIKTIIVINENHAHMO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+510$e | 510$e  | Table ('Funktiotermit.tbl')
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+510$m | 510$m | ESITYSKOKOONPANO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+510$o | 510$o  | SOVITUSMERKINTO; ESITYSKOKOONPANO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+510$4 | 510$4  | Table ('Funktiokoodit.tbl')
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+510$? | 510$?  | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+530I1 | 530I1 | S
+Authority:
+530I1 | 530I1  | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+530I2 | 530I2 | S
+Authority:
+530I2 | 530I2  | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+530$a | 530$a  | S; If ((530$c Follows 530$a) And RegFind(@530$c, 'fikt') >= 0) Delete (',', At Ending)
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+530$b | 530$b  | S; If ((530$c Follows 530$b) And RegFind(@530$c, 'fikt') >= 0) Delete (',', At Ending)
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+530$c | 530$c  | FIKTIIVINENHAHMO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+530$e | 530$e  | Table ('Funktiotermit.tbl')
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+530$m | 530$m | ESITYSKOKOONPANO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+530$o | 530$o  | SOVITUSMERKINTO; ESITYSKOKOONPANO
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+530$4 | 530$4  | Table ('Funktiokoodit.tbl')
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+530$? | 530$?  | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+???I1   | ???I1   | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+???I2   | ???I2   | S
+--------------------
+Mismatch in rule files:
+Bibliographic:
+undefined
+Authority:
+???     | ???     | S
+--------------------
