@@ -8,7 +8,7 @@ Lisätietoja USEMARCON-ohjelmasta: http://www.nationallibrary.fi/libraries/forma
 
 KEHITYS
 
-Konversio on testausvaiheessa.
+Tarjottava versio on konversion ensimmäinen tuotantoversio. Konversion ruotsinkielinen versio on vielä tekeillä, se tulee käytettäväksi lokakuun alussa.
 
 KÄYTTÖ
 
