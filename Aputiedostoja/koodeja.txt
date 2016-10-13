@@ -1,0 +1,49 @@
+		
+		
+aft 	 loppusanojen kirjoittaja	loppusanojen kirjoittaja
+		
+ann 	 pöytäkirjan laatija	pöytäkirjan laatija
+		
+aqt 	 oheistekstin kirjoittaja	oheistekstin kirjoittaja
+		
+art 	 taiteilija	taiteilija
+		
+asn - ????		
+		
+att 	 kirjoittaja	kirjoittaja
+		
+aui 	 esipuheen kirjoittaja	esipuheen kirjoittaja
+		
+cph - ???		
+		
+ctb - ???		
+		
+ctg 	 kartantekijä	kartantekijä
+		
+cwt 	 kommentaattori	kommentaattori
+		
+dub 	 kirjoittaja	kirjoittaja
+		
+fac - ???		
+		
+hnr 	 kunnianosoituksen kohde	kunnianosoituksen kohde
+		
+mdc - ???		
+		
+mus 	 esittäjä	esittäjä
+		
+own 	 nykyinen omistaja	nykyinen omistaja
+		
+pbd 	 toimittaja	toimittaja
+		
+prd 	 tuottaja	tuottaja
+		
+prt 	 kirjanpainaja	kirjanpainaja
+		
+rev - ???		
+		
+rpy 	 toimittaja	toimittaja
+		
+voc 	 laulaja	laulaja
+		
+wam - ???		

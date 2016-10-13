@@ -1,5 +1,5 @@
 ﻿MARC 21 Bookwhere-siivous + RDA-kentat
-3.6.2013 - Kansalliskirjasto / Päivitetty 15.9.2016 / TV
+3.6.2013 - Kansalliskirjasto / Päivitetty 13.10.2016 / TV
 
 #define version 317
 
@@ -11,10 +11,16 @@
                            RegReplace('approximately', 'noin', 'g'); \
                            RegReplace('\\bmin\\.|\\bmin\\b|minutes', 'minuuttia', 'g'); \
                            RegReplace('unnumbered', 'numeroimatonta', 'g'); \
-                           RegReplace('color illustrations\\b', 'värikuvitus', 'g'); \
+                           RegReplace('color illustrations\\b|col\\. ill\\.', 'värikuvitus', 'g'); \
                            RegReplace('chiefly color illustrations', 'pääosin värikuvitettu', 'g'); \
                            RegReplace('ill\\.|illustrated|illustrations', 'kuvitettu', 'g'); \
+                           RegReplace('black and white', 'mustavalkoinen', 'g'); \
+                           RegReplace('\\s\\(some col\\.\\)', '', 'g'); \
+                           RegReplace('\\bcharts\\b', 'kaavioita', 'g'); \
+                           RegReplace('\\bports\\.|\\bportraits', 'muotokuvia', 'g'); \
                            RegReplace('illustration\\b', 'kuvitus', 'g'); \
+                           RegReplace('leaves of plates', 'kuvalehteä', 'g'); \
+                           RegReplace('1 v\\.', '1 nide', 'g'); \
                            RegReplace('insert\\b', 'liite', 'g'); \
                            RegReplace('inserts', 'liitteitä', 'g'); \
                            RegReplace('videodiscs', 'videolevyä', 'g'); \
@@ -23,13 +29,10 @@
                            RegReplace('map\\b', 'kartta', 'g'); \
                            RegReplace('maps', 'karttoja', 'g'); \
                            RegReplace('chiefly color\\b', 'pääosin värillisiä', 'g'); \
-                           RegReplace('\\bnid\\.|\\bnid\\b', 'nidottu', 'g'); \
-                           RegReplace('\\binb\\b|\\binb\\.', 'sidottu', 'g'); \
-                           RegReplace('\\bhft\\b|\\bhft\\.', 'nidottu', 'g'); \
-                           RegReplace('\\bpbk\\b|\\bpbk\\.', 'nidottu', 'g'); \
-                           RegReplace('\\bhbk\\b|\\bhbk\\.', 'sidottu', 'g'); \
+                           RegReplace('\\bnid\\.|\\bnid[^A-Za-z]+|\\bhft[^A-Za-z]+|\\bhft\\.', 'nidottu', 'g'); \
+                           RegReplace('\\bpbk[^A-Za-z]+|\\bpbk\\.', 'nidottu', 'g'); \
+                           RegReplace('\\bhbk[^A-Za-z]+|\\bhbk\\.|\\binb[^A-Za-z]+|\\binb\\.', 'sidottu', 'g'); \
                            RegReplace('\\bverkkojulk\\b|\\bverkkojulk\\.|electronic bk\\.', 'verkkoaineisto', 'g')
-                            
 
 000/1-5     | 000/1-5     | S
 000/6/      | 000/6/      | 'n'
@@ -272,6 +275,7 @@ G37$a           | 337(newest)$2   | 'rdamedia'
 020I2 | 020I2  | S
 020$a | 020$a  | S; RegReplace('[\\s](.*)', ''); KAANNOKSET
 020$a | 020$q  | If (RegFind(@020$a, '\\(') >= 0) Then S; RegReplace('(.*)\\(', ''); RegReplace('\\)', ''); KAANNOKSET
+020$c | <DEL   | S
 020$q | 020$q  | S; RegReplace('\\(', ''); RegReplace('\\)', ''); KAANNOKSET
 020$z | 020$z  | S; RegReplace('[\\s](.*)', ''); KAANNOKSET
 020$z | 020$q  | If (RegFind(@020$z, '\\(') >= 0) Then S; RegReplace('(.*)\\(', ''); RegReplace('\\)', ''); KAANNOKSET

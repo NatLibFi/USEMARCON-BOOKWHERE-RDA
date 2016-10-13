@@ -1,3 +1,7 @@
-./Aputiedostoja/*
+./Aputiedostoja/*.*
+./Dataa/*.*
+node_modules
 error.log
 *.mrc
+*.xlsx
+*.log

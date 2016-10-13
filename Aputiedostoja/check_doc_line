@@ -1,0 +1,1838 @@
+!
+! NOTE - 1) do not edit this header section
+!      - 2) this header is created from the template located
+!        in $aleph_headers (sub-folders)
+!      - 3) to add remarks within the table,
+!        start the line with !rem or !*
+!      - 4) to mark a line as non-used (but restorable)
+!        add ! at start of line, retaining column structure
+!        displaced by one position to the right
+!      - 5) all internal codes must be Latin characters A-Z,0-9
+!
+!============================================================================
+!                            check_doc_line
+!Check of logical structure/connections within a single occurrence of a field
+!============================================================================
+! Last header change: 12/06/2001
+!
+! HELP
+! The AL section of this table enables you to define the following checks:
+! - Valid indicators and/or sub-field codes for the tag.  
+! - Presence of mandatory sub-fields. 
+! - Non-repeatability of non-repeatable sub-fields. 
+!
+! The D section of this table enables you to determine the rules for checking
+! dependencies among sub-fields of a single field. 
+! END_HELP
+! col. 1        Type of check - AL or D
+! col. 2        Record format as in the FMT field. Use XX for all formats.
+!
+! Format of AL (allowed) table:
+! col. 4        Tag
+! col. 5        1) - (hyphen) for indicator
+!               2) Sub-field code
+! col. 6        1) Indicator - possible values for 1st indicator
+!               2) Sub-field -  0=non-mandatory; 1=mandatory
+! col. 7        1) Indicator - possible values for 2nd indicator
+!               2) Sub-field -  1=not repeatable;2-9=sub-field can be repeated
+!                  up to the number of times entered here; "-"=unlimited 
+!                  occurrences. 
+! Note: The indicator portion (for all formats) must be listed before
+! the sub-field portion, for each field.
+!
+! Format of D (dependency between sub-fields) table
+! col. 3        Error number
+! col. 4        Tag
+! col. 5        First sub-field code
+! col. 6        Specific content of sub-field
+! col. 7        Type of dependency: Y - present; N - cannot be present
+! col. 8        Second sub-field code
+! col. 9        Specific content of sub-field
+! col. 10       Type of dependency: Y/N
+! col. 11       Third sub-field code .. etc. (up to 3 subfields can be defined)
+!
+!D:                                                  1 1                1
+!  2   3    4    5      6         7 8      9         0 1      12        3
+!!-!!-!!!!-!!!---!-!!!!!!!!!!!!!!-!-!-!!!!!!!!!!!!!!-!-!-!!!!!!!!!!!!!!-!-
+!
+!
+!AL:
+!  2   -    4    5 6 7 
+!!-!!-!!!!-!!!---!-!-!
+AL XX      010   -    
+AL XX      010   a 0 1
+AL XX      010   z 0 -
+AL XX      010   8 0 -
+
+AL XX      014   -    
+AL XX      014   a 1 1
+AL XX      014   6 0 1
+AL XX      014   8 0 -
+
+AL XX      016   -    
+AL XX      016   - 7  
+AL XX      016   a 0 1 
+AL XX      016   z 0 -
+AL XX      016   2 0 1
+AL XX      016   8 0 -
+
+AL XX      020   -     
+AL XX      020   a 0 1
+AL XX      020   c 0 1
+AL XX      020   q 0 -
+AL XX      020   z 0 -
+AL XX      020   6 0 1
+AL XX      020   8 0 -
+
+AL XX      022   -     
+AL XX      022   a 0 1
+AL XX      022   l 0 1
+AL XX      022   m 0 -
+AL XX      022   y 0 -
+AL XX      022   z 0 -
+AL XX      022   6 0 1
+AL XX      022   8 0 -
+
+AL XX      024   - 7
+AL XX      024   - 8
+AL XX      024   a 1 1
+AL XX      024   c 0 1
+AL XX      024   d 0 1
+AL XX      024   q 0 -
+AL XX      024   z 0 -
+AL XX      024   2 0 1
+AL XX      024   6 0 1
+AL XX      024   8 0 -
+
+AL XX      031   -
+AL XX      031   a 1 1
+AL XX      031   b 1 1
+AL XX      031   c 1 1
+AL XX      031   e 0 1
+AL XX      031   g 0 1
+AL XX      031   m 1 1
+AL XX      031   n 0 1
+AL XX      031   o 0 1
+AL XX      031   p 0 1
+AL XX      031   q 0 -
+AL XX      031   r 0 1
+AL XX      031   s 0 -
+AL XX      031   t 0 -
+AL XX      031   u 0 -
+AL XX      031   y 0 -
+AL XX      031   z 0 -
+AL XX      031   2 0 1
+AL XX      031   6 0 1
+AL XX      031   8 0 -
+
+AL XX      034   -
+AL XX      034   -   0
+AL XX      034   -   1
+AL XX      034   d 0 1
+AL XX      034   e 0 1
+AL XX      034   f 0 1
+AL XX      034   g 0 1
+AL XX      034   j 0 1
+AL XX      034   k 0 1
+AL XX      034   m 0 1
+AL XX      034   n 0 1
+AL XX      034   p 0 1
+AL XX      034   r 0 1
+AL XX      034   s 0 -
+AL XX      034   t 0 -
+AL XX      034   x 0 -
+AL XX      034   y 0 -
+AL XX      034   z 0 -
+AL XX      034   0 0 -
+AL XX      034   2 0 -
+AL XX      034   3 0 1
+AL XX      034   6 0 1
+AL XX      034   8 0 -
+
+AL XX      035   -    
+AL XX      035   a 0 1
+AL XX      035   z 0 -
+AL XX      035   6 0 1
+AL XX      035   8 0 -
+
+AL XX      040   -    
+AL XX      040   a 0 1
+AL XX      040   b 0 1
+AL XX      040   c 0 1
+AL XX      040   d 0 -
+AL XX      040   e 0 -
+! NOTE: 040f is compulsury for fixes to work
+AL XX      040   f 1 1
+AL XX      040   6 0 1
+AL XX      040   8 0 -
+
+AL XX      042   -    
+AL XX      042   a 0 -
+
+AL XX      043   -    
+AL XX      043   a 0 -
+AL XX      043   b 0 -
+AL XX      043   c 0 -
+AL XX      043   0 0 -
+AL XX      043   2 0 -
+AL XX      043   6 0 1
+AL XX      043   8 0 -
+
+AL XX      045   -    
+AL XX      045   - 0  
+AL XX      045   - 1  
+AL XX      045   - 2  
+AL XX      045   a 0 -
+AL XX      045   b 0 -
+AL XX      045   c 0 -
+AL XX      045   6 0 1
+AL XX      045   8 0 -
+
+AL XX      046   -
+AL XX      046   f 0 1
+AL XX      046   g 0 1
+AL XX      046   k 0 1
+AL XX      046   l 0 1
+AL XX      046   o 0 1
+AL XX      046   p 0 1
+AL XX      046   s 0 1
+AL XX      046   t 0 1
+AL XX      046   u 0 -
+AL XX      046   v 0 1
+AL XX      046   2 0 1
+AL XX      046   6 0 1
+AL XX      046   8 0 -
+
+AL XX      050   -   0
+AL XX      050   -   4
+AL XX      050   a 0 -  
+AL XX      050   b 0 1
+AL XX      050   d 0 1
+AL XX      050   5 0 -
+AL XX      050   6 0 1
+AL XX      050   8 0 -
+
+AL XX      052   - 
+AL XX      052   - 1  
+AL XX      052   - 7  
+AL XX      052   a 0 1
+AL XX      052   b 0 -
+AL XX      052   d 0 -
+AL XX      052   2 0 1
+AL XX      052   6 0 1
+AL XX      052   8 0 -
+
+AL XX      053   -   0
+AL XX      053   -   4
+AL XX      053   a 0 1
+AL XX      053   b 0 1
+AL XX      053   c 0 1
+AL XX      053   5 0 -
+AL XX      053   6 0 1
+AL XX      053   8 0 -
+
+AL XX      055   -   0
+AL XX      055   -   4
+AL XX      055   a 0 1
+AL XX      055   b 0 1
+AL XX      055   d 0 1
+AL XX      055   5 0 -
+AL XX      055   6 0 1
+AL XX      055   8 0 -
+
+AL XX      060   -   0
+AL XX      060   -   4
+AL XX      060   a 0 1
+AL XX      060   b 0 1
+AL XX      060   d 0 1
+AL XX      060   5 0 -
+AL XX      060   6 0 1
+AL XX      060   8 0 -
+
+AL XX      065   -     
+AL XX      065   a 1 1
+AL XX      065   b 0 1
+AL XX      065   c 0 1
+AL XX      065   2 0 1
+AL XX      065   5 0 -
+AL XX      065   6 0 1
+AL XX      065   8 0 -
+
+AL XX      066   -    
+AL XX      066   a 0 1
+AL XX      066   b 0 1
+AL XX      066   c 0 -
+
+AL XX      070   -    
+AL XX      070   a 0 1
+AL XX      070   b 0 1
+AL XX      070   d 0 1
+AL XX      070   6 0 1
+AL XX      070   8 0 -
+
+AL XX      072   -    
+AL XX      072   -   0
+AL XX      072   -   7
+AL XX      072   a 0 1
+AL XX      072   x 0 -
+AL XX      072   2 0 1
+AL XX      072   6 0 1
+AL XX      072   8 0 -
+
+AL XX      073   -    
+AL XX      073   a 0 -
+AL XX      073   z 0 1
+AL XX      073   6 0 1
+AL XX      073   8 0 -
+
+AL XX      080   -
+AL XX      080   - 0
+AL XX      080   - 1
+AL XX      080   a 0 1
+AL XX      080   b 0 1
+AL XX      080   x 0 -
+AL XX      080   2 0 1
+AL XX      080   6 0 1
+AL XX      080   8 0 -
+
+AL XX      082   - 0  
+AL XX      082   - 1 0
+AL XX      082   - 7 4
+AL XX      082   a 0 -
+AL XX      082   b 0 1
+AL XX      082   d 0 1
+AL XX      082   2 0 1
+AL XX      082   5 0 -
+AL XX      082   6 0 1
+AL XX      082   8 0 -
+
+AL XX      083   - 0
+AL XX      083   - 1 0
+AL XX      083   - 7 4
+AL XX      083   a 0 1
+AL XX      083   b 0 1
+AL XX      083   c 0 1
+AL XX      083   z 0 1
+AL XX      083   y 0 -
+AL XX      083   2 0 1
+AL XX      083   5 0 -
+AL XX      083   6 0 1
+AL XX      083   8 0 -
+
+AL XX      086   -    
+AL XX      086   - 0  
+AL XX      086   - 1  
+AL XX      086   a 0 1
+AL XX      086   d 0 1
+AL XX      086   z 0 -
+AL XX      086   2 0 1
+AL XX      086   5 0 -
+AL XX      086   6 0 1
+AL XX      086   8 0 -
+
+AL XX      087   -
+AL XX      087   - 0
+AL XX      087   - 1
+AL XX      087   a 0 1
+AL XX      087   b 0 1
+AL XX      087   c 0 1
+AL XX      087   2 0 1
+AL XX      087   6 0 1
+AL XX      087   8 0 -
+
+AL XX      090   -
+AL XX      090   a 1 -
+AL XX      090   b 0 1
+AL XX      090   e 0 1
+AL XX      090   f 0 1
+
+AL XX      092   -
+AL XX      092   - 0
+AL XX      092   - 1
+AL XX      092   a 1 1
+AL XX      092   b 0 1
+AL XX      092   e 0 1
+AL XX      092   f 0 1
+AL XX      092   2 0 1
+
+AL XX      096   -
+AL XX      096   a 1 1
+AL XX      096   b 0 1
+AL XX      096   e 0 1
+AL XX      096   f 0 1
+
+AL XX      098   - 0 0
+AL XX      098   - 1 1
+AL XX      098   - 2 2
+AL XX      098   - 3 3
+AL XX      098   - 0 4
+AL XX      098   - 0 5
+AL XX      098   - 0 6
+AL XX      098   - 0 7
+AL XX      098   - 0 8
+AL XX      098   - 0 9
+AL XX      098   a 1 -
+AL XX      098   e 0 1
+AL XX      098   f 0 1
+
+AL XX      099   -
+AL XX      099   -   0
+AL XX      099   -   1
+AL XX      099   -   9
+AL XX      099   a 1 -
+AL XX      099   e 0 1
+AL XX      099   f 0 1
+
+
+AL XX      100   - 0   
+AL XX      100   - 1   
+!AL XX      100   - 2    
+AL XX      100   - 3   
+AL XX      100   a 1 1
+AL XX      100   b 0 1
+AL XX      100   c 0 -
+AL XX      100   d 0 1
+AL XX      100   e 0 -
+AL XX      100   f 0 1
+AL XX      100   g 0 1
+AL XX      100   h 0 1
+AL XX      100   j 0 -
+AL XX      100   k 0 -
+AL XX      100   l 0 1
+AL XX      100   m 0 -
+AL XX      100   n 0 -
+AL XX      100   o 0 1
+AL XX      100   p 0 -
+AL XX      100   q 0 1
+AL XX      100   r 0 1
+AL XX      100   s 0 1
+AL XX      100   t 0 1
+AL XX      100   v 0 -
+AL XX      100   x 0 -
+AL XX      100   y 0 -
+AL XX      100   z 0 -
+!AL XX      100   3 0 -
+AL XX      100   6 0 1
+AL XX      100   8 0 -
+!AL XX      100   9 0 -
+
+AL XX      110   - 0  
+AL XX      110   - 1  
+AL XX      110   - 2  
+AL XX      110   a 1 1
+AL XX      110   b 0 -
+AL XX      110   c 0 1
+AL XX      110   d 0 -
+AL XX      110   e 0 -
+AL XX      110   f 0 1
+AL XX      110   g 0 1
+AL XX      110   h 0 1
+AL XX      110   k 0 -
+AL XX      110   l 0 1
+AL XX      110   m 0 -
+AL XX      110   n 0 -
+AL XX      110   o 0 1
+AL XX      110   p 0 -
+AL XX      110   r 0 1
+AL XX      110   s 0 1
+AL XX      110   t 0 1
+AL XX      110   v 0 -
+AL XX      110   x 0 -
+AL XX      110   y 0 -
+AL XX      110   z 0 -
+!AL XX      110   3 0 -
+AL XX      110   6 0 1
+AL XX      110   8 0 -
+!AL XX      110   9 0 -
+
+AL XX      111   - 0 
+AL XX      111   - 1 
+AL XX      111   - 2 
+!AL XX      111   - 3 3
+!AL XX      111   - 0 4
+!AL XX      111   - 0 5
+!AL XX      111   - 0 6
+!AL XX      111   - 0 7
+!AL XX      111   - 0 8
+!AL XX      111   - 0 9
+AL XX      111   a 1 1 
+AL XX      111   c 0 1
+AL XX      111   d 0 1
+AL XX      111   e 0 -
+AL XX      111   f 0 1
+AL XX      111   g 0 1
+AL XX      111   h 0 1
+AL XX      111   j 0 -
+AL XX      111   k 0 -
+AL XX      111   l 0 1
+AL XX      111   n 0 -
+AL XX      111   p 0 -
+AL XX      111   q 0 1
+AL XX      111   s 0 1
+AL XX      111   t 0 1
+AL XX      111   v 0 -
+AL XX      111   x 0 -
+AL XX      111   y 0 -
+AL XX      111   z 0 -
+!AL XX      111   3 0 -
+AL XX      111   6 0 1
+AL XX      111   8 0 -
+!AL XX      111   9 0 -
+
+AL XX      130   -   0  
+AL XX      130   -   1
+AL XX      130   -   2
+AL XX      130   -   3
+AL XX      130   -   4
+AL XX      130   -   5
+AL XX      130   -   6
+AL XX      130   -   7
+AL XX      130   -   8
+AL XX      130   -   9
+AL XX      130   a 1 1
+AL XX      130   d 0 -
+AL XX      130   f 0 1
+AL XX      130   g 0 1
+AL XX      130   h 0 1
+AL XX      130   k 0 -
+AL XX      130   l 0 1
+AL XX      130   m 0 -
+AL XX      130   n 0 -
+AL XX      130   o 0 1
+AL XX      130   p 0 -
+AL XX      130   r 0 1
+AL XX      130   s 0 1
+AL XX      130   t 0 1
+AL XX      130   v 0 -
+AL XX      130   x 0 -
+AL XX      130   y 0 -
+AL XX      130   z 0 -
+!AL XX      130   3 0 -
+AL XX      130   6 0 1
+AL XX      130   8 0 -
+!AL XX      130   9 0 -
+
+AL XX      148   -
+AL XX      148   a 1 1
+AL XX      148   v 0 -
+AL XX      148   x 0 -
+AL XX      148   y 0 -
+AL XX      148   z 0 -
+AL XX      148   6 0 1
+AL XX      148   8 0 -
+
+AL XX      150   -     
+AL XX      150   a 1 1
+AL XX      150   b 0 1
+AL XX      150   v 0 -
+AL XX      150   x 0 -
+AL XX      150   y 0 -
+AL XX      150   z 0 -
+AL XX      150   2 0 1
+AL XX      150   6 0 1
+AL XX      150   8 0 -
+!AL XX      150   9 0 -
+
+AL XX      151   -     
+AL XX      151   a 1 1
+AL XX      151   v 0 -
+AL XX      151   x 0 -
+AL XX      151   y 0 -
+AL XX      151   z 0 -
+AL XX      151   2 0 1
+AL XX      151   6 0 1
+AL XX      151   8 0 -
+!AL XX      151   9 0 -
+
+AL XX      155   -    
+AL XX      155   a 1 1
+AL XX      155   v 0 -
+AL XX      155   x 0 -
+AL XX      155   y 0 -
+AL XX      155   z 0 -
+AL XX      155   2 0 1
+AL XX      155   6 0 1
+AL XX      155   8 0 -
+!AL XX      155   9 0 -
+
+AL XX      162   -
+AL XX      162   a 1 1
+AL XX      162   6 0 1
+AL XX      162   8 0 -
+
+AL XX      180   -
+AL XX      180   v 0 -
+AL XX      180   x 0 -
+AL XX      180   y 0 -
+AL XX      180   z 0 -
+AL XX      180   6 0 1
+AL XX      180   8 0 -
+!AL XX      180   9 0 -
+
+AL XX      181   -   
+AL XX      181   v 0 -
+AL XX      181   x 0 -
+AL XX      181   y 0 -
+AL XX      181   z 0 -
+AL XX      181   6 0 1
+AL XX      181   8 0 -
+!AL XX      181   9 0 -
+
+AL XX      182   -
+AL XX      182   v 0 -
+AL XX      182   x 0 -
+AL XX      182   y 0 -
+AL XX      182   z 0 -
+AL XX      182   6 0 1
+AL XX      182   8 0 -
+!AL XX      182   9 0 -
+
+AL XX      185   -   
+AL XX      185   v 0 -
+AL XX      185   x 0 -
+AL XX      185   y 0 -
+AL XX      185   z 0 -
+AL XX      185   6 0 1
+AL XX      185   8 0 -
+!AL XX      185   9 0 -
+
+AL XX      260   -    
+AL XX      260   a 0 -
+AL XX      260   i 0 -
+AL XX      260   0 0 -
+AL XX      260   6 0 1
+AL XX      260   8 0 -
+
+AL XX      360   -    
+AL XX      360   a 0 -
+AL XX      360   i 0 -
+AL XX      260   0 0 -
+AL XX      360   6 0 1
+AL XX      360   8 0 -
+
+AL XX      400   - 0  
+AL XX      400   - 1 
+AL XX      400   - 3
+!AL XX      400   - 2 2
+!AL XX      400   - 3 3
+!AL XX      400   - 0 4
+!AL XX      400   - 0 5
+!AL XX      400   - 0 6
+!AL XX      400   - 0 7
+!AL XX      400   - 0 8
+!AL XX      400   - 0 9
+AL XX      400   a 0 1
+AL XX      400   b 0 1
+AL XX      400   c 0 -
+AL XX      400   d 0 1
+AL XX      400   e 0 -
+AL XX      400   f 0 1
+AL XX      400   g 0 1
+AL XX      400   h 0 1
+AL XX      400   i 0 -
+AL XX      400   j 0 -
+AL XX      400   k 0 -
+AL XX      400   l 0 1
+AL XX      400   m 0 -
+AL XX      400   n 0 -
+AL XX      400   o 0 1
+AL XX      400   p 0 -
+AL XX      400   q 0 1
+AL XX      400   r 0 1
+AL XX      400   s 0 1
+AL XX      400   t 0 1
+AL XX      400   v 0 -
+AL XX      400   w 0 1
+AL XX      400   x 0 -
+AL XX      400   y 0 -
+AL XX      400   z 0 -
+AL XX      400   4 0 -
+AL XX      400   5 0 -
+AL XX      400   6 0 1
+! $7 needed for disambiguating 4xx fields
+AL XX      400   7 0 1
+AL XX      400   8 0 -
+!AL XX      400   9 0 -
+
+AL XX      410   - 0
+AL XX      410   - 1 
+AL XX      410   - 2 
+!AL XX      410   - 2 2
+!AL XX      410   - 3 3
+!AL XX      410   - 0 4
+!AL XX      410   - 0 5
+!AL XX      410   - 0 6
+!AL XX      410   - 0 7
+!AL XX      410   - 0 8
+!AL XX      410   - 0 9
+AL XX      410   a 0 1
+AL XX      410   b 0 -
+AL XX      410   c 0 1
+AL XX      410   d 0 -
+AL XX      410   e 0 -
+AL XX      410   f 0 1
+AL XX      410   g 0 1
+AL XX      410   h 0 1
+AL XX      410   i 0 -
+AL XX      410   k 0 -
+AL XX      410   l 0 1
+AL XX      410   m 0 -
+AL XX      410   n 0 -
+AL XX      410   o 0 1
+AL XX      410   p 0 -
+AL XX      410   r 0 1
+AL XX      410   s 0 1
+AL XX      410   t 0 1
+AL XX      410   v 0 -
+AL XX      410   w 0 1
+AL XX      410   x 0 -
+AL XX      410   y 0 -
+AL XX      410   z 0 -
+AL XX      410   4 0 -
+AL XX      410   5 0 -
+AL XX      410   6 0 1
+! $7 needed for disambiguating 4xx fields
+AL XX      410   7 0 1
+AL XX      410   8 0 -
+!AL XX      410   9 0 -
+
+AL XX      411   - 0
+AL XX      411   - 1 
+AL XX      411   - 2 
+!AL XX      411   - 2 2
+!AL XX      411   - 3 3
+!AL XX      411   - 0 4
+!AL XX      411   - 0 5
+!AL XX      411   - 0 6
+!AL XX      411   - 0 7
+!AL XX      411   - 0 8
+!AL XX      411   - 0 9
+AL XX      411   a 0 1
+AL XX      411   c 0 1
+AL XX      411   d 0 1
+AL XX      411   e 0 -
+AL XX      411   f 0 1
+AL XX      411   g 0 1
+AL XX      411   h 0 1
+AL XX      411   i 0 -
+AL XX      411   j 0 -
+AL XX      411   k 0 -
+AL XX      411   l 0 1
+AL XX      411   n 0 -
+AL XX      411   p 0 -
+AL XX      411   q 0 1
+AL XX      411   s 0 1
+AL XX      411   t 0 1
+AL XX      411   v 0 -
+AL XX      411   w 0 1
+AL XX      411   x 0 -
+AL XX      411   y 0 -
+AL XX      411   z 0 -
+AL XX      411   4 0 -
+AL XX      411   5 0 -
+AL XX      411   6 0 1
+! $7 needed for disambiguating 4xx fields
+AL XX      411   7 0 1
+AL XX      411   8 0 -
+!AL XX      411   9 0 -
+
+
+AL XX      430   -   0
+AL XX      430   -   1
+AL XX      430   -   2
+AL XX      430   -   3
+AL XX      430   -   4
+AL XX      430   -   5
+AL XX      430   -   6
+AL XX      430   -   7
+AL XX      430   -   8
+AL XX      430   -   9
+AL XX      430   a 0 1
+AL XX      430   d 0 -
+AL XX      430   f 0 1
+AL XX      430   g 0 1
+AL XX      430   h 0 1
+AL XX      430   i 0 -
+AL XX      430   k 0 -
+AL XX      430   l 0 1
+AL XX      430   m 0 -
+AL XX      430   n 0 -
+AL XX      430   o 0 1
+AL XX      430   p 0 -
+AL XX      430   r 0 1
+AL XX      430   s 0 1
+AL XX      430   t 0 1
+AL XX      430   v 0 -
+AL XX      430   w 0 1
+AL XX      430   x 0 -
+AL XX      430   y 0 -
+AL XX      430   z 0 -
+AL XX      430   4 0 -
+AL XX      430   5 0 -
+AL XX      430   6 0 1
+! $7 needed for disambiguating 4xx fields
+AL XX      430   7 0 1
+AL XX      430   8 0 -
+!AL XX      430   9 0 -
+
+AL XX      448   -
+AL XX      448   a 1 1
+AL XX      448   i 0 -
+AL XX      448   v 0 -
+AL XX      448   w 0 1
+AL XX      448   x 0 -
+AL XX      448   y 0 -
+AL XX      448   z 0 -
+AL XX      448   4 0 -
+AL XX      448   5 0 -
+AL XX      448   6 0 1
+! $7 needed for disambiguating 4xx fields
+AL XX      448   7 0 1
+AL XX      448   8 0 -
+
+AL XX      450   -     
+AL XX      450   a 0 1
+AL XX      450   b 0 1
+AL XX      450   i 0 - 
+AL XX      450   v 0 -
+AL XX      450   w 0 1
+AL XX      450   x 0 -
+AL XX      450   y 0 -
+AL XX      450   z 0 -
+AL XX      450   4 0 -
+AL XX      450   5 0 -
+AL XX      450   2 0 1
+AL XX      450   6 0 1
+! $7 needed for disambiguating 4xx fields
+AL XX      450   7 0 1
+AL XX      450   8 0 -
+!AL XX      450   9 0 -
+
+AL XX      451   -    
+AL XX      451   a 0 1
+!AL XX      451   b 0 1
+AL XX      451   i 0 -
+AL XX      451   v 0 -
+AL XX      451   w 0 1
+AL XX      451   x 0 -
+AL XX      451   y 0 -
+AL XX      451   z 0 -
+Al XX      451   4 0 -
+AL XX      451   5 0 -
+AL XX      451   2 0 1
+AL XX      451   6 0 1
+AL XX      451   8 0 -
+!AL XX      451   9 0 -
+
+AL XX      455   -    
+AL XX      455   a 0 1
+AL XX      455   i 0 -
+AL XX      455   v 0 -
+AL XX      455   w 0 1
+AL XX      455   x 0 -
+AL XX      455   y 0 -
+AL XX      455   z 0 -
+AL XX      455   2 0 1
+AL XX      455   4 0 -
+AL XX      455   5 0 -
+AL XX      455   6 0 1
+! $7 needed for disambiguating 4xx fields
+AL XX      455   7 0 1
+AL XX      455   8 0 -
+!AL XX      455   9 0 -
+
+AL XX      462   -
+AL XX      462   a 0 1
+AL XX      462   i 0 -
+AL XX      462   w 0 1
+AL XX      462   4 0 -
+AL XX      462   5 0 -
+AL XX      462   6 0 1
+! $7 needed for disambiguating 4xx fields
+AL XX      462   7 0 1
+AL XX      462   8 0 -
+
+AL XX      480   -
+AL XX      480   i 0 -
+AL XX      480   v 0 -
+AL XX      480   w 0 1
+AL XX      480   x 0 -
+AL XX      480   y 0 -
+AL XX      480   z 0 -
+AL XX      480   4 0 -
+AL XX      480   5 0 -
+AL XX      480   6 0 1
+! $7 needed for disambiguating 4xx fields
+AL XX      480   7 0 1
+AL XX      480   8 0 -
+!AL XX      480   9 0 -
+
+AL XX      481   -
+AL XX      481   i 0 -
+AL XX      481   v 0 -
+AL XX      481   w 0 1
+AL XX      481   x 0 -
+AL XX      481   y 0 -
+AL XX      481   z 0 -
+AL XX      481   4 0 -
+AL XX      481   5 0 -
+AL XX      481   6 0 1
+! $7 needed for disambiguating 4xx fields
+AL XX      481   7 0 1
+AL XX      481   8 0 -
+!AL XX      481   9 0 -
+
+AL XX      482   -
+AL XX      482   i 0 -
+AL XX      482   v 0 -
+AL XX      482   w 0 1
+AL XX      482   x 0 -
+AL XX      482   y 0 -
+AL XX      482   z 0 -
+AL XX      482   4 0 -
+AL XX      482   5 0 -
+AL XX      482   6 0 1
+! $7 needed for disambiguating 4xx fields
+AL XX      482   7 0 1
+AL XX      482   8 0 -
+!AL XX      482   9 0 -
+
+AL XX      485   -
+AL XX      485   i 0 -
+AL XX      485   v 0 -
+AL XX      485   w 0 1
+AL XX      485   x 0 -
+AL XX      485   y 0 1
+AL XX      485   z 0 -
+AL XX      485   4 0 -    
+AL XX      485   5 0 -
+AL XX      485   6 0 1
+! $7 needed for disambiguating 4xx fields
+AL XX      485   7 0 1
+AL XX      485   8 0 -
+!AL XX      485   9 0 -
+
+AL XX      500   - 0
+AL XX      500   - 1
+AL XX      500   - 2
+AL XX      500   a 0 1
+AL XX      500   b 0 -
+AL XX      500   c 0 1
+AL XX      500   d 0 1
+AL XX      500   e 0 -
+AL XX      500   f 0 1
+AL XX      500   g 0 1
+AL XX      500   h 0 1
+AL XX      500   i 0 -
+!AL XX      500   j 0 -
+AL XX      500   k 0 -
+AL XX      500   l 0 1
+AL XX      500   m 0 -
+AL XX      500   n 0 -
+AL XX      500   o 0 1
+AL XX      500   p 0 -
+!AL XX      500   q 0 1
+AL XX      500   r 0 1
+AL XX      500   s 0 1
+AL XX      500   t 0 1
+AL XX      500   v 0 -
+AL XX      500   w 0 1
+AL XX      500   x 0 -
+AL XX      500   y 0 -
+AL XX      500   z 0 -
+AL XX      500   0 0 -
+AL XX      500   4 0 -
+AL XX      500   5 0 -
+AL XX      500   6 0 1
+AL XX      500   8 0 -
+
+AL XX      510   - 0
+AL XX      510   - 1
+AL XX      510   - 2
+AL XX      510   a 0 1
+AL XX      510   b 0 1
+AL XX      510   c 0 -
+AL XX      510   d 0 1
+AL XX      510   e 0 -
+AL XX      510   f 0 1
+AL XX      510   g 0 1
+AL XX      510   h 0 1
+AL XX      510   i 0 1
+AL XX      510   k 0 -
+AL XX      510   l 0 1
+AL XX      510   m 0 -
+AL XX      510   n 0 -
+AL XX      510   o 0 1
+AL XX      510   p 0 -
+AL XX      510   r 0 1
+AL XX      510   s 0 1
+AL XX      510   t 0 1
+AL XX      510   w 0 1
+AL XX      510   v 0 -
+AL XX      510   x 0 -
+AL XX      510   y 0 -
+AL XX      510   z 0 -
+AL XX      510   0 0 -
+AL XX      510   5 0 -
+AL XX      510   6 0 1
+AL XX      510   8 0 -
+
+
+AL XX      511   - 0
+AL XX      511   - 1
+AL XX      511   - 2
+AL XX      511   a 0 1
+!AL XX      511   b 0 1
+AL XX      511   c 0 1
+AL XX      511   d 0 1
+AL XX      511   e 0 -
+AL XX      511   f 0 1
+AL XX      511   g 0 1
+AL XX      511   h 0 1
+AL XX      511   i 0 -
+AL XX      511   j 0 -
+AL XX      511   k 0 -
+AL XX      511   l 0 1
+AL XX      511   n 0 -
+AL XX      511   p 0 -
+AL XX      511   q 0 1
+!AL XX      511   r 0 1
+AL XX      511   s 0 1
+AL XX      511   t 0 1
+AL XX      511   v 0 -
+AL XX      511   w 0 1
+AL XX      511   x 0 -
+AL XX      511   y 0 -
+AL XX      511   z 0 -
+AL XX      511   0 0 -
+AL XX      511   4 0 -
+AL XX      511   5 0 -
+AL XX      511   6 0 1
+AL XX      511   8 0 -
+
+AL XX      530   -   0
+AL XX      530   -   1
+AL XX      530   -   2
+AL XX      530   -   3
+AL XX      530   -   4
+AL XX      530   -   5
+AL XX      530   -   6
+AL XX      530   -   7
+AL XX      530   -   8
+AL XX      530   -   9
+AL XX      530   a 0 1
+AL XX      530   d 0 -
+AL XX      530   f 0 1
+AL XX      530   g 0 1
+AL XX      530   h 0 1
+AL XX      530   i 0 -
+AL XX      530   k 0 -
+AL XX      530   l 0 1
+AL XX      530   m 0 -
+AL XX      530   n 0 -
+AL XX      530   o 0 1
+AL XX      530   p 0 -
+AL XX      530   r 0 1
+AL XX      530   s 0 1
+AL XX      530   t 0 1
+AL XX      530   v 0 -
+AL XX      530   w 0 1
+AL XX      530   x 0 -
+AL XX      530   y 0 -
+AL XX      530   z 0 -
+AL XX      530   0 0 -
+AL XX      530   4 0 -
+AL XX      530   5 0 -
+AL XX      530   6 0 1
+AL XX      530   8 0 -
+
+AL XX      548   -
+AL XX      548   a 1 1
+AL XX      548   i 0 -
+AL XX      548   v 0 -
+AL XX      548   w 0 1
+AL XX      548   x 0 -
+AL XX      548   y 0 -
+AL XX      548   z 0 -
+AL XX      548   0 0 -
+AL XX      548   4 0 -
+AL XX      548   5 0 -
+AL XX      548   6 0 1
+AL XX      548   8 0 -
+
+AL XX      550   -    
+AL XX      550   a 0 1
+AL XX      550   b 0 1
+AL XX      550   i 0 -
+AL XX      550   v 0 -
+AL XX      550   w 0 1
+AL XX      550   x 0 -
+AL XX      550   y 0 -
+AL XX      550   z 0 -
+AL XX      550   0 0 -
+AL XX      550   2 0 1
+AL XX      550   4 0 -
+AL XX      550   5 0 -
+AL XX      550   6 0 1
+AL XX      550   8 0 -
+
+AL XX      551   -      
+AL XX      551   a 0 1
+!AL XX      551   b 0 1
+AL XX      551   i 0 -
+AL XX      551   v 0 -
+AL XX      551   w 0 1
+AL XX      551   x 0 -
+AL XX      551   y 0 -
+AL XX      551   z 0 -
+AL XX      551   0 0 -
+AL XX      551   2 0 1
+AL XX      551   4 0 -
+AL XX      551   5 0 -
+AL XX      551   6 0 1
+AL XX      551   8 0 -
+
+AL XX      555   -
+AL XX      555   a 0 1
+AL XX      555   i 0 -
+AL XX      555   v 0 -
+AL XX      555   w 0 1
+AL XX      555   x 0 -
+AL XX      555   y 0 -
+AL XX      555   z 0 -
+AL XX      555   0 0 -
+AL XX      555   2 0 1
+AL XX      555   4 0 -
+AL XX      555   5 0 -
+AL XX      555   6 0 1
+AL XX      555   8 0 -
+
+AL XX      562   -
+AL XX      562   a 0 1
+AL XX      562   i 0 -
+AL XX      562   w 0 1
+AL XX      562   0 0 -
+AL XX      562   4 0 -
+AL XX      562   5 0 -
+AL XX      562   6 0 1
+AL XX      562   8 0 -
+
+AL XX      580   -
+AL XX      580   i 0 -
+AL XX      580   v 0 -
+AL XX      580   w 0 1
+AL XX      580   x 0 -
+AL XX      580   y 0 -
+AL XX      580   z 0 -
+AL XX      580   0 0 -
+AL XX      580   4 0 -
+AL XX      580   5 0 -
+AL XX      580   6 0 1
+AL XX      580   8 0 -
+
+AL XX      581   -
+AL XX      581   i 0 -
+AL XX      581   v 0 -
+AL XX      581   w 0 1
+AL XX      581   x 0 -
+AL XX      581   y 0 -
+AL XX      581   z 0 -
+AL XX      581   0 0 -
+AL XX      581   4 0 -
+AL XX      581   5 0 -
+AL XX      581   6 0 1
+AL XX      581   8 0 -
+
+AL XX      582   -
+AL XX      582   i 0 -
+AL XX      582   v 0 -
+AL XX      582   w 0 1
+AL XX      582   x 0 -
+AL XX      582   y 0 -
+AL XX      582   z 0 -
+AL XX      582   0 0 -
+AL XX      582   4 0 -
+AL XX      582   5 0 -
+AL XX      582   6 0 1
+AL XX      582   8 0 -
+
+AL XX      585   -
+AL XX      585   i 0 -
+AL XX      585   v 0 -
+AL XX      585   w 0 1
+AL XX      585   x 0 -
+AL XX      585   y 0 -
+AL XX      585   z 0 -
+AL XX      585   0 0 -
+AL XX      585   4 0 -
+AL XX      585   5 0 -
+AL XX      585   6 0 1
+AL XX      585   8 0 -
+
+AL XX      640   - 0  
+AL XX      640   - 1  
+AL XX      640   a 0 1
+AL XX      640   z 0 1
+AL XX      640   6 0 1
+AL XX      640   8 0 -
+
+AL XX      641   -    
+AL XX      641   a 0 1
+AL XX      641   z 0 1
+AL XX      641   6 0 1
+AL XX      641   8 0 -
+
+AL XX      642   -    
+AL XX      642   a 0 1
+AL XX      642   d 0 1
+AL XX      642   5 0 -
+AL XX      642   6 0 1
+AL XX      642   8 0 -
+
+AL XX      643   -   
+AL XX      643   a 0 -
+AL XX      643   b 0 -
+AL XX      643   d 0 1
+AL XX      643   6 0 1
+AL XX      643   8 0 -
+
+AL XX      644   -    
+AL XX      644   a 0 1
+AL XX      644   b 0 1
+AL XX      644   d 0 1
+AL XX      644   5 0 -
+AL XX      644   6 0 1
+AL XX      644   8 0 -
+
+AL XX      645   -    
+AL XX      645   a 0 1
+AL XX      645   d 0 1
+AL XX      645   5 0 -
+AL XX      645   6 0 1
+AL XX      645   8 0 -
+
+AL XX      646   -    
+AL XX      646   a 0 1
+AL XX      646   d 0 1
+AL XX      646   5 0 -
+AL XX      646   6 0 1
+AL XX      646   8 0 -
+
+AL XX      663   -    
+AL XX      663   a 0 -
+AL XX      663   b 0 -
+AL XX      663   t 0 -
+AL XX      663   6 0 1
+AL XX      663   8 0 -
+
+AL XX      664   -   
+AL XX      664   a 0 -
+AL XX      664   b 0 -
+AL XX      664   t 0 -
+AL XX      664   6 0 1
+AL XX      664   8 0 -
+
+AL XX      665   -
+AL XX      665   a 0 -
+AL XX      665   6 0 1
+AL XX      665   8 0 -
+
+AL XX      666   -
+AL XX      666   a 0 -
+AL XX      666   6 0 1
+AL XX      666   8 0 -
+
+AL XX      667   -    
+AL XX      667   a 0 1
+AL XX      667   5 0 -
+AL XX      667   6 0 1
+AL XX      667   8 0 -
+
+AL XX      670   -    
+AL XX      670   a 0 1
+AL XX      670   b 0 1
+AL XX      670   u 0 -
+AL XX      670   6 0 1
+AL XX      670   8 0 -
+
+AL XX      672   -   0
+AL XX      672   -   1
+AL XX      672   -   2
+AL XX      672   -   3
+AL XX      672   -   4
+AL XX      672   -   5
+AL XX      672   -   6
+AL XX      672   -   7
+AL XX      672   -   8
+AL XX      672   -   9
+AL XX      672   a 0 1
+AL XX      672   b 0 1
+AL XX      672   f 0 1
+AL XX      672   w 0 -
+AL XX      672   0 0 -
+AL XX      672   6 0 1
+AL XX      672   8 0 -
+
+AL XX      673   -   0
+AL XX      673   -   1
+AL XX      673   -   2
+AL XX      673   -   3
+AL XX      673   -   4
+AL XX      673   -   5
+AL XX      673   -   6
+AL XX      673   -   7
+AL XX      673   -   8
+AL XX      673   -   9
+AL XX      673   a 0 1
+AL XX      673   b 0 1
+AL XX      673   f 0 1
+AL XX      673   w 0 -
+AL XX      673   0 0 -
+AL XX      673   6 0 1
+AL XX      673   8 0 -
+
+
+AL XX      675   -    
+AL XX      675   a 0 -
+AL XX      675   6 0 1
+AL XX      675   8 0 -
+
+AL XX      678   -    
+AL XX      678   - 0  
+AL XX      678   - 1
+AL XX      678   a 0 -
+AL XX      678   b 0 1
+AL XX      678   u 0 -
+AL XX      678   6 0 1
+AL XX      678   8 0 -
+
+AL XX      680   -
+AL XX      680   a 0 -
+AL XX      680   i 0 -
+AL XX      680   5 0 -
+AL XX      680   6 0 1
+AL XX      680   8 0 -
+
+AL XX      681   -    
+AL XX      681   a 0 -
+AL XX      681   i 0 -
+AL XX      681   6 0 1
+AL XX      681   8 0 -
+
+AL XX      682   -
+AL XX      682   a 0 -
+AL XX      682   i 0 -
+AL XX      682   0 0 -
+AL XX      682   6 0 1
+AL XX      682   8 0 -
+
+AL XX      688   -
+AL XX      688   a 0 1
+AL XX      688   5 0 -
+AL XX      688   6 0 1
+AL XX      688   8 0 -
+
+AL XX      700   - 0 0
+AL XX      700   - 1 1
+AL XX      700   - 3 2
+AL XX      700   - 0 3
+AL XX      700   - 0 4
+AL XX      700   - 0 5
+AL XX      700   - 0 6
+AL XX      700   - 0 7
+AL XX      700   a 0 1
+AL XX      700   b 0 1
+AL XX      700   c 0 -
+AL XX      700   d 0 1
+AL XX      700   e 0 -
+AL XX      700   f 0 1
+AL XX      700   g 0 1
+AL XX      700   h 0 1
+AL XX      700   j 0 -
+AL XX      700   k 0 -
+AL XX      700   l 0 1
+AL XX      700   m 0 -
+AL XX      700   n 0 -
+AL XX      700   o 0 1
+AL XX      700   p 0 -
+AL XX      700   q 0 1
+AL XX      700   r 0 1
+AL XX      700   s 0 1
+AL XX      700   t 0 1
+!AL XX      700   u 0 1
+AL XX      700   v 0 -
+AL XX      700   w 0 1
+AL XX      700   x 0 -
+AL XX      700   y 0 -
+AL XX      700   z 0 -
+AL XX      700   0 0 -
+AL XX      700   2 0 1
+!AL XX      700   3 0 -
+AL XX      700   5 0 -
+AL XX      700   6 0 1
+AL XX      700   8 0 -
+
+AL XX      710   - 0 0
+AL XX      710   - 1 1
+AL XX      710   - 2 2
+AL XX      710   - 0 3
+AL XX      710   - 0 4
+AL XX      710   - 0 5
+AL XX      710   - 0 6
+AL XX      710   - 0 7
+AL XX      710   a 0 1
+AL XX      710   b 0 -
+AL XX      710   c 0 1
+AL XX      710   d 0 -
+AL XX      710   e 0 -
+AL XX      710   f 0 1
+AL XX      710   g 0 1
+AL XX      710   h 0 1
+AL XX      710   k 0 -
+AL XX      710   l 0 1
+AL XX      710   m 0 -
+AL XX      710   n 0 -
+AL XX      710   o 0 1
+AL XX      710   p 0 -
+AL XX      710   r 0 1
+AL XX      710   s 0 1
+AL XX      710   t 0 1
+!AL XX      710   u 0 1
+AL XX      710   v 0 -
+AL XX      710   w 0 1
+AL XX      710   x 0 -
+AL XX      710   y 0 -
+AL XX      710   z 0 -
+AL XX      710   0 0 -
+AL XX      710   2 0 1
+!AL XX      710   3 0 -
+AL XX      710   5 0 -
+AL XX      710   6 0 1
+AL XX      710   8 0 -
+
+AL XX      711   - 0 0
+AL XX      711   - 1 1
+AL XX      711   - 2 2
+AL XX      711   - 0 3
+AL XX      711   - 0 4
+AL XX      711   - 0 5
+AL XX      711   - 0 6
+AL XX      711   - 0 7
+AL XX      711   a 0 1
+AL XX      711   c 0 1
+AL XX      711   d 0 1
+AL XX      711   e 0 -
+AL XX      711   f 0 1
+AL XX      711   g 0 1
+AL XX      711   h 0 1
+AL XX      711   j 0 -
+AL XX      711   k 0 -
+AL XX      711   l 0 1
+!AL XX      711   m 0 -
+AL XX      711   n 0 -
+!AL XX      711   o 0 1
+AL XX      711   p 0 -
+AL XX      711   q 0 1
+AL XX      711   s 0 1
+AL XX      711   t 0 1
+!AL XX      711   u 0 1
+AL XX      711   v 0 -
+AL XX      711   w 0 1
+AL XX      711   x 0 -
+AL XX      711   y 0 -
+AL XX      711   z 0 -
+AL XX      711   0 0 -
+AL XX      711   2 0 1
+!AL XX      711   3 0 -
+AL XX      711   5 0 -
+AL XX      711   6 0 1
+AL XX      711   8 0 -
+
+AL XX      730   -   0
+AL XX      730   -   1
+AL XX      730   -   2
+AL XX      730   -   3
+AL XX      730   -   4
+AL XX      730   -   5
+AL XX      730   -   6
+AL XX      730   -   7
+AL XX      730   a 0 1
+AL XX      730   d 0 -
+AL XX      730   f 0 1
+AL XX      730   g 0 1
+AL XX      730   h 0 1
+AL XX      730   k 0 -
+AL XX      730   l 0 1
+AL XX      730   m 0 -
+AL XX      730   n 0 -
+AL XX      730   o 0 1
+AL XX      730   p 0 -
+AL XX      730   r 0 1
+AL XX      730   s 0 1
+AL XX      730   t 0 1
+!AL XX      730   u 0 1
+AL XX      730   v 0 -
+AL XX      730   w 0 1
+AL XX      730   x 0 -
+AL XX      730   y 0 -
+AL XX      730   z 0 -
+AL XX      730   0 0 -
+AL XX      730   2 0 1
+!AL XX      730   3 0 -
+AL XX      730   5 0 -
+AL XX      730   6 0 1
+AL XX      730   8 0 -
+
+AL XX      748   -   0
+AL XX      748   -   1
+AL XX      748   -   2
+AL XX      748   -   3
+AL XX      748   -   4
+AL XX      748   -   5
+AL XX      748   -   6
+AL XX      748   -   7
+AL XX      748   a 0 1
+AL XX      748   v 0 -
+AL XX      748   w 0 1
+AL XX      748   x 0 -
+AL XX      748   y 0 -
+AL XX      748   z 0 -
+AL XX      748   0 0 -
+AL XX      748   2 0 1
+AL XX      748   5 0 -
+AL XX      748   6 0 1
+AL XX      748   8 0 -
+
+AL XX      750   -   0
+AL XX      750   -   1
+AL XX      750   -   2
+AL XX      750   -   3
+AL XX      750   -   4
+AL XX      750   -   5
+AL XX      750   -   6
+AL XX      750   -   7
+AL XX      750   a 0 1
+AL XX      750   b 0 1
+!AL XX      750   u 0 1
+AL XX      750   v 0 -
+AL XX      750   w 0 1
+AL XX      750   x 0 -
+AL XX      750   y 0 -
+AL XX      750   z 0 -
+AL XX      750   0 0 -
+AL XX      750   2 0 1
+!AL XX      750   3 0 -
+AL XX      750   5 0 -
+AL XX      750   6 0 1
+AL XX      750   8 0 -
+
+AL XX      751   -   0
+AL XX      751   -   1
+AL XX      751   -   2
+AL XX      751   -   3
+AL XX      751   -   4
+AL XX      751   -   5
+AL XX      751   -   6
+AL XX      751   -   7
+AL XX      751   a 0 1
+!AL XX      751   b 0 1
+!AL XX      751   u 0 1
+AL XX      751   v 0 -
+AL XX      751   w 0 1
+AL XX      751   x 0 -
+AL XX      751   y 0 -
+AL XX      751   z 0 -
+AL XX      751   0 0 -
+AL XX      751   2 0 1
+!AL XX      751   3 0 -
+AL XX      751   5 0 -
+AL XX      751   6 0 1
+AL XX      751   8 0 -
+
+AL XX      755   -   0
+AL XX      755   -   1
+AL XX      755   -   2
+AL XX      755   -   3
+AL XX      755   -   4
+AL XX      755   -   5
+AL XX      755   -   6
+AL XX      755   -   7
+AL XX      755   a 0 1
+!AL XX      755   u 0 1
+AL XX      755   v 0 -
+AL XX      755   w 0 1
+AL XX      755   x 0 -
+AL XX      755   y 0 -
+AL XX      755   z 0 -
+AL XX      755   0 0 -
+AL XX      755   2 0 1
+!AL XX      755   3 0 -
+AL XX      755   5 0 -
+AL XX      755   6 0 1
+AL XX      755   8 0 -
+
+AL XX      762   -   0
+AL XX      762   -   1
+AL XX      762   -   2
+AL XX      762   -   3
+AL XX      762   -   4
+AL XX      762   -   5
+AL XX      762   -   6
+AL XX      762   -   7
+AL XX      762   a 0 -
+AL XX      762   w 0 1
+AL XX      762   0 0 -
+AL XX      762   2 0 1
+AL XX      762   5 0 -
+AL XX      762   6 0 1
+AL XX      762   8 0 -
+
+AL XX      780   -   0
+AL XX      780   -   1
+AL XX      780   -   2
+AL XX      780   -   3
+AL XX      780   -   4
+AL XX      780   -   5
+AL XX      780   -   6
+AL XX      780   -   7
+AL XX      780   v 0 -
+AL XX      780   w 0 1
+AL XX      780   x 0 -
+AL XX      780   y 0 -
+AL XX      780   z 0 -
+AL XX      780   0 0 -
+AL XX      780   2 0 1
+AL XX      780   5 0 -
+AL XX      780   6 0 1
+AL XX      780   8 0 -
+
+AL XX      781   -   0
+AL XX      781   -   1
+AL XX      781   -   2
+AL XX      781   -   3
+AL XX      781   -   4
+AL XX      781   -   5
+AL XX      781   -   6
+AL XX      781   -   7
+AL XX      781   v 0 -
+AL XX      781   w 0 1
+AL XX      781   x 0 -
+AL XX      781   y 0 -
+AL XX      781   z 0 -
+AL XX      781   0 0 -
+AL XX      781   2 0 1
+AL XX      781   5 0 -
+AL XX      781   6 0 1
+AL XX      781   8 0 -
+
+AL XX      782   -   0
+AL XX      782   -   1
+AL XX      782   -   2
+AL XX      782   -   3
+AL XX      782   -   4
+AL XX      782   -   5
+AL XX      782   -   6
+AL XX      782   -   7
+AL XX      782   v 0 -
+AL XX      782   w 0 1
+AL XX      782   x 0 -
+AL XX      782   y 0 -
+AL XX      782   z 0 -
+AL XX      782   0 0 -
+AL XX      782   2 0 1
+AL XX      782   5 0 -
+AL XX      782   6 0 1
+AL XX      782   8 0 -
+
+AL XX      785   -   0
+AL XX      785   -   1
+AL XX      785   -   2
+AL XX      785   -   3
+AL XX      785   -   4
+AL XX      785   -   5
+AL XX      785   -   6
+AL XX      785   -   7
+AL XX      785   v 0 -
+AL XX      785   w 0 1
+AL XX      785   x 0 -
+AL XX      785   y 0 -
+AL XX      785   z 0 -
+AL XX      785   0 0 -
+AL XX      785   2 0 1
+AL XX      785   5 0 -
+AL XX      785   6 0 1
+AL XX      785   8 0 -
+
+AL XX      788   -   0
+AL XX      788   -   1
+AL XX      788   -   2
+AL XX      788   -   3
+AL XX      788   -   4
+AL XX      788   -   5
+AL XX      788   -   6
+AL XX      788   -   7
+AL XX      788   a 0 -
+AL XX      788   i 0 -
+AL XX      788   2 0 1
+AL XX      788   5 0 -
+AL XX      788   6 0 1
+AL XX      788   8 0 -
+
+AL XX      856   -
+AL XX      856   - 0 
+AL XX      856   - 1 
+AL XX      856   - 2 
+AL XX      856   - 3 
+AL XX      856   - 4 
+AL XX      856   - 7 
+AL XX      856   a 0 -
+AL XX      856   b 0 -
+AL XX      856   c 0 -
+AL XX      856   d 0 -
+AL XX      856   f 0 -
+!AL XX      856   g 0 -
+AL XX      856   h 0 1
+AL XX      856   i 0 -
+AL XX      856   j 0 1
+AL XX      856   k 0 1
+AL XX      856   l 0 1
+AL XX      856   m 0 -
+AL XX      856   n 0 1
+AL XX      856   o 0 1
+AL XX      856   p 0 1
+AL XX      856   q 0 1
+AL XX      856   r 0 1
+AL XX      856   s 0 -
+AL XX      856   t 0 -
+AL XX      856   u 0 -
+AL XX      856   v 0 -
+AL XX      856   w 0 -
+AL XX      856   x 0 -
+AL XX      856   y 0 -
+AL XX      856   z 0 -
+AL XX      856   2 0 1
+AL XX      856   3 0 1
+AL XX      856   6 0 1
+AL XX      856   8 0 -
+
+AL XX      880   -
+AL XX      880   - 0 0
+AL XX      880   - 1 1
+AL XX      880   - 2 2
+AL XX      880   - 3 3
+AL XX      880   - 4 4
+AL XX      880   - 5 5
+AL XX      880   - 6 6
+AL XX      880   - 7 7
+AL XX      880   - 8 8
+AL XX      880   - 9 9
+AL XX      880   a 0 -
+AL XX      880   b 0 -
+AL XX      880   c 0 -
+AL XX      880   d 0 -
+AL XX      880   e 0 -
+AL XX      880   f 0 -
+AL XX      880   g 0 -
+AL XX      880   h 0 -
+AL XX      880   i 0 -
+AL XX      880   j 0 -
+AL XX      880   k 0 -
+AL XX      880   l 0 -
+AL XX      880   m 0 -
+AL XX      880   n 0 -
+AL XX      880   o 0 -
+AL XX      880   p 0 -
+AL XX      880   q 0 -
+AL XX      880   r 0 -
+AL XX      880   s 0 -
+AL XX      880   t 0 -
+AL XX      880   u 0 -
+AL XX      880   v 0 -
+AL XX      880   w 0 -
+AL XX      880   x 0 -
+AL XX      880   y 0 -
+AL XX      880   z 0 -
+AL XX      880   0 0 -
+AL XX      880   1 0 -
+AL XX      880   2 0 -
+AL XX      880   3 0 -
+AL XX      880   4 0 -
+AL XX      880   5 0 -
+AL XX      880   7 0 -
+AL XX      880   8 0 -
+AL XX      880   9 0 -
+
+AL XX      883   -
+AL XX      883   - 0
+AL XX      883   - 1
+AL XX      883   a 0 1
+AL XX      883   c 0 1
+AL XX      883   d 0 1
+AL XX      883   q 0 1
+AL XX      883   u 0 1
+AL XX      883   w 0 -
+AL XX      883   x 0 1
+AL XX      883   0 0 -
+AL XX      883   8 0 -
+
+AL XX      UPD   -
+AL XX      UPD   a 1 1
+
+AL XX      SRC   -
+AL XX      SRC   a 1 1
+
+AL XX      OWN   -
+AL XX      OWN   a 1 1
+
+AL XX      SID   -
+AL XX      SID   c 1 1
+AL XX      SID   b 1 1
+
+AL XX      COR   -
+AL XX      COR   - 0 0
+AL XX      COR   - 1 1
+AL XX      COR   - 2 2
+AL XX      COR   - 3 3
+AL XX      COR   - 4 4
+AL XX      COR   - 5 5
+AL XX      COR   - 6 6
+AL XX      COR   - 7 7
+AL XX      COR   - 8 8
+AL XX      COR   - 9 9
+AL XX      COR   a 0 -
+AL XX      COR   b 0 -
+AL XX      COR   c 0 -
+AL XX      COR   d 0 -
+AL XX      COR   e 0 -
+AL XX      COR   f 0 -
+AL XX      COR   g 0 -
+AL XX      COR   h 0 -
+AL XX      COR   i 0 -
+AL XX      COR   j 0 -
+AL XX      COR   k 0 -
+AL XX      COR   l 0 -
+AL XX      COR   m 0 -
+AL XX      COR   n 0 -
+AL XX      COR   o 0 -
+AL XX      COR   p 0 -
+AL XX      COR   q 0 -
+AL XX      COR   r 0 -
+AL XX      COR   s 0 -
+AL XX      COR   t 0 -
+AL XX      COR   u 0 -
+AL XX      COR   v 0 -
+AL XX      COR   w 0 -
+AL XX      COR   x 0 -
+AL XX      COR   y 0 -
+AL XX      COR   z 0 -
+AL XX      COR   0 0 -
+AL XX      COR   1 0 -
+AL XX      COR   2 0 -
+AL XX      COR   3 0 -
+AL XX      COR   4 0 -
+AL XX      COR   5 0 -
+AL XX      COR   6 0 -
+AL XX      COR   7 0 -
+AL XX      COR   8 0 -
+AL XX      COR   9 0 -
+
