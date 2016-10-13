@@ -1,5 +1,5 @@
-./Aputiedostoja/*.*
-./Dataa/*.*
+Aputiedostoja
+Dataa
 node_modules
 error.log
 *.mrc
