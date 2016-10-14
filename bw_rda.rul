@@ -1,5 +1,5 @@
 ﻿MARC 21 Bookwhere-siivous + RDA-kentat
-3.6.2013 - Kansalliskirjasto / Päivitetty 13.10.2016 / TV
+3.6.2013 - Kansalliskirjasto / Päivitetty 14.10.2016 / TV
 
 #define version 317
 
@@ -7,7 +7,6 @@
                            RegReplace('incl\\.', 'includes', 'g'); \
                            RegReplace('fold(\\.)* maps', 'folded maps', 'g'); \
                            RegReplace('online resource', 'verkkoaineisto', 'g'); \
-                           RegReplace('pages|\\bp\\.', 'sivua', 'g'); \
                            RegReplace('approximately', 'noin', 'g'); \
                            RegReplace('\\bmin\\.|\\bmin\\b|minutes', 'minuuttia', 'g'); \
                            RegReplace('unnumbered', 'numeroimatonta', 'g'); \
@@ -19,16 +18,28 @@
                            RegReplace('\\bcharts\\b', 'kaavioita', 'g'); \
                            RegReplace('\\bports\\.|\\bportraits', 'muotokuvia', 'g'); \
                            RegReplace('illustration\\b', 'kuvitus', 'g'); \
-                           RegReplace('leaves of plates', 'kuvalehteä', 'g'); \
+                           RegReplace('p\\. of plates|leaves of plates', 'kuvalehteä', 'g'); \
                            RegReplace('1 v\\.', '1 nide', 'g'); \
                            RegReplace('insert\\b', 'liite', 'g'); \
                            RegReplace('inserts', 'liitteitä', 'g'); \
                            RegReplace('videodiscs', 'videolevyä', 'g'); \
                            RegReplace('videodisc', 'videolevy', 'g'); \
+                           RegReplace('(sound|audio) discs', 'äänilevyä', 'g'); \
+                           RegReplace('sound disc', 'äänilevy', 'g'); \
+                           RegReplace('ca\\.', 'noin', 'g'); \
+                           RegReplace('digital\\b', 'digitaalinen', 'g'); \
+                           RegReplace('analog\\b', 'analoginen', 'g'); \
                            RegReplace('folded sheet', 'taitelehti', 'g'); \
                            RegReplace('map\\b', 'kartta', 'g'); \
+                           RegReplace('1 hr\\.', '1 tunti', 'g'); \
+                           RegReplace('unpaged', 'ei sivunumerointia', 'g'); \
+                           RegReplace('\\bhr\\.', 'tuntia', 'g'); \
+                           RegReplace('sound cassettes', 'äänikasettia', 'g'); \
                            RegReplace('maps', 'karttoja', 'g'); \
-                           RegReplace('chiefly color\\b', 'pääosin värillisiä', 'g'); \
+                           RegReplace('sd\\., col\\.', 'äänellinen, värillinen', 'g'); \
+                           RegReplace('\\s\\(chiefly color\\)|\\s\\(chiefly col\\.\\)', '', 'g'); \
+                           RegReplace('chiefly color\\b|chiefly col\\.', 'pääosin värillisiä', 'g'); \
+                           RegReplace('pages|\\bp\\.', 'sivua', 'g'); \
                            RegReplace('\\bnid\\.|\\bnid[^A-Za-z]+|\\bhft[^A-Za-z]+|\\bhft\\.', 'nidottu', 'g'); \
                            RegReplace('\\bpbk[^A-Za-z]+|\\bpbk\\.', 'nidottu', 'g'); \
                            RegReplace('\\bhbk[^A-Za-z]+|\\bhbk\\.|\\binb[^A-Za-z]+|\\binb\\.', 'sidottu', 'g'); \
@@ -114,7 +125,7 @@ B37$a           | 337(newest)$2   | 'rdamedia'
 
 // KARTTA-AINEISTO JA KARTTAKÄSIKIRJOITUS
 
-#if (@000/7/ = 'e' Or @000/7/ = 'f'  And Not Exists(@336))
+#if (@000/7/ = 'e' Or @000/7/ = 'f' And Not Exists(@336))
 007/1-2		| 007/1-2/	  | S
 
 007/1/		      | <C36$a          | If (S = 'a' and @007/2/ != 'q' and @008/30/ = 'f') Then 'kartografinen taktiili kuva'
@@ -459,11 +470,41 @@ K47 | 247 | S
 249I1 | <DELI1 | S
 249I2 | <DELI2 | S
 249   | <DEL   | S
-			
-260I1 | 260I1  | S
-260I2 | 260I2  | S
-260$c | 260$c  | S; RegReplace('c(\\d{4})', 'cop. \\1');
-260$? | 260$?  | S
+
+#if (Not Exists(@773))
+260I1 | 260I1 | S
+260I2 | 260I2 | S
+260$a | 260$a | S; RegReplace('S\\.l\\.', 'Kustannuspaikka tuntematon'); \
+                   RegReplace('\\[s\\.l\\.\\]', '[kustannuspaikka tuntematon]'); \
+                   RegReplace('\\[[Ss]\\. l\\.\\]', '[kustannuspaikka tuntematon]'); \
+                   RegReplace('s\\.n\\.', 'kustantaja tuntematon')
+260$b | 260$b | S; RegReplace('\\[s\\.n\\.\\]', '[kustantaja tuntematon]')
+260$c | 260$c | RegReplace('\\[s\\.a\\.\\]', '[julkaisuaika tuntematon]'); \
+                If (RegFind(S, 'cop|©|℗|[Cc]|^p') >= 0) And (RegFind(S, '\\d{4}') >= 0) '[' + RegMatch(0) + ']' \
+                Else S
+260$? | 260$? | S
+#endif
+
+#if (RegFind(@260$c, 'cop|©|[Cc]') >= 0) And (RegFind(@260$c, '\\d{4}') >= 0) And (Not Exists(@773))
+260I1 | <X64I1 | ' '
+260I2 | <X64I2 | '4'
+260$c | <X64$c | '©' + RegMatch(0);
+X64I1 | 264I1  | S
+X64I2 | 264I2  | S
+// Kenttään 264$c viedään myös mahdolliset hakasulkeet
+X64$c | 264$c  | If (RegFind(260$c, '\\[') >= 0) '[' + S + ']' Else S
+X64$? | 264$?  | S
+#endif
+
+#if (RegFind(@260$c, '^p|℗') >= 0) And (RegFind(@260$c, '\\d{4}') >= 0) And (Not Exists(@773))
+260I1 | <X64I1 | ' '
+260I2 | <X64I2 | '4'
+260$c | <X64$c | '℗ ' + RegMatch(0);
+X64I1 | 264I1  | S
+X64I2 | 264I2  | S
+X64$c | 264$c  | If (RegFind(260$c, '\\[') >= 0) '[' + S + ']' Else S
+X64$? | 264$?  | S
+#endif
 
 261I1 | <DELI1 | S
 261I2 | <DELI2 | S
@@ -673,7 +714,6 @@ T36   | <DEL  | S
     Or (RegFind(@538$a, '[Ii]nternet|[Ww][Ww][Ww]|selain|[Aa]dobe|[Vv]iewer') >= 0) \
     Or (RegFind(@256$a, '[Vv]erkkoaineisto') >= 0) \
     Or ( (RegFind(@300, '[Ii][Bb]ooks|[Ff][Ll][Aa][Cc]|[Hh][Tt][Mm][Ll]|online') >= 0) And (@008/24/ = 'o') ) \
-    Or (RegFind(000/8/, 's') >= 0) \
     Or (RegFind(@256, '[Vv]erkko|[Ss]uorakäyttöjärjestelmä') >= 0) \
     Or (RegFind(@020, '[Pp][Dd][Ff]') >= 0) \
     Or (RegFind(@336, 'eksti') >= 0) \
@@ -688,7 +728,7 @@ T36   | <DEL  | S
 // ÄÄNILEVY
 
 #if (Not Exists(@338)) \
-  And ( (RegFind(@300, '[Cc][Dd]-levy|(CD)(.*)nilevy') >= 0) ) \
+  And ( (RegFind(@300, '[Cc][Dd]-levy|(CD)(.*)nilevy|sound disc|audio disc|CD audio|compact disc') >= 0) ) \
   And (Not Exists(@773))
 000 | 338(new)I1 | ' '
 000 | 338(newest)I2 | ' '
@@ -728,7 +768,7 @@ T36   | <DEL  | S
 
 // VIDEOLEVY
 
-#if (Not Exists(@338)) And If (RegFind(@300$a, '[Dd][Vv][Dd]-levy|[Vv]ideolevy') >= 0) And If (Not Exists(@773))
+#if (Not Exists(@338)) And If (RegFind(@300$a, '[Dd][Vv][Dd]-levy|[Vv]ideolevy|ideodisc') >= 0) And If (Not Exists(@773))
 000 | 338(new)I1 | ' '
 000 | 338(newest)I2 | ' '
 000 | 338(newest)$a | 'videolevy'
