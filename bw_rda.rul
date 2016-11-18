@@ -1,5 +1,5 @@
 ﻿MARC 21 Bookwhere-siivous + RDA-kentat
-3.6.2013 - Kansalliskirjasto / Päivitetty 14.10.2016 / TV
+3.6.2013 - Kansalliskirjasto / Päivitetty 18.11.2016 / TV
 
 #define version 317
 
@@ -326,13 +326,18 @@ G37$a           | 337(newest)$2   | 'rdamedia'
 
 040I1 | 040I1  | ' '
 040I2 | 040I2  | ' '
+040$a | 040$a  | S
 040$b | 040$b  | 'mul'
+
 #if (Not Exists(@040$b))
 000   | 040$b  | 'mul'
 #endif
+
+000   | 040$d  | ''
+
 000   | 040$e  | 'rda'
 //040$? | 040$?  | S
-040   | 040    | Sort('be')
+040   | 040    | Sort('abde')
 
 #if (@008/36-38/ != '   ' and not Exists(@041))
 008        | 041I1  | '0'
@@ -422,8 +427,8 @@ G37$a           | 337(newest)$2   | 'rdamedia'
 	 
 110I1 | 110I1  | S
 110I2 | 110I2  | S
-110$a | 110$a  | If Not Exists ($c) Or Not Exists ($d) Then Replace (',' By '.', At Ending) Else S; Delete (' [from old catalog]' ,At Ending) ; Delete (' joint author' ,At Ending); Delete (' joint auth.',At Ending)
-110$b | 110$b  | S; Delete (';' ,At Ending)				 
+110$a | 110$a  | If Not Exists ($c) Or Not Exists ($d) Then Replace (',' By '.', At Ending) Else S; Delete (' [from old catalog]', At Ending) ; Delete (' joint author', At Ending); Delete (' joint auth.', At Ending)
+110$b | 110$b  | S; Delete (';', At Ending)				 
 110$e | 110$e  | Table ('Funktiot.tbl')
 
 245I1 | 245I1  | If (Exists(@100) Or Exists(@110) Or Exists(@111) Or Exists(@130)) Then '1' Else '0'
@@ -471,21 +476,19 @@ K47 | 247 | S
 249I2 | <DELI2 | S
 249   | <DEL   | S
 
-#if (Not Exists(@773))
-260I1 | 260I1 | S
-260I2 | 260I2 | S
-260$a | 260$a | S; RegReplace('S\\.l\\.', 'Kustannuspaikka tuntematon'); \
+260I1 | 264I1 | ' '
+260I2 | 264I2 | '1'
+260$a | 264$a | S; RegReplace('S\\.l\\.', 'Kustannuspaikka tuntematon'); \
                    RegReplace('\\[s\\.l\\.\\]', '[kustannuspaikka tuntematon]'); \
                    RegReplace('\\[[Ss]\\. l\\.\\]', '[kustannuspaikka tuntematon]'); \
                    RegReplace('s\\.n\\.', 'kustantaja tuntematon')
-260$b | 260$b | S; RegReplace('\\[s\\.n\\.\\]', '[kustantaja tuntematon]')
-260$c | 260$c | RegReplace('\\[s\\.a\\.\\]', '[julkaisuaika tuntematon]'); \
+260$b | 264$b | S; RegReplace('\\[s\\.n\\.\\]', '[kustantaja tuntematon]')
+260$c | 264$c | RegReplace('\\[s\\.a\\.\\]', '[julkaisuaika tuntematon]'); \
                 If (RegFind(S, 'cop|©|℗|[Cc]|^p') >= 0) And (RegFind(S, '\\d{4}') >= 0) '[' + RegMatch(0) + ']' \
                 Else S
-260$? | 260$? | S
-#endif
+260$? | 264$? | S
 
-#if (RegFind(@260$c, 'cop|©|[Cc]') >= 0) And (RegFind(@260$c, '\\d{4}') >= 0) And (Not Exists(@773))
+#if (RegFind(@260$c, 'cop|©|[Cc]') >= 0) And (RegFind(@260$c, '\\d{4}') >= 0)
 260I1 | <X64I1 | ' '
 260I2 | <X64I2 | '4'
 260$c | <X64$c | '©' + RegMatch(0);
@@ -496,7 +499,7 @@ X64$c | 264$c  | If (RegFind(260$c, '\\[') >= 0) '[' + S + ']' Else S
 X64$? | 264$?  | S
 #endif
 
-#if (RegFind(@260$c, '^p|℗') >= 0) And (RegFind(@260$c, '\\d{4}') >= 0) And (Not Exists(@773))
+#if (RegFind(@260$c, '^p|℗') >= 0) And (RegFind(@260$c, '\\d{4}') >= 0)
 260I1 | <X64I1 | ' '
 260I2 | <X64I2 | '4'
 260$c | <X64$c | '℗ ' + RegMatch(0);
@@ -516,7 +519,7 @@ X64$? | 264$?  | S
 
 300I1 | 300I1  | S
 300I2 | 300I2  | S
-300   | 300    | KAANNOKSET
+300   | 300    | KAANNOKSET; Delete('.', At Ending)
 
 // OLEMASSA OLEVIEN 336- JA 337-KENTTIEN KÄÄNTÄMINEN, $b- JA $2-OSAKENTTIEN LUOMINEN
 
@@ -706,13 +709,13 @@ T36   | <DEL  | S
 
 #if (Not Exists(@338)) \
   And (RegFind(@300$a, 'ROM') < 0) \
-  And (Not Exists(@773)) \
   And ( \
     (RegFind(@300$a, '[Vv]erkkojulkaisu|[Tt]iedosto') >= 0) \
     Or (RegFind(@516$a, '[Vv]erkkoaineisto') >= 0) \
     Or (RegFind(@500, '[Ii]nternet-julkaisu') >= 0) \
     Or (RegFind(@538$a, '[Ii]nternet|[Ww][Ww][Ww]|selain|[Aa]dobe|[Vv]iewer') >= 0) \
     Or (RegFind(@256$a, '[Vv]erkkoaineisto') >= 0) \
+    Or (RegFind(@245$h, 'electronic') >= 0) \
     Or ( (RegFind(@300, '[Ii][Bb]ooks|[Ff][Ll][Aa][Cc]|[Hh][Tt][Mm][Ll]|online') >= 0) And (@008/24/ = 'o') ) \
     Or (RegFind(@256, '[Vv]erkko|[Ss]uorakäyttöjärjestelmä') >= 0) \
     Or (RegFind(@020, '[Pp][Dd][Ff]') >= 0) \
