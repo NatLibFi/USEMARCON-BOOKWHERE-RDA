@@ -1,5 +1,5 @@
 ﻿MARC 21 Bookwhere-siivous + RDA-kentat
-3.6.2013 - Kansalliskirjasto / Päivitetty 18.11.2016 / TV
+3.6.2013 - Kansalliskirjasto / Päivitetty 24.11.2016 / TV
 
 #define version 317
 
@@ -337,7 +337,7 @@ G37$a           | 337(newest)$2   | 'rdamedia'
 
 000   | 040$e  | 'rda'
 //040$? | 040$?  | S
-040   | 040    | Sort('abde')
+040   | 040    | Sort('abed')
 
 #if (@008/36-38/ != '   ' and not Exists(@041))
 008        | 041I1  | '0'
