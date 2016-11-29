@@ -1,5 +1,5 @@
 ﻿MARC 21 Bookwhere-siivous + RDA-kentat
-3.6.2013 - Kansalliskirjasto / Päivitetty 24.11.2016 / TV
+3.6.2013 - Kansalliskirjasto / Päivitetty 29.11.2016 / TV
 
 #define version 317
 
@@ -12,7 +12,7 @@
                            RegReplace('unnumbered', 'numeroimatonta', 'g'); \
                            RegReplace('color illustrations\\b|col\\. ill\\.', 'värikuvitus', 'g'); \
                            RegReplace('chiefly color illustrations', 'pääosin värikuvitettu', 'g'); \
-                           RegReplace('ill\\.|illustrated|illustrations', 'kuvitettu', 'g'); \
+                           RegReplace('ill\\b|illus(\\.|trated)|illustrations', 'kuvitettu', 'g'); \
                            RegReplace('black and white', 'mustavalkoinen', 'g'); \
                            RegReplace('\\s\\(some col\\.\\)', '', 'g'); \
                            RegReplace('\\bcharts\\b', 'kaavioita', 'g'); \
@@ -39,7 +39,8 @@
                            RegReplace('sd\\., col\\.', 'äänellinen, värillinen', 'g'); \
                            RegReplace('\\s\\(chiefly color\\)|\\s\\(chiefly col\\.\\)', '', 'g'); \
                            RegReplace('chiefly color\\b|chiefly col\\.', 'pääosin värillisiä', 'g'); \
-                           RegReplace('pages|\\bp\\.', 'sivua', 'g'); \
+                           RegReplace('pages|\\bp\\.|\\bp\\b', 'sivua', 'g'); \
+                           RegReplace('chiefly', 'pääosin', 'g'); \
                            RegReplace('\\bnid\\.|\\bnid[^A-Za-z]+|\\bhft[^A-Za-z]+|\\bhft\\.', 'nidottu', 'g'); \
                            RegReplace('\\bpbk[^A-Za-z]+|\\bpbk\\.', 'nidottu', 'g'); \
                            RegReplace('\\bhbk[^A-Za-z]+|\\bhbk\\.|\\binb[^A-Za-z]+|\\binb\\.', 'sidottu', 'g'); \
