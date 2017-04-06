@@ -4,7 +4,7 @@ KUVAUS
 
 Pääasiassa Melinda-kirjastoille suunnattu USEMARCON-konversiosääntö esimerkiksi BookWhere-ohjelmalla ulkomaisista tietokannoista poimittujen bibliografisten MARC 21 -tietueiden muuntamiseen kotimaisten luettelointikäytäntöjen mukaisiksi. Konversio mm. poistaa turhia kenttiä, suomentaa tekijän funktiot sekä asettaa tai kääntää RDA-kuvailuohjeiden mukaiset 336-, 337- ja 338-kentät.
 
-Lisätietoja USEMARCON-ohjelmasta: http://www.nationallibrary.fi/libraries/format/usemarcon.html.
+Lisätietoja USEMARCON-ohjelmasta löytyy MARC 21-formaatin [wikistä](https://www.kiwi.fi/display/Marc21/USEMARCON).
 
 KEHITYS
 
