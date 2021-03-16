@@ -1,4 +1,4 @@
-338 a -osakenttien käännökset ruotsista ja englannista suomeen
+338 a -osakenttien käännökset ruotsista ja englannista, vähän saksastakin, suomeen
 File generated: Tue Jun  7 14:50:27 2016
 
 O H - b i l d 	| p i i r t o h e i t i n k a l v o 
@@ -20,6 +20,7 @@ a u d i o d i s c 	| 0xc3 0xa4 0xc3 0xa4 n i l e v y
 a u d i o 0x20 r o l l 	| p i a n o r u l l a 
 a u d i o c a s s e t t e 	| 0xc3 0xa4 0xc3 0xa4 n i k a s e t t i 
 a u d i o t a p e 0x20 r e e l 	| 0xc3 0xa4 0xc3 0xa4 n i k e l a 
+B a n d 	| n i d e 
 b i l d b a n d 	| r a i n a 
 b i l d b a n d s m a g a s i n 	| r a i n a k a s e t t i 
 b i l d k o r t 	| k o r t t i 
