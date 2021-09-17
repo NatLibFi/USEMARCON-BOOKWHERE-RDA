@@ -187,21 +187,23 @@
 038I2 | <DELI2 | S
 038   | <DEL   | S
 
-// kommentti 2.4.2019 - miten käsitellään 040$d?
-040I1 | 040I1  | ' '
-040I2 | 040I2  | ' '
-040$a | 040$a  | S
-040$b | 040$b  | 'mul'
 
-#if (Not Exists(@040$b))
-000   | 040$b  | 'mul'
+#if (Exists(@040))
+040$b | 040$b  | 'mul'
 #endif
 
-000   | 040$d  | ''
+#if (Not Exists(@040))
+000   | 040$b(new) | 'mul'
+#endif
 
-000   | 040$e  | 'rda'
-//040$? | 040$?  | S
-040   | 040    | Sort('abed')
+040$a | 040$a  | S
+040$c | 040$c  | S
+040$d | 040$d  | S
+040   | 040I1 | ' '
+040   | 040I2 | ' '
+040   | 040$e | 'rda'
+040   | 040    | Sort('abced')
+
 
 #if (@008/36-38/ != '   ' and not Exists(@041))
 008        | 041I1  | '0'
@@ -729,16 +731,35 @@ N60$d    | 600$d    | S; Replace ('..' By '.')
 698I2 | <DELI2 | S
 698   | <DEL   | S
 
+
 700I1 | 700I1  | S
 700I2 | 700I2  | S
 // alkuperäinen 2.4.2019 LL
-700$e | 700$e  | Table ('Funktiot.tbl')
+
+#if Exists(@700$e)
+// NV: I'm too lazy to dig up the hex codes for Cyrillic letters...
+700$e | 700$e | If (RegFind(S, '(сост|ред)\\.\$') >= 0 ) 'toimittaja' Else Table ('Funktiot.tbl')
+#endif
+
+
+
 700$? | 700$?   | S;
 // alkuperäinen loppuu
 // lisäys 2.4.2019 LL
-700$a | 700$a  | S + ','
+
+// Add 700$a ',' iff needed:
+700$a | 700$a  | if ( RegFind(S, ',\$') >= 0 ) S Else S + ','
+
+#if Not Exists(@700$e)
 700$a | 700$e  | 'toimittaja.'
+#endif
+
+700   | 700    | Sort('abcde0')
 // lisäys loppuu
+
+
+
+
 
 710I1 | 710I1  | S
 710I2 | 710I2  | S
