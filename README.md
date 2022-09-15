@@ -1,5 +1,10 @@
 # BookWhere-konversio (RDA)
 
+VERSIOHISTORIA
+
+1.0 (xx.xx.201x) Alkuperäinen versio
+1.1 (15.09.2022) RDA-muokkauksia (nvolk (MELINDA-7629:n pohjalta))
+
 KUVAUS
 
 Pääasiassa Melinda-kirjastoille suunnattu USEMARCON-konversiosääntö esimerkiksi BookWhere-ohjelmalla ulkomaisista tietokannoista poimittujen bibliografisten MARC 21 -tietueiden muuntamiseen kotimaisten luettelointikäytäntöjen mukaisiksi. Konversio mm. poistaa turhia kenttiä, suomentaa tekijän funktiot sekä asettaa tai kääntää RDA-kuvailuohjeiden mukaiset 336-, 337- ja 338-kentät.
