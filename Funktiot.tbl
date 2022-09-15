@@ -10,8 +10,6 @@ a p p e l l e e 	| m u u t o k s e n h a k i j a n 0x20 v a s t a p u o l e n a
 a r c h i t e c t 	| a r k k i t e h t i
 a r r a n g e r 	| s o v i t t a j a
 a r r a n g e r 0x20 o f 0x20 m u s i c 	| m u s i i k i n 0x20 s o v i t t a j a
-a r r a n g e r | Z o v i t t a j a
-
 a r t 0x20 d i r e c t o r 	| a r t 0x20 d i r e c t o r
 a r t i s t 	| t a i t e i l i j a
 a u d i o 0x20 e n g i n e e r	|  0xc3 0xa4  0xc3 0xa4 n i t e k n i k k o
