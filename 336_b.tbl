@@ -87,7 +87,8 @@ t a l   | s p w
 T e k s t i 	| t x t 
 t e k s t i   | t x t 
 T e x t   | t x t 
-t e x t   | t x t  
+t e x t   | t x t
+t e x t e   | t x t  
 T e k s t i 0x20 ( k o s k e t e l t a v a ) 	| t c t 
 t a k t i i l i 0x20 t e k s t i  | t c t 
 T e x t 0x20 ( a t t 0x20 v i d r 0xc3 0xb6 r a )   | t c t 
