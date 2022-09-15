@@ -1,0 +1,225 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<find-doc 
+  xmlns="http://www.loc.gov/MARC21/slim" 
+  xmlns:slim="http://www.loc.gov/MARC21/slim" 
+  xmlns:oai="http://www.openarchives.org/OAI/1.1/oai_marc">
+  <record>
+    <metadata>
+      <oai_marc>
+        <fixfield id="LDR">02527cas^a2200661^i^4500</fixfield>
+        <fixfield id="001">005009831</fixfield>
+        <fixfield id="003">FI-MELINDA</fixfield>
+        <fixfield id="005">20180113114352.0</fixfield>
+        <fixfield id="007">ta</fixfield>
+        <fixfield id="008">980402d19982002fi^^x^m|^^^^^^0^^^a0eng|^</fixfield>
+        <varfield id="100" i1=" " i2=" ">
+          <subfield label="a">Lyhentäjä, P.O.,</subfield>
+          <subfield label="e">kirjoittaja.</subfield>
+          <subfield label="4">aut</subfield>
+        </varfield>
+        <varfield id="500" i1=" " i2=" ">
+	  <subfield label="a">OHJE: Editoi tätä ihmisluettavampaa xml:ää, muuta vaihtomuotoon ja testaa</subfield>
+	</varfield>
+	<varfield id="500" i1=" " i2=" ">
+	  <subfield label="a">HUOM: Nähtävästi ei haittaa, että "dedicatee of item" tulee "dedicated"-termin jälkeen</subfield>
+	</varfield>
+        <varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Lyhentäjä, P.O.,</subfield>
+          <subfield label="e">abridger.</subfield>
+        </varfield>
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Näyttelijä, P.O.,</subfield>
+          <subfield label="e">actor.</subfield>
+        </varfield>
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Vastaanottaja, P.O.,</subfield>
+          <subfield label="e">addressee.</subfield>
+        </varfield>
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Animaattori, P.O.,</subfield>
+          <subfield label="e">animator.</subfield>
+        </varfield>
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Huomautusten Kirjoittaja, P.O.,</subfield>
+          <subfield label="e">annotator.</subfield>
+        </varfield>
+	<varfield id="700" i1=" " i2=" ">
+	  <subfield label="a">Muutoksenhakijan vastapuolena, P.O.,</subfield>
+          <subfield label="e">appellee.</subfield>
+        </varfield>
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Sovittaja, P.O.,</subfield>
+          <subfield label="e">arranger.</subfield>
+        </varfield>
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Musiikin-Sovittaja, P.O.,</subfield>
+          <subfield label="e">arranger of music.</subfield>
+        </varfield>
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Director, Art,</subfield>
+          <subfield label="e">art director.</subfield>
+        </varfield>
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Ääniteknikko, P.O.,</subfield>
+          <subfield label="e">audio engineer.</subfield>
+        </varfield>
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Kirjoittaja, P.O.,</subfield>
+          <subfield label="e">author.</subfield>
+        </varfield>
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Nimikirjoituksen-Kirjoittaja, P.O.,</subfield>
+          <subfield label="e">autographer.</subfield>
+        </varfield>
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Kollotypian-Valmistaja, P.O.,</subfield>
+          <subfield label="e">collotyper.</subfield>
+        </varfield>	
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Voimassaoleva-Tuomioistuin, P.O.,</subfield>
+          <subfield label="e">court governed.</subfield>
+        </varfield>	
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Teoksen-Omistuskirjoituksen-Kohde, P.O.,</subfield>
+          <subfield label="e">dedicatee.</subfield>
+        </varfield>
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Kappale-Omistettu, P.O.,</subfield>
+          <subfield label="e">dedicatee (item).</subfield>
+        </varfield>
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">TODO, P.O.,</subfield>
+          <subfield label="e">dedicatee of item.</subfield>
+        </varfield>
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Teoksen-Omistuskirjoituksen-Tekijä, P.O.,</subfield>
+          <subfield label="e">dedicator.</subfield>
+        </varfield>
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Vastaaja, P.O.,</subfield>
+          <subfield label="e">defendant.</subfield>
+        </varfield>
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Oppiarvon-Myöntävä-Yhteisö, P.O.,</subfield>
+          <subfield label="e">degree granting institution.</subfield>
+        </varfield>
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Tallettaja, P.O.,</subfield>
+          <subfield label="e">depositor.</subfield>
+        </varfield>
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Designer, P.O.,</subfield>
+          <subfield label="e">designer.</subfield>
+        </varfield>	
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Leikkaaja, P.O.,</subfield>
+          <subfield label="e">editor of moving image work.</subfield>
+        </varfield>
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Säätävä-Lainakäyttöalue, P.O.,</subfield>
+          <subfield label="e">enacting jurisdiction.</subfield>
+        </varfield>
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">TESTI, P.O.,</subfield>
+          <subfield label="e">factor.</subfield>
+	</varfield>		
+
+	
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Elokuvan-Jakelija, P.O.,</subfield>
+          <subfield label="e">film distributor.</subfield>
+        </varfield>
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Teoksella-Kunnioitettu, P.O.,</subfield>
+          <subfield label="e">honouree.</subfield>
+        </varfield>
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Kappaleella-Kunnioitettu, P.O.,</subfield>
+          <subfield label="e">honouree of item.</subfield>
+        </varfield>
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Kappaleella-Kunnioitettu, P.O.,</subfield>
+          <subfield label="e">honouree (item)</subfield>
+        </varfield>
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Opettaja, P.O.,</subfield>
+          <subfield label="e">instructor.</subfield>
+        </varfield>
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Soveltava-Lainkäyttöalue, P.O.,</subfield>
+          <subfield label="e">jurisdiction governed.</subfield>
+        </varfield>
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Kantaja, P.O.,</subfield>
+          <subfield label="e">plaintiff.</subfield>
+        </varfield>
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Yhteisökantaja, P.O.,</subfield>
+          <subfield label="e">plaintiff corporate body.</subfield>
+	</varfield>
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">henkilökantaja, P.O.,</subfield>
+          <subfield label="e">plaintiff person.</subfield>
+	</varfield>
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Painolaatan-Valmistaja, P.O.,</subfield>
+          <subfield label="e">platemaker.</subfield>
+	</varfield>
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Kuvalaatan-Valmistaja, P.O.,</subfield>
+          <subfield label="e">printmaker.</subfield>
+	</varfield>
+
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Ääniteknikko, P.O.,</subfield>
+          <subfield label="e">recording engineer.</subfield>
+	</varfield>		
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Entistäjä (ekspressio), P.O.,</subfield>
+          <subfield label="e">restorationist (expression).</subfield>
+	</varfield>
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Entistäjä (kappale), P.O.,</subfield>
+          <subfield label="e">restorationist (item).</subfield>
+	</varfield>
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Äänisuunnittelijan, P.O.,</subfield>
+          <subfield label="e">sound designer.</subfield>
+	</varfield>
+
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Television-Director, P.O.,</subfield>
+          <subfield label="e">televisiom direcor.</subfield>
+	</varfield>
+
+
+      </oai_marc>
+    </metadata>
+  </record>
+</find-doc>
+

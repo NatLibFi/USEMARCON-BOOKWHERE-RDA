@@ -1,0 +1,24 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<find-doc 
+  xmlns="http://www.loc.gov/MARC21/slim" 
+  xmlns:slim="http://www.loc.gov/MARC21/slim" 
+  xmlns:oai="http://www.openarchives.org/OAI/1.1/oai_marc">
+  <record>
+    <metadata>
+      <oai_marc>
+        <fixfield id="LDR">02527cas^a2200661^i^4500</fixfield>
+        <fixfield id="001">005009831</fixfield>
+        <fixfield id="003">FI-MELINDA</fixfield>
+        <fixfield id="005">20180113114352.0</fixfield>
+        <fixfield id="007">ta</fixfield>
+        <fixfield id="008">980402d19982002fi^^x^m|^^^^^^0^^^a0eng|^</fixfield>
+	<varfield id="100" i1="1" i2=" ">
+          <subfield label="a">Sukunimi2, Etunimi,[from old catalog]</subfield>
+	  <subfield label="e">composer</subfield>
+          <subfield label="4">aut</subfield>
+        </varfield>
+      </oai_marc>
+    </metadata>
+  </record>
+</find-doc>
+
