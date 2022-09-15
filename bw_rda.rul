@@ -41,10 +41,14 @@
                            RegReplace('chiefly color\\b|chiefly col\\.', 'pääosin värillisiä', 'g'); \
                            RegReplace('pages|\\bp\\.|\\bp\\b', 'sivua', 'g'); \
                            RegReplace('chiefly', 'pääosin', 'g'); \
-                           RegReplace('\\bnid\\.|\\bnid[^A-Za-z]+|\\bhft[^A-Za-z]+|\\bhft\\.', 'nidottu', 'g'); \
-                           RegReplace('\\bpbk[^A-Za-z]+|\\bpbk\\.', 'nidottu', 'g'); \
-                           RegReplace('\\bhbk[^A-Za-z]+|\\bhbk\\.|\\binb[^A-Za-z]+|\\binb\\.', 'sidottu', 'g'); \
+			   RegReplace('spiral-bound|comb-bound|coil bound|spiralrygg', 'kierreselkä', 'g'); \
+			   RegReplace('haftäd|mjuka pärmar', 'pehmeäkantinen', 'g'); \
+			   RegReplace('inbunden|hårda pärmar|\\binb[^A-Za-z]+|\\binb\\.', 'kovakantinen', 'g'); \
+                           RegReplace('\\bnid\\.|\\bnid[^A-Za-z]+|\\bhft[^A-Za-z]+|\\bhft\\.', 'pehmeäkantinen', 'g'); \
+                           RegReplace('softcover|papercover|\\bpbk[^A-Za-z]+|\\bpbk\\.', 'pehmeäkantinen', 'g'); \
+                           RegReplace('hardcover|hardback|\\bhbk[^A-Za-z]+|\\bhbk\\.', 'kovakantinen', 'g'); \
                            RegReplace('\\bverkkojulk\\b|\\bverkkojulk\\.|electronic bk\\.', 'verkkoaineisto', 'g')
+
 
 000/1-5     | 000/1-5     | S
 000/6/      | 000/6/      | 'n'
@@ -78,12 +82,16 @@
 008/24/         | 336(new)$a      | If (S = 'f') Then 'taktiili teksti' Else 'teksti'
 008/24/         | 336(newest)$b   | If (S = 'f') Then 'tct' Else 'txt'
 008/24/         | 336(newest)$2   | 'rdacontent'
+#endif
 
+#if ((@000/7/ = 'a' Or @000/7/ = 't') And (Not Exists(@245$h)) And Not Exists(@337))
 008/24/         | <A37$a          | Table('008-23-337a.tbl')
 A37$a           | 337(new)$a      | S
 A37$a           | 337(newest)$b   | Table('337_b.tbl')
 A37$a           | 337(newest)$2   | 'rdamedia'
+#endif
 
+#if ((@000/7/ = 'a' Or @000/7/ = 't') And (Not Exists(@245$h)) And Not Exists(@338))
 008/24/         | <A38$a          | Table('008-23-338a.tbl')
 A38$a           | 338(new)$a      | S
 A38$a           | 338(newest)$b   | Table('338_b.tbl')
@@ -97,7 +105,9 @@ A38$a           | 338(newest)$2   | 'rdacarrier'
 A36             | 336(new)$a      | S
 A36             | 336(newest)$b   | Table('336_b.tbl')
 A36             | 336(newest)$2   | 'rdacontent'
+#endif
 
+#if ((@000/7/ = 'a' Or @000/7/ = 't') And Exists(@245$h) And (Exists (@007)) And (Not Exists(@337)) And (RegFind(@245$h, '[Mm]ultimedia') <0))
 007/1/          | <A37            | If (RegFind(@245$h, '[Mm]ultimedia') <0) Then Table('007-337a.tbl')
 
 A37             | 337(new)$a      | S
@@ -112,13 +122,17 @@ A37             | 337(newest)$2   | 'rdamedia'
 008/24/         | 336(new)$a      | If (S != 'f') Then 'nuottikirjoitus' Else 'taktiili nuottikirjoitus'
 008/24/         | 336(newest)$b   | If (S != 'f') Then 'ntm' Else 'tcm'
 008/24/         | 336$2           | 'rdacontent'
+#endif
 
+#if (@000/7/ = 'c' Or @000/7/ = 'd'  And Not Exists(@337))
 008/24/         | <B37$a          | Table ('008-24-337a.tbl')
 B37$a           | 337(new)$a      | S
 B37$a           | 337(newest)$b   | Table ('337_b.tbl')
 
 B37$a           | 337(newest)$2   | 'rdamedia'
+#endif
 
+#if (@000/7/ = 'c' Or @000/7/ = 'd'  And Not Exists(@338))
 008/24/         | 338(new)$a      | 'nide'
 008/24/         | 338(newest)$b   | 'nc'
 008/24/         | 338(newest)$2   | 'rdacarrier'
@@ -137,7 +151,9 @@ B37$a           | 337(newest)$2   | 'rdamedia'
 C36$a           | 336(new)$a      | S
 C36$a           | 336(newest)$b   | Table ('336_b.tbl')
 C36$a           | 336(newest)$2   | 'rdacontent'
+#endif
 
+#if (@000/7/ = 'e' Or @000/7/ = 'f' And Not Exists(@337))
 008/30/         | 008/30/         | S
 
 008/30/         | <C37$a          | Table ('008-29-337a.tbl')
@@ -166,12 +182,13 @@ H37$a           | 337(newest)$2   | 'rdamedia'
 // PUHEÄÄNITE
 
 #if (@000/7/ = 'i') And (Not Exists(@336))
-
 000             | <D36$a          | 'puhe'
 D36$a           | 336(new)$a      | S
 D36$a           | 336(newest)$b   | Table ('336_b.tbl')
 D36$a           | 336(newest)$2   | 'rdacontent'
+#endif
 
+#if (@000/7/ = 'i') And (Not Exists(@337))
 007/1/          | 007/1/          | S
 007/1/          | <D37$a          | If (S = 'c') Then 'tietokonekäyttöinen' Else 'audio'
 
@@ -422,10 +439,25 @@ G37$a           | 337(newest)$2   | 'rdamedia'
 100I1 | 100I1  | S
 100I2 | 100I2  | S
 100$e | 100$e  | Table ('Funktiot.tbl')
+// This macro-ing is clumsy, and works only since field 100 is non-repeatable
+
+#if (Exists(@100$e)) And (Exists(@100$4))
+100$4 | <DEL$4 | S
+//000   | 100I1 | ' '
+//000   | 100I2 | ' '
+//000   | <E00$a  | 'Remove 100/4 as $100/e exists'
+E00 | 500 | S
+#endif
+
+100$4 | 100$e | If (InTable(S, 'Funktiokoodit.tbl')) Then Table ('Funktiokoodit.tbl') + '.' Else S
+
 100$? | 100$?  | S;
                  Replace ('[from old catalog]' By '');
                  Delete (';' ,At Ending)
-	 
+
+//A00 | 100 | S
+
+
 110I1 | 110I1  | S
 110I2 | 110I2  | S
 110$a | 110$a  | If Not Exists ($c) Or Not Exists ($d) Then Replace (',' By '.', At Ending) Else S; Delete (' [from old catalog]', At Ending) ; Delete (' joint author', At Ending); Delete (' joint auth.', At Ending)
@@ -556,6 +588,9 @@ T36   | <DEL  | S
 
 #if Not (Exists(@337$b))
 337$a | 337$b | If (InTable(S, '337_b.tbl')) Then Table ('337_b.tbl')
+#endif
+
+#if Not (Exists(@337$2))
 337$a | 337$2 | 'rdamedia'
 #endif
 
