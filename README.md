@@ -19,11 +19,11 @@ KÄYTTÖ
 
 Kopioi konversiopaketti päätteellesi esimerkiksi esimerkiksi yläreunan valikosta "Clone or download" -- "Download ZIP". Pura paketti haluamaasi sijaintiin esimerkiksi C:\Usemarcon\ -hakemiston alle. Jos käytät USEMARCON GUI -käyttöliittymää, valitse haluamasi konversiosääntö "Conversion rule"-kohdassa (oletuksena bookwhere_utf8.ini).
 
-Yksityiskohtainen ohje BookWhere-poiminnasta ja tietueiden konvertoinnista löytyy Kuvailevan metatiedon asiantuntijaryhmän (KUMEA) wikistä: https://www.kiwi.fi/display/kumea/BookWhere.
+Yksityiskohtainen ohje BookWhere-poiminnasta ja tietueiden konvertoinnista löytyy osoitteesta: https://wiki.helsinki.fi/display/rdasovellusohje/BookWhere .
 
 PALAUTE
 
-marc-posti (at) helsinki.fi
+melinda-posti (at) helsinki.fi
 
 =================
 
