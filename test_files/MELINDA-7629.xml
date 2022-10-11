@@ -12,11 +12,38 @@
         <fixfield id="005">20180113114352.0</fixfield>
         <fixfield id="007">ta</fixfield>
         <fixfield id="008">980402d19982002fi^^x^m|^^^^^^0^^^a0eng|^</fixfield>
+
+	<varfield id="040" i1="1" i2=" ">
+	  <subfield label="a">BS</subfield>
+	</varfield>
+
 	<varfield id="100" i1="1" i2=" ">
           <subfield label="a">Sukunimi2, Etunimi,[from old catalog]</subfield>
 	  <subfield label="e">composer</subfield>
           <subfield label="4">aut</subfield>
         </varfield>
+
+	<varfield id="500" i1="1" i2=" ">
+	  <subfield label="a">alfa</subfield>
+	</varfield>
+
+	<varfield id="500" i1="1" i2=" ">
+	  <subfield label="a">beta</subfield>
+	  <subfield label="5">beta</subfield>
+	</varfield>
+	
+	<varfield id="506" i1="1" i2=" ">
+	  <subfield label="a">dev</subfield>
+	  <subfield label="e">null</subfield>
+	</varfield>
+		
+	<varfield id="540" i1=" " i2=" ">
+	  <subfield label="a">foo</subfield>
+	  <subfield label="e">bar</subfield>
+          <subfield label="f">lorum ipsum</subfield>
+        </varfield>
+
+
       </oai_marc>
     </metadata>
   </record>

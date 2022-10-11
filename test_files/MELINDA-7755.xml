@@ -1,0 +1,164 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<find-doc 
+  xmlns="http://www.loc.gov/MARC21/slim" 
+  xmlns:slim="http://www.loc.gov/MARC21/slim" 
+  xmlns:oai="http://www.openarchives.org/OAI/1.1/oai_marc">
+  <record>
+    <metadata>
+      <oai_marc>
+        <fixfield id="LDR">00000cas^a2200661^i^4500</fixfield>
+        <fixfield id="001">005009831</fixfield>
+        <fixfield id="003">FI-MELINDA</fixfield>
+        <fixfield id="005">20180113114352.0</fixfield>
+        <fixfield id="007">ta</fixfield>
+        <fixfield id="008">980402d19982002fi^^x^m|^^^^^^0^^^a0eng|^</fixfield>
+
+	<varfield id="020" i1=" " i2=" ">
+	  <subfield label="a">1234567890</subfield>
+	  <subfield label="q">(hardcover)</subfield>
+	  <subfield label="q">kovakantinen</subfield>
+	</varfield>
+
+	
+	<varfield id="020" i1=" " i2=" ">
+	  <subfield label="a">1234567890123</subfield>
+	  <subfield label="q">(paperback)</subfield>
+	  <subfield label="q">pehmeäkantinen</subfield>
+	</varfield>
+	
+	<varfield id="020" i1=" " i2=" ">
+	  <subfield label="z">1111111111111</subfield>
+	  <subfield label="q">(electronic publication)</subfield>
+	  <subfield label="q">electronic publication</subfield>
+	</varfield>
+
+	<varfield id="020" i1=" " i2=" ">
+	  <subfield label="z">2222222222</subfield>
+	  <subfield label="q">(electronic book)</subfield>
+	  <subfield label="q">electronic book</subfield>
+	</varfield>
+
+
+	<varfield id="020" i1=" " i2=" ">
+	  <subfield label="a">3333333333333</subfield>
+	  <subfield label="q">paperback</subfield>
+	  <subfield label="q">pehmeäkantinen</subfield>
+	</varfield>
+
+
+	<varfield id="020" i1=" " i2=" ">
+	  <subfield label="z">4444444444</subfield>
+	  <subfield label="q">electronic book</subfield>
+	  <subfield label="q">electronic book</subfield>
+	</varfield>
+
+	<varfield id="020" i1=" " i2=" ">
+	  <subfield label="z">5555555555555</subfield>
+	  <subfield label="q">(pdf)</subfield>
+	</varfield>
+
+	<varfield id="020" i1=" " i2=" ">
+	  <subfield label="z">5555555555555</subfield>
+	  <subfield label="q">pdf</subfield>
+	</varfield>
+
+	<varfield id="020" i1=" " i2=" ">	  
+	  <subfield label="z">9781119576839</subfield>
+	  <subfield label="q">(epub)</subfield>
+	</varfield>
+	
+	<varfield id="020" i1=" " i2=" ">	  
+	  <subfield label="z">9781119576839</subfield>
+	  <subfield label="q">epub</subfield>
+	</varfield>
+
+	<varfield id="020" i1=" " i2=" ">
+	  <subfield label="z">6666666666</subfield>
+	  <subfield label="q">hardcover</subfield>
+	</varfield>
+	<varfield id="020" i1=" " i2=" ">
+	  <subfield label="z">6666666666</subfield>
+	  <subfield label="q">kovakantinen</subfield>
+	</varfield>
+
+
+	
+	<varfield id="020" i1=" " i2=" ">
+	  <subfield label="a">7777777777777</subfield>
+	  <subfield label="q">(online resource)</subfield>
+	</varfield>
+	<varfield id="020" i1=" " i2=" ">
+	  <subfield label="a">7777777777777</subfield>
+	  <subfield label="q">verkkoaineisto</subfield>
+	</varfield>
+
+	<varfield id="020" i1=" " i2=" ">
+	  <subfield label="a">8888888888</subfield>
+	  <subfield label="q">electronic edition</subfield>
+	</varfield>
+	<varfield id="020" i1=" " i2=" ">
+	  <subfield label="a">8888888888</subfield>
+	  <subfield label="q">electronic edition</subfield>
+	</varfield>
+
+
+	<varfield id="020" i1=" " i2=" ">
+	  <subfield label="z">hbk : alk. paper</subfield>
+	</varfield>
+
+	<varfield id="020" i1=" " i2=" ">
+	  <subfield label="z">(pbk. : alk. paper)</subfield>
+	</varfield>
+
+	<varfield id="020" i1=" " i2=" ">
+	  <subfield label="z">(hardcover : acid-free paper)</subfield>
+	</varfield>
+
+	<varfield id="020" i1=" " i2=" ">
+	  <subfield label="z">(pbk. : acid-free paper)</subfield>
+	</varfield>
+
+	<varfield id="020" i1=" " i2=" ">
+	  <subfield label="z">(bound)</subfield>
+	</varfield>
+
+	<varfield id="020" i1=" " i2=" ">
+	  <subfield label="z">(hb)</subfield>
+	</varfield>
+
+	<varfield id="020" i1=" " i2=" ">
+	  <subfield label="z">(hard : alk. paper)</subfield>
+	</varfield>
+
+
+	<varfield id="300" i1=" " i2=" ">
+	  <subfield label="b">ill., map.</subfield>
+	  <subfield label="b">kuvitettu, kartta</subfield>
+	</varfield>
+
+	<varfield id="264" i1=" " i2="1">
+	  <subfield label="a">Paikka :</subfield>
+	  <subfield label="a">Organisaatio,</subfield>
+	  <subfield label="c">2020</subfield>
+	</varfield>
+
+	<varfield id="264" i1=" " i2="4">
+	  <subfield label="c">Ã2020.</subfield>
+	</varfield>
+		
+	<varfield id="347" i1=" " i2=" ">
+	  <subfield label="a">text file</subfield>
+	  <subfield label="b">pdf</subfield>
+	  <subfield label="2">rda</subfield>
+	</varfield>
+	<varfield id="347" i1=" " i2=" ">	  
+	  <subfield label="a">text file</subfield>
+	  <subfield label="b">PDF</subfield>
+	  <subfield label="2">rda</subfield>
+	</varfield>
+
+      </oai_marc>
+    </metadata>
+  </record>
+</find-doc>
+
