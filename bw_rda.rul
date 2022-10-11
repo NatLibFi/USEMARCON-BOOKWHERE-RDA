@@ -5,14 +5,14 @@
 
 #define macro KAANNOKSET | RegReplace('diagrs\\.', 'diagrams', 'g'); \
                            RegReplace('incl\\.', 'includes', 'g'); \
-                           RegReplace('fold(\\.)* maps', 'folded maps', 'g'); \
+			   RegReplace('fold(\\.)* maps', 'folded maps', 'g'); \
                            RegReplace('online resource', 'verkkoaineisto', 'g'); \
                            RegReplace('approximately', 'noin', 'g'); \
                            RegReplace('\\bmin\\.|\\bmin\\b|minutes', 'minuuttia', 'g'); \
                            RegReplace('unnumbered', 'numeroimatonta', 'g'); \
                            RegReplace('color illustrations\\b|col\\. ill\\.', 'värikuvitus', 'g'); \
                            RegReplace('chiefly color illustrations', 'pääosin värikuvitettu', 'g'); \
-                           RegReplace('ill\\b|illus(\\.|trated)|illustrations', 'kuvitettu', 'g'); \
+                           RegReplace('ill\\.|ill\\b|illus(\\.|trated)|illustrations', 'kuvitettu', 'g'); \
                            RegReplace('black and white', 'mustavalkoinen', 'g'); \
                            RegReplace('\\s\\(some col\\.\\)', '', 'g'); \
                            RegReplace('\\bcharts\\b', 'kaavioita', 'g'); \
@@ -39,15 +39,16 @@
                            RegReplace('sd\\., col\\.', 'äänellinen, värillinen', 'g'); \
                            RegReplace('\\s\\(chiefly color\\)|\\s\\(chiefly col\\.\\)', '', 'g'); \
                            RegReplace('chiefly color\\b|chiefly col\\.', 'pääosin värillisiä', 'g'); \
-                           RegReplace('pages|\\bp\\.|\\bp\\b', 'sivua', 'g'); \
+                           RegReplace('pages|Seiten|\\bp\\.|\\bp\\b', 'sivua', 'g'); \
                            RegReplace('chiefly', 'pääosin', 'g'); \
 			   RegReplace('spiral-bound|comb-bound|coil bound|spiralrygg', 'kierreselkä', 'g'); \
 			   RegReplace('haftäd|mjuka pärmar', 'pehmeäkantinen', 'g'); \
-			   RegReplace('inbunden|hårda pärmar|\\binb[^A-Za-z]+|\\binb\\.', 'kovakantinen', 'g'); \
-                           RegReplace('\\bnid\\.|\\bnid[^A-Za-z]+|\\bhft[^A-Za-z]+|\\bhft\\.', 'pehmeäkantinen', 'g'); \
-                           RegReplace('softcover|papercover|\\bpbk[^A-Za-z]+|\\bpbk\\.', 'pehmeäkantinen', 'g'); \
-                           RegReplace('hardcover|hardback|\\bhbk[^A-Za-z]+|\\bhbk\\.', 'kovakantinen', 'g'); \
-                           RegReplace('\\bverkkojulk\\b|\\bverkkojulk\\.|electronic bk\\.', 'verkkoaineisto', 'g')
+			   RegReplace('inbunden|hårda pärmar|\\binb[^A-Za-z ,;:]*|\\binb\\.', 'kovakantinen', 'g'); \
+                           RegReplace('\\bnid\\.|\\bnid[^A-Za-z ,;:]*|\\bhft[^A-Za-z ,;:]*|\\bhft\\.', 'pehmeäkantinen', 'g'); \
+                           RegReplace('softcover|paperback|\\bpbk[^A-Za-z ,;:]*|\\bpbk\\.', 'pehmeäkantinen', 'g'); \
+                           RegReplace('hardcover|hardback|\\bhbk[^A-Za-z ,;:]*|\\bhbk\\.', 'kovakantinen', 'g'); \
+                           RegReplace('\\bverkkojulk\\b|\\bverkkojulk\\.|electronic bk\\.', 'verkkoaineisto', 'g'); \
+			   RegReplace('\\bpdf\\b', 'PDF', 'g')
 
 
 000/1-5     | 000/1-5     | S
