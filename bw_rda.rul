@@ -3,6 +3,9 @@
 
 #define version 317
 
+#define macro F776i_KAANNOKSET | RegReplace('Online version', 'Verkkoaineisto', 'g'); \
+                           RegReplace('Print version', 'Painettu', 'g')
+			   
 #define macro KAANNOKSET | RegReplace('diagrs\\.', 'diagrams', 'g'); \
                            RegReplace('incl\\.', 'includes', 'g'); \
 			   RegReplace('fold(\\.)* maps', 'folded maps', 'g'); \
@@ -12,13 +15,13 @@
                            RegReplace('unnumbered', 'numeroimatonta', 'g'); \
                            RegReplace('color illustrations\\b|col\\. ill\\.', 'värikuvitus', 'g'); \
                            RegReplace('chiefly color illustrations', 'pääosin värikuvitettu', 'g'); \
-                           RegReplace('ill\\.|ill\\b|illus(\\.|trated)|illustrations', 'kuvitettu', 'g'); \
+                           RegReplace('ill\\.|ill\\b|illus(\\.|trated)|illustrations|Illustrationen', 'kuvitettu', 'g'); \
                            RegReplace('black and white', 'mustavalkoinen', 'g'); \
                            RegReplace('\\s\\(some col\\.\\)', '', 'g'); \
                            RegReplace('\\bcharts\\b', 'kaavioita', 'g'); \
                            RegReplace('\\bports\\.|\\bportraits', 'muotokuvia', 'g'); \
                            RegReplace('illustration\\b', 'kuvitus', 'g'); \
-                           RegReplace('p\\. of plates|leaves of plates', 'kuvalehteä', 'g'); \
+                           RegReplace('p\\. of plates|leaves of plates|pages of plates', 'kuvalehteä', 'g'); \
                            RegReplace('1 v\\.', '1 nide', 'g'); \
                            RegReplace('insert\\b', 'liite', 'g'); \
                            RegReplace('inserts', 'liitteitä', 'g'); \
@@ -41,7 +44,7 @@
                            RegReplace('chiefly color\\b|chiefly col\\.', 'pääosin värillisiä', 'g'); \
                            RegReplace('pages|Seiten|\\bp\\.|\\bp\\b', 'sivua', 'g'); \
                            RegReplace('chiefly', 'pääosin', 'g'); \
-			   RegReplace('spiral-bound|comb-bound|coil bound|spiralrygg', 'kierreselkä', 'g'); \
+			   RegReplace('spiral bound|spiral-bound|comb-bound|coil bound|spiralrygg', 'kierreselkä', 'g'); \
 			   RegReplace('haftäd|mjuka pärmar', 'pehmeäkantinen', 'g'); \
 			   RegReplace('inbunden|hårda pärmar|\\binb[^A-Za-z ,;:]*|\\binb\\.', 'kovakantinen', 'g'); \
                            RegReplace('\\bnid\\.|\\bnid[^A-Za-z ,;:]*|\\bhft[^A-Za-z ,;:]*|\\bhft\\.', 'pehmeäkantinen', 'g'); \
@@ -916,6 +919,10 @@ C05I1 | 505(new)I1    | S; Replace (' ' By '0')
 C05I2 | 505(newest)I2 | S
 C05   | 505(newest)   | S; If (RegFind('[\\.\\)!]\$') < 0) S + '.'
 
+540I1 | <DELI1 | S
+540I2 | <DELI2 | S
+540   | <DEL   | S
+
 574I1 | <DELI1 | S
 574I2 | <DELI2 | S
 574   | <DEL   | S
@@ -1320,7 +1327,7 @@ T75 | 775 | S //;
 776$6            | <U76$6          | S
 776$7            | <U76$7          | S
 776$8            | <U76$8          | S
-U76 | 776 | S //;
+U76 | 776 | S; F776i_KAANNOKSET //;
             //RegReplace('\\s*[:/=;\\.]?\\s*$h[^$]*( :| /| =| ;|\\.)', '\\1'); // Säilyttää välimerkit
             //RegReplace('\\s*[:/=;\\.]?\\s*$h[^$]*', '') // Jos välimerkki puuttuu tai on virheellinen
 
