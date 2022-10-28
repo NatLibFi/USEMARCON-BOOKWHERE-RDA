@@ -19,6 +19,14 @@
 	<varfield id="300" i1=" " i2=" ">
 	  <subfield label="a">32 unnumbered pages of plates</subfield>
 	</varfield>
+
+	<varfield id="300" i1=" " i2=" ">
+	  <subfield label="a">(various pagings)</subfield>
+	</varfield>
+
+	<varfield id="300" i1=" " i2=" ">
+	  <subfield label="a">300 pages in various pagings</subfield>
+	</varfield>
 		
 	<varfield id="776" i1=" " i2=" ">
 	  <subfield label="i">Online version:</subfield>
