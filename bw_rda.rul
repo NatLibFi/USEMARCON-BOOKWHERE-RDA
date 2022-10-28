@@ -21,7 +21,8 @@
                            RegReplace('\\bcharts\\b', 'kaavioita', 'g'); \
                            RegReplace('\\bports\\.|\\bportraits', 'muotokuvia', 'g'); \
                            RegReplace('illustration\\b', 'kuvitus', 'g'); \
-                           RegReplace('p\\. of plates|leaves of plates|pages of plates', 'kuvalehteä', 'g'); \
+			   RegReplace('p\\. of plates|pages of plates', 'kuvasivua', 'g'); \
+			   RegReplace('leaves of plates', 'kuvalehteä', 'g'); \
                            RegReplace('1 v\\.', '1 nide', 'g'); \
                            RegReplace('insert\\b', 'liite', 'g'); \
                            RegReplace('inserts', 'liitteitä', 'g'); \
@@ -44,6 +45,8 @@
                            RegReplace('chiefly color\\b|chiefly col\\.', 'pääosin värillisiä', 'g'); \
                            RegReplace('pages|Seiten|\\bp\\.|\\bp\\b', 'sivua', 'g'); \
                            RegReplace('chiefly', 'pääosin', 'g'); \
+                           RegReplace('in various pagings', 'useina numerointijaksoina', 'g'); \
+			   RegReplace('\\(various pagings\\)', '(useita numerointijaksoja)', 'g'); \
 			   RegReplace('spiral bound|spiral-bound|comb-bound|coil bound|spiralrygg', 'kierreselkä', 'g'); \
 			   RegReplace('haftäd|mjuka pärmar', 'pehmeäkantinen', 'g'); \
 			   RegReplace('inbunden|hårda pärmar|\\binb[^A-Za-z ,;:]*|\\binb\\.', 'kovakantinen', 'g'); \
