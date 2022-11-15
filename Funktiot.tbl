@@ -59,6 +59,8 @@ f i l m 0x20 d i s t r i b u t o r 	| e l o k u v a n 0x20 j a k e l i j a
 f i l m 0x20 p r o d u c e r 	| e l o k u v a t u o t t a j a
 f i l m m a k e r 	| e l o k u v a n t e k i j 0xc3 0xa4
 f o r m e r 0x20 o w n e r 	| a i k a i s e m p i 0x20 o m i s t a j a
+H e r a u s g e b e r  | t o i m i t t a j a
+H e r a u s g e b e r i n  | t o i m i t t a j a
 h o n o u r e e 	| t e o k s e l l a 0x20 k u n n i o i t e t t u
 h o n o u r e e 0x20 o f 0x20 i t e m 	| k a p p a l e e l l a 0x20 k u n n i o i t e t t u
 h o n o u r e e 0x20 ( i t e m )	| k a p p a l e e l l a 0x20 k u n n i o i t e t t u
@@ -122,6 +124,7 @@ t e l e v i s i o n 0x20 p r o d u c e r 	| t e l e v i s i o t u o t t a j a
 t r a n s c r i b e r 	| t r a n s k r i b o i j a
 t r a n s l a t o r 	| k 0xc3 0xa4 0xc3 0xa4 n t 0xc3 0xa4 j 0xc3 0xa4
 V e r f a s s e r 	| k i r j o i t t a j a
+V e r f a s s e r i n	| k i r j o i t t a j a
 v o i c e 0x20 a c t o r 	| 0xc3 0xa4 0xc3 0xa4 n i n 0xc3 0xa4 y t t e l i j 0xc3 0xa4
 w r i t e r 0x20 o f 0x20 a d d e d 0x20 c o m m e n t a r y 	| k o m m e n t a a r i n 0x20 k i r j o i t t a j a
 w r i t e r 0x20 o f 0x20 a d d e d 0x20 l y r i c s 	| l i s 0xc3 0xa4 t y n 0x20 s a n o i t u k s e n 0x20 k i r j o i t t a j a
