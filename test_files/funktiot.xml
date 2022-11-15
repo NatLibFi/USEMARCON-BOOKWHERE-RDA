@@ -67,6 +67,16 @@
           <subfield label="a">Kirjoittaja, P.O.,</subfield>
           <subfield label="e">author.</subfield>
         </varfield>
+	
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Toimittaja, P.O. (1),</subfield>
+          <subfield label="e">Herausgeber.</subfield>
+        </varfield>
+	<varfield id="700" i1=" " i2=" ">
+          <subfield label="a">Toimittaja, P.O. (2),</subfield>
+          <subfield label="e">Herausgeberin.</subfield>
+        </varfield>
+	
 	<varfield id="700" i1=" " i2=" ">
           <subfield label="a">Nimikirjoituksen-Kirjoittaja, P.O.,</subfield>
           <subfield label="e">autographer.</subfield>
@@ -213,8 +223,8 @@
 	</varfield>
 
 	<varfield id="700" i1=" " i2=" ">
-          <subfield label="a">Television-Director, P.O.,</subfield>
-          <subfield label="e">televisiom direcor.</subfield>
+          <subfield label="a">Televisio-ohjelman Ohjaaja, P.O.,</subfield>
+          <subfield label="e">television director.</subfield>
 	</varfield>
 
 
