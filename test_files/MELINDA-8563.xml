@@ -1,0 +1,40 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<find-doc 
+  xmlns="http://www.loc.gov/MARC21/slim" 
+  xmlns:slim="http://www.loc.gov/MARC21/slim" 
+  xmlns:oai="http://www.openarchives.org/OAI/1.1/oai_marc">
+  <record>
+    <metadata>
+      <oai_marc>
+        <fixfield id="LDR">02527cas^a2200661^i^4500</fixfield>
+        <fixfield id="001">005009831</fixfield>
+        <fixfield id="003">FI-MELINDA</fixfield>
+        <fixfield id="005">20180113114352.0</fixfield>
+        <fixfield id="007">ta</fixfield>
+        <fixfield id="008">980402d19982002fi^^x^m|^^^^^^0^^^a0eng|^</fixfield>
+
+	<varfield id="600" i1=" " i2="0">
+	  <subfield label="a">Nollana, Pysy,</subfield>
+	  <subfield label="d">1871-1922.</subfield>
+	  <subfield label="x">Literary style.</subfield>
+	</varfield>
+
+	<varfield id="600" i1=" " i2="0">
+	  <subfield label="a">Ind2, Neljäksi Muutu,</subfield>
+	  <subfield label="d">1871-1922.</subfield>
+	</varfield>
+
+	<varfield id="600" i1=" " i2="7">
+	  <subfield label="a">Ind2, Seiskana Pysy,</subfield>
+	  <subfield label="d">1871-1922.</subfield>
+	  <subfield label="2">yso/fin</subfield>
+	</varfield>
+
+
+
+
+      </oai_marc>
+    </metadata>
+  </record>
+</find-doc>
+
