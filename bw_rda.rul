@@ -3,34 +3,34 @@
 
 #define version 317
 
-#define macro F776i_KAANNOKSET | RegReplace('Online version', 'Verkkoaineisto', 'g'); \
-                           RegReplace('Print version', 'Painettu', 'g')
+#define macro F776i_KAANNOKSET | RegReplace('Online version|Onlineresurs', 'Verkkoaineisto', 'g'); \
+                           RegReplace('Print version|Pappersutfåva|Tryckt', 'Painettu', 'g')
 			   
 #define macro KAANNOKSET | RegReplace('diagrs\\.', 'diagrams', 'g'); \
                            RegReplace('incl\\.', 'includes', 'g'); \
 			   RegReplace('fold(\\.)* maps', 'folded maps', 'g'); \
-                           RegReplace('online resource', 'verkkoaineisto', 'g'); \
+                           RegReplace('online resource|onlineresurs', 'verkkoaineisto', 'g'); \
                            RegReplace('approximately', 'noin', 'g'); \
-                           RegReplace('\\bmin\\.|\\bmin\\b|minutes', 'minuuttia', 'g'); \
-                           RegReplace('unnumbered', 'numeroimatonta', 'g'); \
-                           RegReplace('color illustrations\\b|col\\. ill\\.', 'värikuvitus', 'g'); \
+                           RegReplace('\\bmin\\.|\\bmin\\b|\\bminuter\\b|minutes', 'minuuttia', 'g'); \
+                           RegReplace('unnumbered|onumrerade', 'numeroimatonta', 'g'); \
+                           RegReplace('color illustrations\\b|col\\. ill\\.|färgillustatione?[nr]\\b', 'värikuvitus', 'g'); \
                            RegReplace('chiefly color illustrations', 'pääosin värikuvitettu', 'g'); \
                            RegReplace('ill\\.|ill\\b|illus(\\.|trated)|illustrations|Illustrationen', 'kuvitettu', 'g'); \
-                           RegReplace('black and white', 'mustavalkoinen', 'g'); \
+                           RegReplace('black and white|svartvit', 'mustavalkoinen', 'g'); \
                            RegReplace('\\s\\(some col\\.\\)', '', 'g'); \
                            RegReplace('\\bcharts\\b', 'kaavioita', 'g'); \
-                           RegReplace('\\bports\\.|\\bportraits', 'muotokuvia', 'g'); \
+                           RegReplace('\\bports\\.|\\bportraits|porträtter', 'muotokuvia', 'g'); \
                            RegReplace('illustration\\b', 'kuvitus', 'g'); \
 			   RegReplace('p\\. of plates|pages of plates', 'kuvasivua', 'g'); \
 			   RegReplace('leaves of plates', 'kuvalehteä', 'g'); \
                            RegReplace('1 v\\.', '1 nide', 'g'); \
-                           RegReplace('insert\\b', 'liite', 'g'); \
-                           RegReplace('inserts', 'liitteitä', 'g'); \
-                           RegReplace('videodiscs', 'videolevyä', 'g'); \
-                           RegReplace('videodisc', 'videolevy', 'g'); \
-                           RegReplace('(sound|audio) discs', 'äänilevyä', 'g'); \
-                           RegReplace('sound disc', 'äänilevy', 'g'); \
-                           RegReplace('ca\\.', 'noin', 'g'); \
+                           RegReplace('insert\\b|\\bbilaga\\b', 'liite', 'g'); \
+                           RegReplace('inserts|\\bbilagor\\b', 'liitteitä', 'g'); \
+                           RegReplace('videodiscs|videoskivor', 'videolevyä', 'g'); \
+                           RegReplace('videodisc|videoskiva', 'videoslevy', 'g'); \
+                           RegReplace('(sound|audio) discs|ljudskivor', 'äänilevyä', 'g'); \
+                           RegReplace('sound disc|ljudskiva', 'äänilevy', 'g'); \
+                           RegReplace('\\bca\\.', 'noin', 'g'); \
                            RegReplace('digital\\b', 'digitaalinen', 'g'); \
                            RegReplace('analog\\b', 'analoginen', 'g'); \
                            RegReplace('folded sheet', 'taitelehti', 'g'); \
@@ -39,16 +39,16 @@
                            RegReplace('unpaged', 'ei sivunumerointia', 'g'); \
                            RegReplace('\\bhr\\.', 'tuntia', 'g'); \
                            RegReplace('sound cassettes', 'äänikasettia', 'g'); \
-                           RegReplace('maps', 'karttoja', 'g'); \
+                           RegReplace('maps\\b|\\bkartor\\b', 'karttoja', 'g'); \
                            RegReplace('sd\\., col\\.', 'äänellinen, värillinen', 'g'); \
                            RegReplace('\\s\\(chiefly color\\)|\\s\\(chiefly col\\.\\)', '', 'g'); \
                            RegReplace('chiefly color\\b|chiefly col\\.', 'pääosin värillisiä', 'g'); \
                            RegReplace('pages|Seiten|\\bp\\.|\\bp\\b', 'sivua', 'g'); \
                            RegReplace('chiefly', 'pääosin', 'g'); \
-                           RegReplace('in various pagings', 'useina numerointijaksoina', 'g'); \
-			   RegReplace('\\(various pagings\\)', '(useita numerointijaksoja)', 'g'); \
+                           RegReplace('in various pagings|i flera nummersviter', 'useina numerointijaksoina', 'g'); \
+			   RegReplace('\\(various pagings\\)|\\(flera nummersviter\\)', '(useita numerointijaksoja)', 'g'); \
 			   RegReplace('spiral bound|spiral-bound|comb-bound|coil bound|spiralrygg', 'kierreselkä', 'g'); \
-			   RegReplace('haftäd|mjuka pärmar', 'pehmeäkantinen', 'g'); \
+			   RegReplace('häftad|mjuka pärmar', 'pehmeäkantinen', 'g'); \
 			   RegReplace('inbunden|hårda pärmar|\\binb[^A-Za-z ,;:]*|\\binb\\.', 'kovakantinen', 'g'); \
                            RegReplace('\\bnid\\.|\\bnid[^A-Za-z ,;:]*|\\bhft[^A-Za-z ,;:]*|\\bhft\\.', 'pehmeäkantinen', 'g'); \
                            RegReplace('softcover|paperback|\\bpbk[^A-Za-z ,;:]*|\\bpbk\\.', 'pehmeäkantinen', 'g'); \
@@ -814,7 +814,7 @@ T36   | <DEL  | S
 
 // VIDEOLEVY
 
-#if (Not Exists(@338)) And If (RegFind(@300$a, '[Dd][Vv][Dd]-levy|[Vv]ideolevy|ideodisc') >= 0) And If (Not Exists(@773))
+#if (Not Exists(@338)) And If (RegFind(@300$a, '[Dd][Vv][Dd]-(levy|skiv)|[Vv]ideolevy|ideodisc|ideoskiv') >= 0) And If (Not Exists(@773))
 000 | 338(new)I1 | ' '
 000 | 338(newest)I2 | ' '
 000 | 338(newest)$a | 'videolevy'
@@ -925,6 +925,8 @@ C05   | 505(newest)   | S; If (RegFind('[\\.\\)!]\$') < 0) S + '.'
 540I1 | <DELI1 | S
 540I2 | <DELI2 | S
 540   | <DEL   | S
+
+546$a | 546$a  | S; RegReplace('Staff notation|Notrad\\b|Notsystem\\b', 'Viivastonuottikirjoitus')
 
 574I1 | <DELI1 | S
 574I2 | <DELI2 | S
