@@ -75,10 +75,11 @@ m i c r o o p a q u e 	| m i k r o k o r t t i 0x20 ( l 0xc3 0xa4 p i n 0xc3 0xa
 m i c r o s c o p e 0x20 s l i d e 	| p r e p a r a a t t i l a s i 
 m i k r o f i c h e 	| m i k r o k o r t t i 
 m i k r o f i c h e k a s s e t t 	| m i k r o k o r t t i k a s e t t i 
-m i k r o f i l m s k a s s e t t 	| m i k r o f i l m i k e l a 
+m i k r o f i l m s k a s s e t t 	| m i k r o f i l m i k a s e t t i 
 m i k r o f i l m s m a g a s i n 	| m i k r o f i l m i s i l m u k k a k a s e t t i 
 m i k r o f i l m s r e m s a 	| m i k r o f i l m i l i u s k a 
-m i k r o f i l m s r u l l e 	| m i k r o f i l m i r u l l a 
+m i k r o f i l m s r u l l e 	| m i k r o f i l m i r u l l a
+m i k r o f i l m s s p o l e 	| m i k r o f i l m i k e l a
 m i k r o k o r t 	| m i k r o k o r t t i 0x20 ( l 0xc3 0xa4 p i n 0xc3 0xa4 k y m 0xc3 0xa4 t 0xc3 0xb6 n ) 
 m i k r o s k o p e r i n g s p r e p a r a t 	| p r e p a r a a t t i l a s i 
 o b j e c t 	| o b j e k t i 
