@@ -126,6 +126,6 @@ t r c   | t r a n s k r i b e r a r e
 t r l 	| 0xC3 0xB6 v e r s 0xC3 0xA4 t t a r e
 v o c  	| s 0xC3 0xA5 n g a r e
 w a c   | f 0xC3 0xB6 r f a t t a r e 0x20 t i l l 0x20 k o m m e n t a r
-w a l   | k o m p l e t t e r a n d e 0x20 t e x t 0x20 t i l l
+w a l   | k o m p l e t t e r a n d e 0x20 t e x t 0x20 t i l l 0x20 m u s i k a l i s k t 0x20 v e r k
 w a t   | f 0xC3 0xB6 r f a t t a r e 0x20 t i l l 0x20 k o m p l e t t e r a n d e 0x20 t e x t
 #DEFAULT | COPY
