@@ -2,8 +2,11 @@
 
 VERSIOHISTORIA
 
-1.0 (xx.xx.201x) Alkuperäinen versio
+1.2 (28.11.2023) Ruotsinkieliset konversiosäännöt (luonnos) (nvolk)
 1.1 (15.09.2022) RDA-muokkauksia (nvolk (MELINDA-7629:n pohjalta))
+1.0 (xx.xx.201x) Alkuperäinen versio
+
+
 
 KUVAUS
 
