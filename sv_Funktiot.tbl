@@ -125,7 +125,7 @@ t e l e v i s i o n 0x20 p r o d u c e r 	| t v - p r o d u c e n t
 t r a n s c r i b e r 	| t r a n s k r i b e r a r e
 t r a n s l a t o r 	| 0xC3 0xB6 v e r s 0xC3 0xA4 t t a r e
 V e r f a s s e r 	| f 0xC3 0xB6 r f a t t a r e
-V e r f a s s e r i n	| f 0xC3 0xA4 r f a t t a r e
+V e r f a s s e r i n	| f 0xC3 0xB6 r f a t t a r e
 v o i c e 0x20 a c t o r 	| r 0xC3 0xB6 s t s k 0xC3 0xA5 d e s p e l a r e
 w r i t e r 0x20 o f 0x20 a d d e d 0x20 c o m m e n t a r y 	| f 0xC3 0xB6 r f a t t a r e 0x20 t i l l 0x20 k o m m e n t a r e r
 w r i t e r 0x20 o f 0x20 a d d e d 0x20 l y r i c s 	| k o m p l e t t e r a n d e 0x20 t e x t 0x20 t i l l 0x20 m u s i k a l i s k t 0x20 v e r k
