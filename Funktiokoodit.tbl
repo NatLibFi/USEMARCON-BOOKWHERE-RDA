@@ -50,7 +50,7 @@ d r t 	| o h j a a j a
 d s r 	| s u u n n i t t e l i j a 
 d s t 	| j a k a j a 
 d t e   | t e o s 0x20 o m i s t e t t u
-d t o   | t e o k s e n 0x20 o m i s t u s k i r j o i t u k s e n 0x20 t e k i j ä
+d t o   | t e o k s e n 0x20 o m i s t u s k i r j o i t u k s e n 0x20 t e k i j 0xC3 0xA4 
 d u b  	| k i r j o i t t a j a 
 e d c   | t o i m i t t a j a
 e d m   | l e i k k a a j a
@@ -126,5 +126,6 @@ t r l 	| k 0xc3 0xa4 0xc3 0xa4 n t 0xc3 0xa4 j 0xc3 0xa4
 v o c  	| l a u l a j a 
 w a c   | k o m m e n t a a r i n 0x20 k i r j o i t t a j a
 w a l   | l i s 0xc3 0xa4 t y n 0x20 s a n o i t u k s e n 0x20 k i r j o i t t a j a
+w a m 	| l i i t e a i n e i s t o n 0x20 t e k i j 0xc3 0xa4 
 w a t   | l i s 0xc3 0xa4 t y n 0x20 t e k s t i n 0x20 k i r j o i t t a j a
 #DEFAULT | COPY
