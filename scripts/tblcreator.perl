@@ -23,72 +23,141 @@ if ( $target_subfield_code ne 'b' && $target_language !~ /^(eng|fin|swe)$/ ) {
     &usage();
 }
 
-if ( $target_tag !~ /^(336|337)$/ ) { &usage(); }
+if ( $target_tag !~ /^(336|337|338)$/ ) { &usage(); }
 
 
 
 my %rda;
 my @rdacontent_types = ( 'crd', 'cri', 'crm', 'crt', 'crn', 'crf', 'cod', 'cop', 'ntv', 'ntm', 'prm', 'snd', 'spw', 'sti', 'tci', 'tcm', 'tcn', 'tct', 'tcf', 'txt', 'tdf', 'tdm', 'tdi', 'xxx', 'zzz' );
 my @rdamedia_types = ('s', 'c', 'h', 'p', 'g', 'e', 'n', 'v', 'x', 'z');
-my @languages = ('fin', 'swe', 'eng', 'ger');
+
+my @rdacarrier_types = ('ca', 'cb', 'cd', 'ce', 'cf', 'ch', 'ck', 'cr', 'cz', 'eh', 'es', 'ez', 'gc', 'gd', 'gf', 'gs', 'gt', 'ha', 'hb', 'hc', 'hd', 'he', 'hf', 'hg', 'hh', 'hj', 'hz', 'mc', 'mf', 'mo', 'mr', 'mz', 'na', 'nb', 'nc', 'nn', 'no', 'nr', 'nz', 'pp', 'pz', 'sb', 'sd', 'se', 'sg', 'si', 'sq', 'ss', 'st', 'sw', 'sz', 'vc', 'vd', 'vf', 'vr', 'vz', 'zu' );
+my @languages = ('fin', 'swe', 'eng', 'ger', 'fre');
 for my $term ( @rdacontent_types ) {
     $rda{$term} = ();
 }
 
 # https://www.loc.gov/standards/valuelist/rdacontent.html
+# https://www.rdaregistry.info/termList/RDAContentType/?language=fi
 $rda{'crd'}{'eng'} = 'cartographic dataset';
-$rda{'cri'}{'eng'} = 'cartographic image';
-$rda{'crm'}{'eng'} = 'cartographic moving image';
-$rda{'crt'}{'eng'} = 'cartographic tactile image';
-$rda{'crn'}{'eng'} = 'cartographic tactile three-dimensional form';
-$rda{'crf'}{'eng'} = 'cartographic three-dimensional form';
-$rda{'cod'}{'eng'} = 'computer dataset';
-$rda{'cop'}{'eng'} = 'computer program';
-$rda{'ntv'}{'eng'} = 'notated movement';
-$rda{'ntm'}{'eng'} = 'notated music';
-$rda{'prm'}{'eng'} = 'performed music';
-$rda{'snd'}{'eng'} = 'sounds';
-$rda{'spw'}{'eng'} = 'spoken word';
-$rda{'sti'}{'eng'} = 'still image';
-$rda{'tci'}{'eng'} = 'tactile image';
-$rda{'tcm'}{'eng'} = 'tactile notated music';
-$rda{'tcn'}{'eng'} = 'tactile notated movement';
-$rda{'tct'}{'eng'} = 'tactile text';
-$rda{'tcf'}{'eng'} = 'tactile three-dimensional form';
-$rda{'txt'}{'eng'} = 'text';
-$rda{'tdf'}{'eng'} = 'three-dimensional form';
-$rda{'tdm'}{'eng'} = 'three-dimensional moving image';
-$rda{'tdi'}{'eng'} = 'two-dimensional moving image';
-$rda{'xxx'}{'eng'} = 'other';
-$rda{'zzz'}{'eng'} = 'unspecified';
-
-# https://wiki-emerita.it.helsinki.fi/pages/viewpage.action?pageId=400875286#id-3XXFyysisenkuvailunjne.kent%C3%A4t-336 et al
-# Above erronously has 'kartografinen kolmiulotteinen kuva' (should be ...muoto)
 $rda{'crd'}{'fin'} = 'kartografinen data';
+$rda{'crd'}{'swe'} = 'kartografisk data';
+
+$rda{'cri'}{'eng'} = 'cartographic image';
 $rda{'cri'}{'fin'} = 'kartografinen kuva';
+$rda{'cri'}{'swe'} = 'kartografisk bild';
+
+$rda{'crm'}{'eng'} = 'cartographic moving image';
 $rda{'crm'}{'fin'} = 'kartografinen liikkuva kuva';
+$rda{'crm'}{'swe'} = 'kartografisk rörlig bild';
+
+$rda{'crt'}{'eng'} = 'cartographic tactile image';
 $rda{'crt'}{'fin'} = 'katrografinen taktiili kuva';
+$rda{'crt'}{'swe'} = 'kartografisk taktil bild';
+
+$rda{'crn'}{'eng'} = 'cartographic tactile three-dimensional form';
 $rda{'crn'}{'fin'} = 'kartografinen taktiili kolmiulotteinen muoto';
+$rda{'crn'}{'swe'} = 'kartografisk taktil tredimensionell form';
+
+$rda{'crf'}{'eng'} = 'cartographic three-dimensional form';
 $rda{'crf'}{'fin'} = 'kartografinen kolmiulotteinen muoto'; # See above
+$rda{'crf'}{'swe'} = 'kartografisk tredimensionell form'; # vs "cartographic three-dimensional form"?!?
+
+$rda{'cod'}{'eng'} = 'computer dataset';
 $rda{'cod'}{'fin'} = 'digitaalinen data';
+$rda{'cod'}{'swe'} = 'digitalt dataset';
+
+
+$rda{'cop'}{'eng'} = 'computer program';
 $rda{'cop'}{'fin'} = 'tietokoneohjelma';
+$rda{'cop'}{'swe'} = 'datorprogram';
+
+$rda{'ntv'}{'eng'} = 'notated movement';
 $rda{'ntv'}{'fin'} = 'liikenotaatio';
+$rda{'ntv'}{'swe'} = 'rörelsenotation';
+
+$rda{'ntm'}{'eng'} = 'notated music';
 $rda{'ntm'}{'fin'} = 'nuottikirjoitus'; # ei "notatoitu musiikki"
+$rda{'ntm'}{'swe'} = 'noterad musik';
+
+$rda{'prm'}{'eng'} = 'performed music';
 $rda{'prm'}{'fin'} = 'esitetty musiikki';
+$rda{'prm'}{'swe'} = 'framförd musik';
+
+$rda{'snd'}{'eng'} = 'sounds';
 $rda{'snd'}{'fin'} = 'ääni';
+$rda{'snd'}{'swe'} = 'ljud';
+$rda{'snd'}{'ger'} = 'Geräusche';
+
+$rda{'spw'}{'eng'} = 'spoken word';
 $rda{'spw'}{'fin'} = 'puhe';
+$rda{'spw'}{'swe'} = 'tal';
+$rda{'spw'}{'ger'} = 'gesprochenes Wort';
+
+$rda{'sti'}{'eng'} = 'still image';
 $rda{'sti'}{'fin'} = 'stillkuva';
+$rda{'sti'}{'swe'} = 'stillbild';
+$rda{'sti'}{'ger'} = "unbewegtes Bild";
+
+$rda{'tci'}{'eng'} = 'tactile image';
 $rda{'tci'}{'fin'} = 'taktiili kuva';
+$rda{'tci'}{'swe'} = 'taktil bild';
+
+$rda{'tcm'}{'eng'} = 'tactile notated music';
 $rda{'tcm'}{'fin'} = 'taktiili nuottikirjoitus';
+$rda{'tcm'}{'swe'} = 'taktil musiknotation';
+
+$rda{'tcn'}{'eng'} = 'tactile notated movement';
 $rda{'tcn'}{'fin'} = 'taktiili liikenotaatio';
+$rda{'tcn'}{'swe'} = 'taktil noterad rörelse';
+
+$rda{'tct'}{'eng'} = 'tactile text';
 $rda{'tct'}{'fin'} = 'taktiili teksti';
+$rda{'tct'}{'swe'} = 'taktil text';
+$rda{'tct'}{'fre'} = "texte tactile";
+
+$rda{'tcf'}{'eng'} = 'tactile three-dimensional form';
 $rda{'tcf'}{'fin'} = 'taktiili kolmiulotteinen muoto';
+$rda{'tcf'}{'swe'} = 'taktil tredimensionell form';
+
+$rda{'txt'}{'eng'} = 'text';
 $rda{'txt'}{'fin'} = 'teksti';
+$rda{'txt'}{'swe'} = 'text';
+$rda{'txt'}{'ger'} = "Text";
+$rda{'txt'}{'fre'} = "texte";
+
+
+
+
+$rda{'tdf'}{'eng'} = 'three-dimensional form';
 $rda{'tdf'}{'fin'} = 'kolmiulotteinen muoto';
+$rda{'tdf'}{'swe'} = 'tredimensionell form';
+
+$rda{'tdm'}{'eng'} = 'three-dimensional moving image';
 $rda{'tdm'}{'fin'} = 'kolmiulotteinen liikkuva kuva';
+$rda{'tdm'}{'swe'} = 'tredimensionell rörlig bild';
+
+$rda{'tdi'}{'eng'} = 'two-dimensional moving image';
 $rda{'tdi'}{'fin'} = 'kaksiulotteinen liikkuva kuva';
+$rda{'tdi'}{'swe'} = 'tvådimensionell rörlig bild';
+
+$rda{'xxx'}{'eng'} = 'other';
 $rda{'xxx'}{'fin'} = 'muu';
+$rda{'xxx'}{'swe'} = 'annan';
+
+$rda{'zzz'}{'eng'} = 'unspecified';
 $rda{'zzz'}{'fin'} = 'määrittelemätön';
+$rda{'zzz'}{'swe'} = 'ospecificerad';
+
+# Above erronously has 'kartografinen kolmiulotteinen kuva' (should be ...muoto)
+
+
+
+
+
+
+
+
 
 
 # https://www.loc.gov/standards/valuelist/rdamedia.html
@@ -97,30 +166,48 @@ $rda{'zzz'}{'fin'} = 'määrittelemätön';
 $rda{'c'}{'eng'} = 'computer';
 $rda{'c'}{'fin'} = 'tietokonekäyttöinen';
 $rda{'c'}{'swe'} = 'dator';
+$rda{'c'}{'ger'} = 'Computermedien';
+
 $rda{'e'}{'eng'} = 'stereographic';
 $rda{'e'}{'fin'} = 'stereografinen';
 $rda{'e'}{'swe'} = 'stereografisk';
+$rda{'e'}{'ger'} = 'stereografisch';
+
 $rda{'g'}{'eng'} = 'projected';
 $rda{'g'}{'fin'} = 'heijastettava';
 $rda{'g'}{'swe'} = 'projicerad';
+$rda{'g'}{'ger'} = 'projizierbar';
+
 $rda{'h'}{'eng'} = 'microform';
 $rda{'h'}{'fin'} = 'mikromuoto';
 $rda{'h'}{'swe'} = 'mikroform';
+$rda{'h'}{'ger'} = 'Mikroform';
+
 $rda{'n'}{'swe'} = 'omedierad';
 $rda{'n'}{'fin'} = 'käytettävissä ilman laitetta';
 $rda{'n'}{'eng'} = 'unmediated';
+$rda{'n'}{'ger'} = "ohne Hilfsmittel zu benutzen";
+
+
 $rda{'p'}{'eng'} = 'microscopic';
 $rda{'p'}{'fin'} = 'mikroskooppinen';
 $rda{'p'}{'swe'} = 'mikroskopisk';
+$rda{'p'}{'ger'} = 'mikroskopisch';
+
 $rda{'s'}{'eng'} = 'audio';
 $rda{'s'}{'fin'} = 'audio';
 $rda{'s'}{'swe'} = 'audio';
+$rda{'s'}{'ger'} = 'audio';
+
 $rda{'v'}{'eng'} = 'video';
 $rda{'v'}{'fin'} = 'video';
 $rda{'v'}{'swe'} = 'video';
+$rda{'v'}{'ger'} = 'video';
+
 $rda{'x'}{'eng'} = 'other';
 $rda{'x'}{'fin'} = 'muu';
 $rda{'x'}{'swe'} = 'annan';
+
 $rda{'z'}{'eng'} = 'unspecified';
 $rda{'z'}{'fin'} = 'määrittelemätön';
 $rda{'z'}{'swe'} = 'ospecificerad';
@@ -132,39 +219,70 @@ $rda{'z'}{'swe'} = 'ospecificerad';
 
 
 
-## 338 (extremely incomplete):
-# Äänitallenteet:
+## 338 (English version *should* be complete):
+# Swedish translations taken from MTS
+
+
 $rda{'ca'}{'eng'} = 'computer tape cartridge';
 $rda{'ca'}{'fin'} = 'tietonauhan silmukkakasetti';
+$rda{'ca'}{'swe'} = 'datorbandmagasin';
+
 $rda{'cb'}{'eng'} = 'computer cartridge';
 $rda{'cb'}{'fin'} = 'piirikotelo';
+$rda{'cb'}{'swe'} = 'datorminnesmodul';
+
 $rda{'cd'}{'eng'} = 'computer disc';
 $rda{'cd'}{'fin'} = 'tietolevy';
 $rda{'cd'}{'swe'} = 'datorskiva';
+
 $rda{'ce'}{'eng'} = 'computer disc cartridge';
 $rda{'ce'}{'fin'} = 'tietolevykotelo';
+$rda{'ce'}{'swe'} = 'datorskivmagasin';
+
 $rda{'cf'}{'eng'} = 'computer tape cassette';
 $rda{'cf'}{'fin'} = 'tietokasetti';
+$rda{'cf'}{'swe'} = 'datorkassett';
+
 $rda{'ch'}{'eng'} = 'computer tape reel';
 $rda{'ch'}{'fin'} = 'tietonauhakela';
+$rda{'ch'}{'swe'} = 'datorbandspole';
+
 $rda{'ck'}{'eng'} = 'computer card';
+$rda{'ck'}{'fin'} = 'muistikortti';
+$rda{'ck'}{'swe'} = 'minneskort';
+
 $rda{'cr'}{'eng'} = 'online resource';
 $rda{'cr'}{'fin'} = 'verkkoaineisto';
+$rda{'cr'}{'swe'} = 'onlineresurs';
 
+
+$rda{'cz'}{'eng'} = 'other';
 $rda{'cz'}{'fin'} = 'muu';
+$rda{'cz'}{'swe'} = 'annan';
 
 $rda{'eh'}{'eng'} = 'stereograph card';
 $rda{'eh'}{'fin'} = 'stereografinen kortti';
+$rda{'eh'}{'swe'} = 'stereografiskt kort';
+
 $rda{'es'}{'eng'} = 'stereograph disc';
 $rda{'es'}{'fin'} = 'stereografinen levy';
+$rda{'es'}{'swe'} = 'stereografisk skiva';
+
+$rda{'ez'}{'eng'} = 'other';
 $rda{'ez'}{'fin'} = 'muu';
+$rda{'ez'}{'swe'} = 'annan';
 
 $rda{'gc'}{'eng'} = 'filmstrip cartridge';
+$rda{'gc'}{'fin'} = 'rainakasetti';
+$rda{'gc'}{'swe'} = 'bildbandsmagasin';
+
 $rda{'gd'}{'eng'} = 'filmslip';
-$rda{'gd'}{'eng'} = 'filmiliuska';
+$rda{'gd'}{'fin'} = 'filmiliuska';
+$rda{'gd'}{'swe'} = 'filmremsa';
 
 $rda{'gf'}{'eng'} = 'filmstrip';
 $rda{'gf'}{'fin'} = 'raina';
+$rda{'gf'}{'swe'} = 'bildband';
 
 $rda{'gs'}{'eng'} = 'slide';
 $rda{'gs'}{'fin'} = 'dia';
@@ -180,43 +298,63 @@ $rda{'ha'}{'swe'} = 'fönsterkort';
 
 $rda{'hb'}{'eng'} = 'microfilm cartridge';
 $rda{'hb'}{'fin'} = 'mikrofilmisilmukkakasetti';
+$rda{'hb'}{'swe'} = 'mikrofilmsmagasin';
 
-$rda{'hc'}{'eng'} = 'microfilm';
+$rda{'hc'}{'eng'} = 'microfilm cassette';
 $rda{'hc'}{'fin'} = 'mikrofilmikasetti';
+$rda{'hc'}{'swe'} = 'mikrofilmskassett';
 
 $rda{'hd'}{'eng'} = 'microfilm reel';
 $rda{'hd'}{'fin'} = 'mikrofilmikela';
+$rda{'hd'}{'swe'} = 'mikrofilmsspole';
 
 $rda{'he'}{'eng'} = 'microfiche';
 $rda{'he'}{'fin'} = 'mikrokortti';
-$rda{'he'}{'swe'} = 'mikrokort';
+$rda{'he'}{'swe'} = 'mikrofiche';
 
 $rda{'hf'}{'eng'} = 'microfiche cassette';
 $rda{'hf'}{'fin'} = 'mikrokorttikasetti';
+$rda{'hf'}{'swe'} = 'mikrofichekassett';
 
 $rda{'hg'}{'eng'} = 'microopaque';
 $rda{'hg'}{'fin'} = 'mikrokortti (läpinäkymätön)';
+$rda{'hg'}{'swe'} = 'mikrofiche (ogenomskinlig)';
 
 $rda{'hh'}{'eng'} = 'microfilm slip';
 $rda{'hh'}{'fin'} = 'mikrofilmiliuska';
+$rda{'hh'}{'swe'} = 'mikrofilmsremsa';
 
 $rda{'hj'}{'eng'} = 'microfilm roll';
 $rda{'hj'}{'fin'} = 'mikrofilmirulla';
+$rda{'hj'}{'swe'} = 'mikrofilmsrulle';
 
+$rda{'hz'}{'eng'} = 'other';
 $rda{'hz'}{'fin'} = 'muu';
+$rda{'hz'}{'swe'} = 'annan';
 
 $rda{'mc'}{'eng'} = 'film cartridge';
 $rda{'mc'}{'fin'} = 'filmisilmukkakasetti';
+$rda{'mc'}{'swe'} = 'filmmagasin';
+
 $rda{'mf'}{'eng'} = 'film cassette';
 $rda{'mf'}{'fin'} = 'filmikasetti';
+$rda{'mf'}{'swe'} = 'filmkassett';
+
 $rda{'mo'}{'eng'} = 'film roll';
 $rda{'mo'}{'fin'} = 'filmirulla';
+$rda{'mo'}{'swe'} = 'filmrulle';
+
 $rda{'mr'}{'eng'} = 'film reel';
 $rda{'mr'}{'fin'} = 'filmikela';
+$rda{'mr'}{'swe'} = 'filmspole';
+
+$rda{'mz'}{'eng'} = 'other';
 $rda{'mz'}{'fin'} = 'muu';
+$rda{'mz'}{'swe'} = 'annan';
 
 $rda{'na'}{'eng'} = 'roll';
 $rda{'na'}{'fin'} = 'rulla';
+$rda{'na'}{'swe'} = 'rulle';
 
 $rda{'nb'}{'eng'} = 'sheet';
 $rda{'nb'}{'fin'} = 'arkki';
@@ -224,9 +362,11 @@ $rda{'nb'}{'swe'} = 'ark';
 
 $rda{'nc'}{'eng'} = 'volume';
 $rda{'nc'}{'fin'} = 'nide';
+$rda{'nc'}{'swe'} = 'volym';
 
 $rda{'nn'}{'eng'} = 'flipchart';
 $rda{'nn'}{'fin'} = 'lehtiötaulu';
+$rda{'nn'}{'swe'} = 'blädderblock';
 
 $rda{'no'}{'eng'} = 'card';
 $rda{'no'}{'fin'} = 'kortti';
@@ -234,22 +374,46 @@ $rda{'no'}{'swe'} = 'bildkort';
 
 $rda{'nr'}{'eng'} = 'object';
 $rda{'nr'}{'fin'} = 'objekti';
+$rda{'nr'}{'swe'} = 'föremål';
 
+$rda{'nz'}{'eng'} = 'other';
 $rda{'nz'}{'fin'} = 'muu';
-$rda{'nz'}{'övrig'} = 'annan';
+$rda{'nz'}{'swe'} = 'annan';
 
 $rda{'pp'}{'eng'} = 'microscope slide';
 $rda{'pp'}{'fin'} = 'preparaattilasi';
+$rda{'pp'}{'swe'} = 'mikroskoperingspreparat';
+    
+$rda{'pz'}{'eng'} = 'other';
 $rda{'pz'}{'fin'} = 'muu';
+$rda{'pz'}{'swe'} = 'annan';
+
+$rda{'sb'}{'eng'} = 'audio belt'; # https://www.loc.gov/marc/mac/2019/2019-ft01.html we have none
+$rda{'sb'}{'fin'} = 'äänihihna';
+$rda{'sb'}{'swe'} = 'ljudslinga';
+
+
 
 $rda{'sd'}{'eng'} = 'audio disc';
 $rda{'sd'}{'fin'} = 'äänilevy';
 $rda{'sd'}{'swe'} = 'ljudskiva';
 
-$rda{'sg'}{'eng'} = 'audio cylinder';
+$rda{'se'}{'eng'} = 'audio cylinder';
+$rda{'se'}{'fin'} = 'äänisylinteri';
+$rda{'se'}{'swe'} = 'ljudcylinder';
+
 $rda{'sg'}{'eng'} = 'audio cartridge';
+$rda{'sg'}{'fin'} = 'äänisilmukkakasetti';
+$rda{'sg'}{'swe'} = 'ljudmagasin';
+
 $rda{'si'}{'eng'} = 'sound-track reel';
+$rda{'si'}{'fin'} = 'ääniraitakela';
+$rda{'si'}{'swe'} = 'filmljudspole';
+
 $rda{'sq'}{'eng'} = 'audio roll';
+$rda{'sq'}{'fin'} = 'äänirulla';
+$rda{'sq'}{'swe'} = 'ljudrulle';
+
 $rda{'ss'}{'eng'} = 'audiocassette';
 $rda{'ss'}{'fin'} = 'äänikasetti';
 $rda{'ss'}{'swe'} = 'ljudkassett';
@@ -258,60 +422,47 @@ $rda{'st'}{'eng'} = 'audiotape reel';
 $rda{'st'}{'fin'} = 'äänikela';
 $rda{'st'}{'swe'} = 'ljudspole';
 
+$rda{'sw'}{'eng'} = 'audio wire reel';
+$rda{'sw'}{'fin'} = 'äänilankakela';
+$rda{'sw'}{'swe'} = 'ljudtråd';
+
+$rda{'sz'}{'eng'} = 'other';
 $rda{'sz'}{'fin'} = 'muu';
+$rda{'sz'}{'swe'} = 'annan';
+
 $rda{'vc'}{'eng'} = 'video cartridge';
 $rda{'vc'}{'fin'} = 'videosilmukkakasetti';
+$rda{'vc'}{'swe'} = 'videomagasin';
+
 $rda{'vd'}{'eng'} = 'videodisc';
-$rda{'vd'}{'fin'} = 'videolevy';
+$rda{'vd'}{'fin'} = 'videolevy';;
 $rda{'vd'}{'swe'} = 'videoskiva';
 
-$rda{'vf'}{'eng'} = 'video cassette';
+$rda{'vf'}{'eng'} = 'videocassette';
 $rda{'vf'}{'fin'} = 'videokasetti';
+$rda{'vf'}{'swe'} = 'videokassett';
+
 $rda{'vr'}{'eng'} = 'videotape reel';
 $rda{'vr'}{'fin'} = 'videokela';
+$rda{'vr'}{'swe'} = 'videospole';
+
 $rda{'vz'}{'eng'} = 'other';
 $rda{'vz'}{'fin'} = 'muu';
+$rda{'vz'}{'swe'} = 'annan';
 
 $rda{'zu'}{'eng'} = 'unspecified';
-$rda{'zu'}{'fin'} = 'muu';
-
-
-# Compare Finnish and Swedish terms in MTS
-$rda{'crd'}{'swe'} = 'kartografisk data';
-$rda{'cri'}{'swe'} = 'kartografisk bild';
-$rda{'crm'}{'swe'} = 'kartografisk rörlig bild';
-$rda{'crt'}{'swe'} = 'kartografisk taktil bild';
-$rda{'crn'}{'swe'} = 'kartografisk taktil tredimensionell form';
-$rda{'crf'}{'swe'} = 'kartografisk tredimensionell form'; # vs "cartographic three-dimensional form"?!?
-$rda{'cod'}{'swe'} = 'digitalt dataset';
-$rda{'cop'}{'swe'} = 'datorprogram';
-$rda{'ntv'}{'swe'} = 'rörelsenotation';
-$rda{'ntm'}{'swe'} = 'noterad musik';
-$rda{'prm'}{'swe'} = 'framförd musik';
-$rda{'snd'}{'swe'} = 'ljud';
-$rda{'spw'}{'swe'} = 'tal';
-$rda{'sti'}{'swe'} = 'stillbild';
-$rda{'tci'}{'swe'} = 'taktil bild';
-$rda{'tcm'}{'swe'} = 'taktil musiknotation';
-$rda{'tcn'}{'swe'} = 'taktil noterad rörelse';
-$rda{'tct'}{'swe'} = 'taktil text';
-$rda{'tcf'}{'swe'} = 'taktil tredimensionell form';
-$rda{'txt'}{'swe'} = 'text';
-$rda{'tdf'}{'swe'} = 'tredimensionell form';
-$rda{'tdm'}{'swe'} = 'tredimensionell rörlig bild';
-$rda{'tdi'}{'swe'} = 'tvådimensionell rörlig bild';
-$rda{'xxx'}{'swe'} = 'annan';
-$rda{'zzz'}{'swe'} = 'ospecificerad';
+$rda{'zu'}{'fin'} = 'määrittelemätön';
+$rda{'zu'}{'swe'} = 'ospecificerad';
 
 
 
 
-# Common picks from other languages:
-$rda{'sti'}{'ger'} = "unbewegtes Bild";
-$rda{'txt'}{'ger'} = "Text";
 
-$rda{'txt'}{'n'} = "ohne Hilfsmittel zu benutzen";
-$rda{'txt'}{'s'} = "Geräusche";
+
+
+
+
+
 
 # Contain isbn values
 my %isbn2rda;
@@ -462,25 +613,59 @@ sub create_tbl_file_contents($$$){
 }
 
 
-# Two first lines are code
-if ( $target_subfield_code eq 'a' ) {
-    print "Term-to-term mappings for ${target_tag}\$$target_subfield_code: any-language (ISBD and RDA) terms to $target_language terms\n";
+if ( 0 ) {
+    # Two first lines are code
+    if ( $target_subfield_code eq 'a' ) {
+	print "Term-to-term mappings for ${target_tag}\$$target_subfield_code: any-language (ISBD and RDA) terms to $target_language terms\n";
+    }
+    else {
+	print "Mappings for ${target_tag}\$$target_subfield_code any-language (ISBD and RDA) to corresponding RDA code\n";    
+    }
+    
+    my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
+    $year += 1900;
+    if ( length($mon) == 1 ) { $mon = "0$mon"; }
+    if ( length($mday) == 1 ) { $mday = "0$mday"; }
+    #if ( length($hour) == 1 ) { $min = "0$hour"; }
+    if ( length($min) == 1 ) { $min = "0$min"; }
+    if ( length($sec) == 1 ) { $sec = "0$sec"; }
+    
+    print "Autogenerated file using $0, $year-$mon-$mday $hour:$min:$sec\n\n";
+    
+    
+    &create_tbl_file_contents($target_language, $target_tag, $target_subfield_code);
 }
 else {
-    print "Mappings for ${target_tag}\$$target_subfield_code any-language (ISBD and RDA) to corresponding RDA code\n";    
+    my @array = ();
+    if ( $target_tag eq '336' ) {
+	@array = @rdacontent_types;
+    }
+    elsif ( $target_tag eq '337' ) {
+	@array = @rdamedia_types;
+    }
+    elsif ( $target_tag eq '338' ) {
+	@array = @rdacarrier_types;
+    }
+    if ( scalar(@array) == 0 ) { die(); }
+
+    print "[\n";
+    for ( my $i=0; $i < scalar(@array); $i++ ) {
+	my $type = $array[$i];
+	print "  {\"code\": \"$type\"";
+	foreach my $language ( @languages ) {
+	    if ( defined($rda{$type}{$language}) ) {
+		my $val = $rda{$type}{$language};
+		print ", \"$language\": \"$val\"";
+	    }
+	}
+	print "  }";
+	if ( $i+1 < scalar(@array) ) {
+	    print ",";
+	}
+	print "\n";
+    }
+    print "]\n";
+
 }
-
-my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
-$year += 1900;
-if ( length($mon) == 1 ) { $mon = "0$mon"; }
-if ( length($mday) == 1 ) { $mday = "0$mday"; }
-#if ( length($hour) == 1 ) { $min = "0$hour"; }
-if ( length($min) == 1 ) { $min = "0$min"; }
-if ( length($sec) == 1 ) { $sec = "0$sec"; }
-
-print "Autogenerated file using $0, $year-$mon-$mday $hour:$min:$sec\n\n";
-    
-
-&create_tbl_file_contents($target_language, $target_tag, $target_subfield_code);
     
 
