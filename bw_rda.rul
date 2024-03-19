@@ -989,7 +989,7 @@ C05   | 505(newest)   | S; If (RegFind('[\\.\\)!]\$') < 0) S + '.'
 599   | <DEL   | S
 
 600I1 | 600I1  | S
-600I2 | 600I2  | If Exists ($x) Or Exists ($2) Then S Else '4'
+600I2 | 600I2  | If (Exists ($x)) Or (Exists ($2)) Or (I2='0') Then S Else '4'
 600   | 600    | S;
                  RegReplace('$5[^$]*', '')
 
