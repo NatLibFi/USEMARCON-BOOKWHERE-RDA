@@ -3,7 +3,7 @@
 use strict; 
 
 sub usage() { # TODO: 338
-    print STDERR "Usage: $0 (fin|swe|eng) (336|337) (a|b)\n\nExample: $0 fin 336 a\n";
+    print STDERR "Usage: $0 (fin|swe|eng) (336|337|338) (a2a|a2b|b2a)\n\nExample: $0 fin 336 a2a\n";
     exit(-1);
 }
 
@@ -12,13 +12,13 @@ if ( scalar(@ARGV) != 3 ) {
     &usage();
 }
 
-my ( $target_language, $target_tag, $target_subfield_code ) = @ARGV;
+my ( $target_language, $target_tag, $target_subfield_codes ) = @ARGV;
 
-if ( $target_subfield_code !~ /^(a|b)$/ ) { &usage(); }
+if ( $target_subfield_codes !~ /^(a2a|a2b|b2a)$/ ) { &usage(); }
 
 
 # $b is same for all languages, so no need to check it...
-if ( $target_subfield_code ne 'b' && $target_language !~ /^(eng|fin|swe)$/ ) {
+if ( $target_subfield_codes ne "a2b" && $target_language !~ /^(eng|fin|swe)$/ ) {
     print STDERR "ERROR\tUnsupported language!\n\n";
     &usage();
 }
@@ -125,7 +125,7 @@ $rda{'txt'}{'fin'} = 'teksti';
 $rda{'txt'}{'swe'} = 'text';
 $rda{'txt'}{'ger'} = "Text";
 $rda{'txt'}{'fre'} = "texte";
-
+$rda{'txt'}{'rus'} = 'текст': # Does not work in usemarcon rules
 
 
 
@@ -187,7 +187,7 @@ $rda{'n'}{'swe'} = 'omedierad';
 $rda{'n'}{'fin'} = 'käytettävissä ilman laitetta';
 $rda{'n'}{'eng'} = 'unmediated';
 $rda{'n'}{'ger'} = "ohne Hilfsmittel zu benutzen";
-
+$rda{'n'}{'rus'} = 'неопосредованный'; # won't work in usemarcon rules
 
 $rda{'p'}{'eng'} = 'microscopic';
 $rda{'p'}{'fin'} = 'mikroskooppinen';
@@ -249,7 +249,8 @@ $rda{'ch'}{'swe'} = 'datorbandspole';
 
 $rda{'ck'}{'eng'} = 'computer card';
 $rda{'ck'}{'fin'} = 'muistikortti';
-$rda{'ck'}{'swe'} = 'minneskort';
+$rda{'ck'}{'swe'} = 'datorkort';
+#$rda{'ck'}{'swe'} = 'minneskort';
 
 $rda{'cr'}{'eng'} = 'online resource';
 $rda{'cr'}{'fin'} = 'verkkoaineisto';
@@ -363,6 +364,7 @@ $rda{'nb'}{'swe'} = 'ark';
 $rda{'nc'}{'eng'} = 'volume';
 $rda{'nc'}{'fin'} = 'nide';
 $rda{'nc'}{'swe'} = 'volym';
+$rda{'nc'}{'rus'} = 'том'; # won't work in usemarcon rules
 
 $rda{'nn'}{'eng'} = 'flipchart';
 $rda{'nn'}{'fin'} = 'lehtiötaulu';
@@ -370,7 +372,7 @@ $rda{'nn'}{'swe'} = 'blädderblock';
 
 $rda{'no'}{'eng'} = 'card';
 $rda{'no'}{'fin'} = 'kortti';
-$rda{'no'}{'swe'} = 'bildkort';
+$rda{'no'}{'swe'} = 'kort';
 
 $rda{'nr'}{'eng'} = 'object';
 $rda{'nr'}{'fin'} = 'objekti';
@@ -519,11 +521,12 @@ sub normalize_term($) {
 }
 
 sub map_a2a_or_b($$$$) {
-    my ( $from_language, $to_language, $tag, $subfield_code ) = @_;
+    my ( $from_language, $to_language, $tag, $subfield_codes ) = @_;
     my $val = '';
     my @arr;
     if ( $tag eq '336' ) { @arr = @rdacontent_types; }
     elsif ( $tag eq '337' ) { @arr = @rdamedia_types; }
+    elsif ( $tag eq '338' ) { @arr = @rdacarrier_types; }
     else { die(); }
 
     
@@ -546,7 +549,7 @@ sub map_a2a_or_b($$$$) {
 	}
 
 
-	my $rhs = $subfield_code eq 'b' ? $normalized_code : &normalize_term($to_term);
+	my $rhs = $subfield_codes eq 'a2b' ? $normalized_code : &normalize_term($to_term);
 
 	$val .= &normalize_term($from_term)."\t| ".$rhs."\n";
     }
@@ -558,18 +561,32 @@ sub map_a2a_or_b($$$$) {
 
 
 sub create_tbl_file_contents($$$){
-    my ( $target_language, $tag, $subfield_code ) = @_;
+    my ( $target_language, $tag, $subfield_codes ) = @_;
     my @rda_types;
     if ( $tag eq '336' ) { @rda_types = @rdacontent_types; }
     elsif ( $tag eq '337' ) { @rda_types = @rdamedia_types; }
+    elsif ( $tag eq '338' ) { @rda_types = @rdacarrier_types; }
     else { die(); }
     
     my %mappings;
 
+
+
+    
     # Map ISBD/RDA term to RDA term (33X$a) or code (33X$b)
     my $sets = '';
-    foreach my $from_language ( @languages ) {
-	$sets .= &map_a2a_or_b($from_language, $target_language, $tag, $subfield_code);
+    if ( $subfield_codes eq "b2a" ) {
+	foreach my $type ( @rda_types ) {
+	    if ( !defined($rda{$type}{$target_language}) ) { die(); }
+	    my $code = &normalize_term($type);
+	    my $value = &normalize_term($rda{$type}{$target_language});
+	    $sets .= "$code\t| $value\n";
+	}
+    }
+    else {
+	foreach my $from_language ( @languages ) {
+	    $sets .= &map_a2a_or_b($from_language, $target_language, $tag, $subfield_codes);
+	}
     }
     my @rows = split(/\n/, $sets);
     @rows = sort @rows;
@@ -586,23 +603,23 @@ sub create_tbl_file_contents($$$){
 
     
     for my $code ( @rda_types ) {
-	    # I'd like to sort them usin
-	    if ( $tag eq '336' && length($code) != 3 ) { next; }
-	    if ( $tag eq '337' && length($code) != 1 ) { next; }
-	    #print STDERR "CODE $code\n";
-	    my $isbn_terms = $isbn2rda{$code};
-	    if ( defined($isbn_terms) ) {
-		my $target_term = $rda{$code}{$target_language};
-		my $rhs = $subfield_code eq 'a' ? &normalize_term($target_term) : &normalize_term($code);
-		my @terms = split(/\|/, $isbn_terms);
-		foreach my $isbn_term ( @terms ) {
-		    my $lhs = &normalize_term($isbn_term);
-		    if ( defined($mappings{$lhs}) && $mappings{$lhs} ne $rhs ) {
-			die($isbn_term);
-		    }
-		    $mappings{$lhs} = $rhs;
+	if ( $tag eq '336' && length($code) != 3 ) { next; }
+	if ( $tag eq '337' && length($code) != 1 ) { next; }
+	if ( $tag eq '338' && length($code) != 2 ) { next; }
+	#print STDERR "CODE $code\n";
+	my $isbn_terms = $isbn2rda{$code};
+	if ( defined($isbn_terms) ) {
+	    my $target_term = $rda{$code}{$target_language};
+	    my $rhs = $subfield_codes eq 'a2a' ? &normalize_term($target_term) : &normalize_term($code);
+	    my @terms = split(/\|/, $isbn_terms);
+	    foreach my $isbn_term ( @terms ) {
+		my $lhs = &normalize_term($isbn_term);
+		if ( defined($mappings{$lhs}) && $mappings{$lhs} ne $rhs ) {
+		    die($isbn_term);
 		}
+		$mappings{$lhs} = $rhs;
 	    }
+	}
     }
 
     foreach my $key ( sort keys %mappings ) {
@@ -613,13 +630,19 @@ sub create_tbl_file_contents($$$){
 }
 
 
-if ( 0 ) {
+if ( 1 ) {
     # Two first lines are code
-    if ( $target_subfield_code eq 'a' ) {
-	print "Term-to-term mappings for ${target_tag}\$$target_subfield_code: any-language (ISBD and RDA) terms to $target_language terms\n";
+    if ( $target_subfield_codes eq 'a2a' ) {
+	print "Term-to-term mappings for ${target_tag}\$$target_subfield_codes: any-language (ISBD and RDA) terms to $target_language terms\n";
+    }
+    elsif ( $target_subfield_codes eq 'a2b' ) {
+	print "Mappings for ${target_tag}\$$target_subfield_codes any-language (ISBD and RDA) to corresponding RDA code\n";    
+    }
+    elsif ( $target_subfield_codes eq 'b2a' ) {
+	print "Mappings for ${target_tag}\$b code to target language \$a\n";
     }
     else {
-	print "Mappings for ${target_tag}\$$target_subfield_code any-language (ISBD and RDA) to corresponding RDA code\n";    
+	die();
     }
     
     my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
@@ -633,7 +656,7 @@ if ( 0 ) {
     print "Autogenerated file using $0, $year-$mon-$mday $hour:$min:$sec\n\n";
     
     
-    &create_tbl_file_contents($target_language, $target_tag, $target_subfield_code);
+    &create_tbl_file_contents($target_language, $target_tag, $target_subfield_codes);
 }
 else {
     my @array = ();
