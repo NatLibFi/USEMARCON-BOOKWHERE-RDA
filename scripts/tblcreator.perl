@@ -125,7 +125,7 @@ $rda{'txt'}{'fin'} = 'teksti';
 $rda{'txt'}{'swe'} = 'text';
 $rda{'txt'}{'ger'} = "Text";
 $rda{'txt'}{'fre'} = "texte";
-$rda{'txt'}{'rus'} = 'текст': # Does not work in usemarcon rules
+$rda{'txt'}{'rus'} = 'текст'; # Does not work in usemarcon rules
 
 
 
