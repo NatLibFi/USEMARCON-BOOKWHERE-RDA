@@ -52,7 +52,7 @@ $rda{'crm'}{'fin'} = 'kartografinen liikkuva kuva';
 $rda{'crm'}{'swe'} = 'kartografisk rörlig bild';
 
 $rda{'crt'}{'eng'} = 'cartographic tactile image';
-$rda{'crt'}{'fin'} = 'katrografinen taktiili kuva';
+$rda{'crt'}{'fin'} = 'kartografinen taktiili kuva';
 $rda{'crt'}{'swe'} = 'kartografisk taktil bild';
 
 $rda{'crn'}{'eng'} = 'cartographic tactile three-dimensional form';
