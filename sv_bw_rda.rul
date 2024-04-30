@@ -362,15 +362,11 @@ G37$a           | 337(newest)$2   | 'rdamedia'
 //040$? | 040$?  | S
 040   | 040    | Sort('abed')
 
-#if (@008/36-38/ != '   ' and not Exists(@041))
-008        | 041I1  | '0'
-008        | 041I2  | ' '
-008/36-38/ | 041$a  | Table ('008-35-kielikoodit.tbl')
-#endif
+#include "add_missing_041.rul"
 
 041I1 | 041I1  | S
 041I2 | 041I2  | If (I2='9') Then ' ' Else S
-041$a | 041$a(no) | Sto(0); To(3); Table ('008-35-kielikoodit.tbl'); Redo; Mem(0); From(4)
+//041$a | 041$a(no) | Sto(0); To(3); Table ('008-35-kielikoodit.tbl'); Redo; Mem(0); From(4)
 041$? | 041$?  | S
 
 042I1 | <DELI1 | S
