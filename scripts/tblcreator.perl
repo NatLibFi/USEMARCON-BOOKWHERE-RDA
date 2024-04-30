@@ -2,7 +2,7 @@
 
 use strict; 
 
-sub usage() { # TODO: 338
+sub usage() {
     print STDERR "Usage: $0 (fin|swe|eng) (336|337|338) (a2a|a2b|b2a)\n\nExample: $0 fin 336 a2a\n";
     exit(-1);
 }
@@ -490,7 +490,7 @@ $isbn2rda{'tct'} = "Teksti (kosketeltava); Text (att vidra)";
 $isbn2rda{'tdf'} = "Esine|Esine (kolmiulotteinen)|Föremal|Föremål (tredimensionell)";
 $isbn2rda{'tdi'} = "Kuva (liikkuva ; kaksiulotteinen)|Bild (rörlig ; tvådimensionell)";
 $isbn2rda{'tdm'} = "Kuva (liikkuva ; kolmiulotteinen)|Bild (rörlig ; tredimensionell)";
-$isbn2rda{'txt'} = "Teksti|texte"; # Text is in German list: no need to add it here. ('texte': some language? add to $rda{'txt'}{$lang}...
+$isbn2rda{'txt'} = "Teksti|texte|Texto"; # Text is in German list: no need to add it here. ('texte': some language? add to $rda{'txt'}{$lang}...
 $isbn2rda{'zzz'} = 'Flera innehållstyper|Useita sisältötyyppejä|Määrittelemätön|Määrittelemätön sisältötyyppi|Obestämd innehållstyp|Ospecificerad innehållstyp';
 
 
@@ -575,7 +575,7 @@ sub create_tbl_file_contents($$$){
     
     # Map ISBD/RDA term to RDA term (33X$a) or code (33X$b)
     my $sets = '';
-    if ( $subfield_codes eq "b2a" ) {
+    if ( $subfield_codes eq 'b2a' ) {
 	foreach my $type ( @rda_types ) {
 	    if ( !defined($rda{$type}{$target_language}) ) { die(); }
 	    my $code = &normalize_term($type);
@@ -601,26 +601,29 @@ sub create_tbl_file_contents($$$){
 	$mappings{$from} = $to;
     }
 
-    
-    for my $code ( @rda_types ) {
-	if ( $tag eq '336' && length($code) != 3 ) { next; }
-	if ( $tag eq '337' && length($code) != 1 ) { next; }
-	if ( $tag eq '338' && length($code) != 2 ) { next; }
-	#print STDERR "CODE $code\n";
-	my $isbn_terms = $isbn2rda{$code};
-	if ( defined($isbn_terms) ) {
-	    my $target_term = $rda{$code}{$target_language};
-	    my $rhs = $subfield_codes eq 'a2a' ? &normalize_term($target_term) : &normalize_term($code);
-	    my @terms = split(/\|/, $isbn_terms);
-	    foreach my $isbn_term ( @terms ) {
-		my $lhs = &normalize_term($isbn_term);
-		if ( defined($mappings{$lhs}) && $mappings{$lhs} ne $rhs ) {
-		    die($isbn_term);
+
+    if ( $subfield_codes ne 'b2a' ) {
+	for my $code ( @rda_types ) {
+	    if ( $tag eq '336' && length($code) != 3 ) { next; }
+	    if ( $tag eq '337' && length($code) != 1 ) { next; }
+	    if ( $tag eq '338' && length($code) != 2 ) { next; }
+	    #print STDERR "CODE $code\n";
+	    my $isbn_terms = $isbn2rda{$code};
+	    if ( defined($isbn_terms) ) {
+		my $target_term = $rda{$code}{$target_language};
+		my $rhs = $subfield_codes eq 'a2a' ? &normalize_term($target_term) : &normalize_term($code);
+		my @terms = split(/\|/, $isbn_terms);
+		foreach my $isbn_term ( @terms ) {
+		    my $lhs = &normalize_term($isbn_term);
+		    if ( defined($mappings{$lhs}) && $mappings{$lhs} ne $rhs ) {
+			die($isbn_term);
+		    }
+		    $mappings{$lhs} = $rhs;
 		}
-		$mappings{$lhs} = $rhs;
 	    }
 	}
     }
+    
 
     foreach my $key ( sort keys %mappings ) {
 	print $key, "\t| ", $mappings{$key}, "\n";
@@ -639,7 +642,7 @@ if ( 1 ) {
 	print "Mappings for ${target_tag}\$$target_subfield_codes any-language (ISBD and RDA) to corresponding RDA code\n";    
     }
     elsif ( $target_subfield_codes eq 'b2a' ) {
-	print "Mappings for ${target_tag}\$b code to target language \$a\n";
+	print "Mappings for ${target_tag}\$b code to target language ($target_language) \$a\n";
     }
     else {
 	die();
@@ -670,25 +673,82 @@ else {
 	@array = @rdacarrier_types;
     }
     if ( scalar(@array) == 0 ) { die(); }
+	
+    # b2a (language independent:
+    if ( $target_subfield_codes eq 'b2a' ) {
+	print "[\n";
+	for ( my $i=0; $i < scalar(@array); $i++ ) {
+	    my $type = $array[$i];
+	    print "  {\"code\": \"$type\"";
+	    foreach my $language ( @languages ) {
+		if ( defined($rda{$type}{$language}) ) {
+		    my $val = $rda{$type}{$language};
+		    print ", \"$language\": \"$val\"";
+		}
+	    }
+	    print "  }";
+	    if ( $i+1 < scalar(@array) ) {
+		print ",";
+	    }
+	    print "\n";
+	}
+	print "]\n";
+    }
+    elsif ( $target_subfield_codes eq 'a2a' ) {
+	die();
+    }
+    elsif ( $target_subfield_codes eq 'a2b' ) {
 
-    print "[\n";
-    for ( my $i=0; $i < scalar(@array); $i++ ) {
-	my $type = $array[$i];
-	print "  {\"code\": \"$type\"";
-	foreach my $language ( @languages ) {
-	    if ( defined($rda{$type}{$language}) ) {
-		my $val = $rda{$type}{$language};
-		print ", \"$language\": \"$val\"";
+	my %seen;
+	for ( my $i=0; $i < scalar(@array); $i++ ) {
+	    my $type = $array[$i];
+	    
+	    foreach my $language ( @languages ) {
+		if ( defined($rda{$type}{$language}) ) {
+		    my $val = $rda{$type}{$language};
+		    if ( $target_tag eq '338' && $val =~ /^(annan|muu|other)$/ ) {
+			# cz vs ez vs...
+		    }
+		    elsif ( !defined($seen{$val}) ) {
+			$seen{$val} = $type;
+		    }
+		    elsif ( $seen{$val} eq $type ) {}
+		    else { die("$val: '".$type."' vs '".$seen{$val}."'"); }
+		}
 	    }
 	}
-	print "  }";
-	if ( $i+1 < scalar(@array) ) {
-	    print ",";
-	}
-	print "\n";
-    }
-    print "]\n";
 
+	foreach my $key ( keys %isbn2rda ) {
+	    if ( ( $target_tag eq '336' && length($key) == 3 ) ||
+		 ( $target_tag eq '337' && length($key) == 1 ) ||
+		 ( $target_tag eq '338' && length($key) == 2 ) ) {
+		
+		my $valstr = $isbn2rda{$key};
+		my @vals = split(/\|/, $valstr);
+		foreach my $val ( @vals ) {
+		    if ( !defined($seen{$val}) ) {
+			$seen{$val} = $key;
+		    }
+		    elsif ( $seen{$val} eq $key ) {}
+		    else { die("$val: '".$key."' vs '".$seen{$val}."'"); }
+		}
+	    }
+	}
+	
+	print "[\n";
+	my @keys = sort keys %seen;
+	for ( my $i=0; $i < scalar(@keys); $i++ ) {
+	    my $key = $keys[$i];
+	    my $val = $seen{$key};
+	    print "  { \"$key\": \"$val\" }";
+	    if ( $i+1 < scalar(@keys) ) {
+		print ",";
+	    }
+	    print "\n";
+	}
+	print "]\n";
+	
+    }
 }
     
 
