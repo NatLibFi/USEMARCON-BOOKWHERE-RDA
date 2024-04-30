@@ -70,9 +70,13 @@
 
 003	| <DEL   | S
 
-#if (@007/1-2/ != 'tu')
-007        | 007        | S; RegReplace(' ', '|')
-#endif
+007     | 007    | S
+// Nvolk: Not sure what this rule below tried to do, so I commented it,
+// and replaced it with the rule above.
+// (I guess it tried to change 007/02 '#' => '|')
+//#if (@007/1-2/ != 'tu')
+//007        | 007        | S; RegReplace(' ', '|')
+//#endif
 
 008   | 008    | S
 008/16-18/ | 008/16-18/ | Table ('008-15-maakoodit.tbl')
@@ -358,21 +362,21 @@ G37$a           | 337(newest)$2   | 'rdamedia'
 000   | 040$b  | 'mul'
 #endif
 
-000   | 040$d  | ''
+// 000   | 040$d  | ''
 
 000   | 040$e  | 'rda'
 //040$? | 040$?  | S
-040   | 040    | Sort('abed')
+040   | 040    | Sort('86abecdx')
 
-#if (@008/36-38/ != '   ' and not Exists(@041))
-008        | 041I1  | '0'
-008        | 041I2  | ' '
-008/36-38/ | 041$a  | Table ('008-35-kielikoodit.tbl')
-#endif
+
+
+#include "add_missing_041.rul"
+
+
 
 041I1 | 041I1  | S
 041I2 | 041I2  | If (I2='9') Then ' ' Else S
-041$a | 041$a(no) | Sto(0); To(3); Table ('008-35-kielikoodit.tbl'); Redo; Mem(0); From(4)
+//041$a | 041$a(no) | Sto(0); To(3); Table ('008-35-kielikoodit.tbl'); Redo; Mem(0); From(4)
 041$? | 041$?  | S
 
 042I1 | <DELI1 | S
