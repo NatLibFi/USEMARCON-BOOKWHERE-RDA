@@ -102,12 +102,6 @@ A37$a           | 337(newest)$b   | Table('337_b.tbl')
 A37$a           | 337(newest)$2   | 'rdamedia'
 #endif
 
-#if ((@000/7/ = 'a' Or @000/7/ = 't') And (Not Exists(@245$h)) And Not Exists(@338))
-008/24/         | <A38$a          | Table('008-23-338a.tbl')
-A38$a           | 338(new)$a      | S
-A38$a           | 338(newest)$b   | Table('338_b.tbl')
-A38$a           | 338(newest)$2   | 'rdacarrier'
-#endif
 
 #if ((@000/7/ = 'a' Or @000/7/ = 't') And Exists(@245$h) And (Exists (@007)) And (Not Exists(@336)) And (RegFind(@245$h, '[Mm]ultimedia') <0))
 007/1/          | 007/1/          | S
@@ -143,11 +137,6 @@ B37$a           | 337(newest)$b   | Table ('337_b.tbl')
 B37$a           | 337(newest)$2   | 'rdamedia'
 #endif
 
-#if (@000/7/ = 'c' Or @000/7/ = 'd'  And Not Exists(@338))
-008/24/         | 338(new)$a      | 'nide'
-008/24/         | 338(newest)$b   | 'nc'
-008/24/         | 338(newest)$2   | 'rdacarrier'
-#endif
 
 // KARTTA-AINEISTO JA KARTTAKÄSIKIRJOITUS
 
@@ -218,7 +207,7 @@ E36$a           | 336(newest)$b   | Table ('336_b.tbl')
 E36$a           | 336(newest)$2   | 'rdacontent'
 
 007/1/          | 007/1/          | S
-007/1/          | <E37$a          | If (S = 's') Or (RegFind(@245$h, 'nite') >= 0) Then 'audio' Else 'tietokonekäyttöinen'
+007/1/          | <E37$a          | If (S = 's') Or (RegFind(@245$h, 'nite') >= 0) Then 'audio' Else 'tietokonekäyttöinen2'
 
 E37$a           | 337(new)$a      | S
 E37$a           | 337(newest)$b   | Table ('337_b.tbl')
@@ -614,219 +603,7 @@ T36   | <DEL  | S
 
 // LUODAAN 338-KENTÄT, JOS NIITÄ EI OLE TIETUEESSA VALMIINA
 
-// 338-kenttiä voi olla useampia esim. moniviestimissä. Samanmuotoiset kentät luovat säännöt on ryhmitelty peräkkäin.
-// Kahta samansisältöistä kenttää ei luoda missään tilanteessa.
-
-// NIDE
-
-#if (Not Exists(@338)) \
-  And (Not Exists(@773)) \
-  And ( ( @000/7/ = 'a' Or @000/7/ = 'c' Or @000/7/ = 'e' Or @000/7/ = 't') And \
-          ( \
-            ( (RegFind(@336(1)$a, 'eksti') >= 0) Or \
-              (RegFind(@336(2)$a, 'eksti') >= 0) Or \
-              (RegFind(@336(3)$a, 'eksti') >= 0) Or \
-              (RegFind(@336(4)$a, 'eksti') >= 0) Or \
-              (RegFind(@336$a, 'notatoitu') >= 0 ) ) And \
-            ( (RegFind(@337(1)$a, 'laitetta') >= 0) Or \
-              (RegFind(@337(2)$a, 'laitetta') >= 0) Or \
-              (RegFind(@337(3)$a, 'laitetta') >= 0) Or \
-              (RegFind(@337(4)$a, 'laitetta') >= 0) ) \
-          ) \
-        Or (RegFind(@300$a, '[Tt]ekstivihko|\\b[Kk]irja|[Kk]artasto') >= 0) \
-        Or (RegFind(%336$a, 'Kartografinen') >=0) )
-000 | 338(new)I1 | ' '
-000 | 338(newest)I2 | ' '
-000 | 338(newest)$a | 'nide'
-000 | 338(newest)$b | 'nc'
-000 | 338(newest)$2 | 'rdacarrier'
-#endif
-
-// VIDEOKASETTI
-
-#if (Not Exists(@338)) And If (RegFind(@300$a, '[Vv]ideokas') >= 0) And If (Not Exists(@773))
-000 | 338(new)I1 | ' '
-000 | 338(newest)I2 | ' '
-000 | 338(newest)$a | 'videokasetti'
-000 | 338(newest)$b | 'vf'
-000 | 338(newest)$2 | 'rdacarrier'
-#endif
-
-// PIIRTOHEITINKALVO
-
-#if (Not Exists(@338)) And If (RegFind(@300$a, '[Hh]eijastuskuva|[Kk]alvo') >= 0) And If (Not Exists(@773))
-000 | 338(new)I1 | ' '
-000 | 338(newest)I2 | ' '
-000 | 338(newest)$a | 'piirtoheitinkalvo'
-000 | 338(newest)$b | 'gt'
-000 | 338(newest)$2 | 'rdacarrier'
-#endif
-
-// DIA
-
-#if (Not Exists(@338)) \
-     And If ( (RegFind(@300$a, '[Kk]uultokuv|[Dd]iaa') >= 0) Or (RegFind(@245$h, '[Dd]ia') >= 0) ) \
-     And If (Not Exists(@773))
-000 | 338(new)I1 | ' '
-000 | 338(newest)I2 | ' '
-000 | 338(newest)$a | 'dia'
-000 | 338(newest)$b | 'gs'
-000 | 338(newest)$2 | 'rdacarrier'
-#endif
-
-// MIKROKORTTI
-
-#if (Not Exists(@338)) \
-    And ( \
-      (RegFind(@300$a, '[Mm]ikrokortti') >= 0) Or (RegFind(@500$a, 'filmikortt') >= 0) \
-        Or (007/1-2/ = 'hg') Or (007/1-2/ = 'he') \
-        Or (008/24/ = 'b') \
-        Or (008/24/ = 'c') \
-        ) \
-    And (Not (000/7/ = 'e') Or (000/7/ = 'f')) \
-    And (Not Exists(@773))
-000 | 338(new)I1 | ' '
-000 | 338(newest)I2 | ' '
-000 | 338(newest)$a | 'mikrokortti'
-000 | 338(newest)$b | 'he'
-000 | 338(newest)$2 | 'rdacarrier'
-#endif
-
-// KORTTI
-
-#if (Not Exists(@338)) And If (RegFind(@300$a, '\\b[Kk]ortti') >= 0) And If (Not Exists(@773))
-000 | 338(new)I1 | ' '
-000 | 338(newest)I2 | ' '
-000 | 338(newest)$a | 'kortti'
-000 | 338(newest)$b | 'no'
-000 | 338(newest)$2 | 'rdacarrier'
-#endif
-
-// ARKKI
-
-#if (Not Exists(@338)) \
-  And (Not Exists(@773)) \
-  And ( (RegFind(@300$a, '[Aa]rkki|1 kartta') >= 0) Or \
-        ( (RegFind(@336$a, 'kartograf') >= 0) And (RegFind(@337$a, 'laitetta') >= 0) ) )
-000 | 338(new)I1 | ' '
-000 | 338(newest)I2 | ' '
-000 | 338(newest)$a | 'arkki'
-000 | 338(newest)$b | 'nb'
-000 | 338(newest)$2 | 'rdacarrier'
-#endif
-
-// MIKROFILMIRULLA
-
-#if (Not Exists(@338)) \
-  And ( (RegFind(@300$a, '[Mm]ikrofilmi') >= 0) Or (007/1-2/ = 'hj') Or (008/24/ = 'a')) \
-  And (Not (000/7/ = 'e') Or (000/7/ = 'f')) \
-  And (Not Exists(@773))
-000 | 338(new)I1 | ' '
-000 | 338(newest)I2 | ' '
-000 | 338(newest)$a | 'mikrofilmirulla'
-000 | 338(newest)$b | 'hj'
-000 | 338(newest)$2 | 'rdacarrier'
-#endif
-
-// ÄÄNIKELA
-
-#if (Not Exists(@338)) And If (RegFind(@300$a, '[Ää]änikela') >= 0) And If (Not Exists(@773))
-000 | 338(new)I1 | ' '
-000 | 338(newest)I2 | ' '
-000 | 338(newest)$a | 'äänikela'
-000 | 338(newest)$b | 'st'
-000 | 338(newest)$2 | 'rdacarrier'
-#endif
-
-// MUU
-
-#if (Not Exists(@338)) And (Not Exists(@773)) \
-  And ( \
-    (RegFind(@300, '[Tt]aulu\\b|[Uu][Ss][Bb]-muisti|[Oo]ptinen levy|[Ll]evyke|[Dd]isketti|[Oo]petuskuva') >= 0) \
-    Or ( (RegFind(@337$a, 'useita v') >= 0) And (RegFind(@336$a, 'useita') >= 0) ) \
-   )
-000 | 338(new)I1 | ' '
-000 | 338(newest)I2 | ' '
-000 | 338(newest)$a | 'muu'
-000 | 338(newest)$b | 'nz'
-000 | 338(newest)$2 | 'rdacarrier'
-#endif
-
-// VERKKOAINEISTO
-
-#if (Not Exists(@338)) \
-  And (RegFind(@300$a, 'ROM') < 0) \
-  And ( \
-    (RegFind(@300$a, '[Vv]erkkojulkaisu|[Tt]iedosto') >= 0) \
-    Or (RegFind(@516$a, '[Vv]erkkoaineisto') >= 0) \
-    Or (RegFind(@500, '[Ii]nternet-julkaisu') >= 0) \
-    Or (RegFind(@538$a, '[Ii]nternet|[Ww][Ww][Ww]|selain|[Aa]dobe|[Vv]iewer') >= 0) \
-    Or (RegFind(@256$a, '[Vv]erkkoaineisto') >= 0) \
-    Or (RegFind(@245$h, 'electronic') >= 0) \
-    Or ( (RegFind(@300, '[Ii][Bb]ooks|[Ff][Ll][Aa][Cc]|[Hh][Tt][Mm][Ll]|online') >= 0) And (@008/24/ = 'o') ) \
-    Or (RegFind(@256, '[Vv]erkko|[Ss]uorakäyttöjärjestelmä') >= 0) \
-    Or (RegFind(@020, '[Pp][Dd][Ff]') >= 0) \
-    Or (RegFind(@336, 'eksti') >= 0) \
-  )
-000 | 338(new)I1 | ' '
-000 | 338(newest)I2 | ' '
-000 | 338(newest)$a | 'verkkoaineisto'
-000 | 338(newest)$b | 'cr'
-000 | 338(newest)$2 | 'rdacarrier'
-#endif
-
-// ÄÄNILEVY
-
-#if (Not Exists(@338)) \
-  And ( (RegFind(@300, '[Cc][Dd]-levy|(CD)(.*)nilevy|sound disc|audio disc|CD audio|compact disc') >= 0) ) \
-  And (Not Exists(@773))
-000 | 338(new)I1 | ' '
-000 | 338(newest)I2 | ' '
-000 | 338(newest)$a | 'äänilevy'
-000 | 338(newest)$b | 'sd'
-000 | 338(newest)$2 | 'rdacarrier'
-#endif
-
-// ÄÄNIKASETTI
-
-#if (Not Exists(@338)) \
-  And If ( \
-  (RegFind(@300$a, '[Cc]-kas') >= 0) \
-  Or (RegFind(@300$a, '[Dd][Aa][Tt]-kase|[Dd][Cc][Cc]-kas|nikas|kasettia') >= 0) \
-  Or (RegFind(@300$e, '[Dd][Aa][Tt]-kase|[Dd][Cc][Cc]-kas|nikas|kasettia') >= 0) \
-  ) \
-  And If (Not Exists(@773))
-000 | 338(new)I1 | ' '
-000 | 338(newest)I2 | ' '
-000 | 338(newest)$a | 'äänikasetti'
-000 | 338(newest)$b | 'ss'
-000 | 338(newest)$2 | 'rdacarrier'
-#endif
-
-// TIETOLEVY
-
-#if (RegFind(@300$a,  '[Rr][Oo][Mm]|[Bb]lu-') >= 0) \
-  And (Not Exists(@773)) \
-  And (Not Exists(@338)) \
-  And (InTable(@336$a, '336_a.tbl'))
-000 | 338(new)I1 | ' '
-000 | 338(newest)I2 | ' '
-000 | 338(newest)$a | 'tietolevy'
-000 | 338(newest)$b | 'cd'
-000 | 338(newest)$2 | 'rdacarrier'
-#endif
-
-// VIDEOLEVY
-
-#if (Not Exists(@338)) And If (RegFind(@300$a, '[Dd][Vv][Dd]-(levy|skiv)|[Vv]ideolevy|ideodisc|ideoskiv') >= 0) And If (Not Exists(@773))
-000 | 338(new)I1 | ' '
-000 | 338(newest)I2 | ' '
-000 | 338(newest)$a | 'videolevy'
-000 | 338(newest)$b | 'vd'
-000 | 338(newest)$2 | 'rdacarrier'
-#endif
-
-// 338-KENTTIEN LUOMINEN LOPPUU
+#include "arvaa338.rul"
 
 #if (Exists(@338))
 338I1 | 338I1 | S
