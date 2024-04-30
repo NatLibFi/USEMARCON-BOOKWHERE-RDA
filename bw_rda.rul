@@ -207,7 +207,8 @@ E36$a           | 336(newest)$b   | Table ('336_b.tbl')
 E36$a           | 336(newest)$2   | 'rdacontent'
 
 007/1/          | 007/1/          | S
-007/1/          | <E37$a          | If (S = 's') Or (RegFind(@245$h, 'nite') >= 0) Then 'audio' Else 'tietokonekäyttöinen2'
+// Default should be *audio*. Will fix this later!
+007/1/          | <E37$a          | If (S = 's') Or (RegFind(@245$h, 'nite') >= 0) Then 'audio' Else 'tietokonekäyttöinen'
 
 E37$a           | 337(new)$a      | S
 E37$a           | 337(newest)$b   | Table ('337_b.tbl')
