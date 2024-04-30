@@ -19,6 +19,7 @@ c a r t o g r a p h i c 0x20 t a c t i l e 0x20 t h r e e - d i m e n s i o n a 
 c a r t o g r a p h i c 0x20 t h r e e - d i m e n s i o n a l 0x20 f o r m 	| k a r t o g r a f i s k 0x20 t r e d i m e n s i o n e l l 0x20 f o r m
 c o m p u t e r 0x20 d a t a s e t 	| d i g i t a l t 0x20 d a t a s e t
 c o m p u t e r 0x20 p r o g r a m 	| d a t o r p r o g r a m 
+
 D a t a 	| d a t a 
 D a t a 0x20 ( k a r t o g r a f i n e n ) 	| k a r t o g r a f i s k 0x20 d a t a
 D a t a s e t ( k a r t o g r a f i s k t ) 	| k a r t o g r a f i s k 0x20 d a t a 
@@ -87,11 +88,7 @@ s o u n d s 	| l j u d
 s p o k e n 0x20 w o r d 	| t a l
 s t i l l 0x20 i m a g e 	| s t i l l b i l d 
 s t i l l k u v a 	| s t i l l b i l d 
-t a c t i l e 0x20 i m a g e 	| t a k t i l 0x20 b i l d
-t a c t i l e 0x20 n o t a t e d 0x20 m o v e m e n t 	| t a k t i l 0x20 r 0xc3 0xb6 r e l s e n o t a t i o n
-t a c t i l e 0x20 n o t a t e d 0x20 m u s i c 	| t a k t i l 0x20 m u s i k n o t a t i o n
-t a c t i l e 0x20 t e x t 	| t a k t i l 0x20 t e x t 
-t a c t i l e 0x20 t h r e e - d i m e n s i o n a l 0x20 f o r m 	| t a k t i l 0x20 t r e d i m e n s i o n e l l 0x20 f o r m 
+
 t a k t i i l i 0x20 k o l m i u l o t t e i n e n 0x20 m u o t o  | t a k t i l 0x20 t r e d i m e n s i o n e l l 0x20 f o r m
 t a k t i i l i 0x20 k u v a   | t a k t i l 0x20 b i l d
 t a k t i i l i 0x20 l i i k e n o t a a t i o 	| t a k t i l 0x20 r 0xc3 0xb6 r e l s e n o t a t i o n
