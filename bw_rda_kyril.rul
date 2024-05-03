@@ -60,58 +60,13 @@
 
 003	| <DEL   | S
 
-#if (@007/1-2/ != 'tu')
-007        | 007        | S; RegReplace(' ', '|')
-#endif
-
 008   | 008    | S
 008/16-18/ | 008/16-18/ | Table ('008-15-maakoodit.tbl')
 008/36-38/ | 008/36-38/ | Table ('008-35-kielikoodit.tbl')
 008/40/ | 008/40/ | 'c'
 
-// alkuperäinen 2.4.2019: alla olevista alkuperäisen konversion säännöt jätetty pois
-// 336- ja 337-kentät luodaan kiinteämittaisten kenttien ja yleismääreiden perusteella vain jos lähtötietueessa ei ole niitä. Jos on, ne käännetään alkuperäisistä.
 
-// TEKSTIAINEISTO JA TEKSTIKÄSIKIRJOITUS
 
-// NUOTTIJULKAISU JA NUOTTIKÄSIKIRJOITUS
-
-// KARTTA-AINEISTO JA KARTTAKÄSIKIRJOITUS
-
-// HEIJASTETTAVA KUVA TAI VIESTIN
-
-// PUHEÄÄNITE
-
-// MUSIIKKIÄÄNITE
-
-// KUVA
-
-// ELEKTRONINEN AINEISTO
-
-// MONIVIESTIN JA SEKALAINEN AINEISTO
-
-// ESINE
-
-// alkuperäinen loppuu
-// lisäys 2.4.2019
-
-245I1              | 336I1             | ' '
-245I2              | 336I2             | ' '
-245                | 336$a             | 'teksti'
-245                | 336$b             | 'txt'
-245                | 336$2             | 'rdacontent'
-
-245I1              | 337I1             | ' '
-245I2              | 337I2             | ' '
-245                | 337$a             | 'käytettävissä ilman laitetta'
-245                | 337$b             | 'n'
-245                | 337$2             | 'rdamedia'
-
-245I1              | 338I1             | ' '
-245I2              | 338I2             | ' '
-245                | 338$a             | 'nide'
-245                | 338$b             | 'nc'
-245                | 338$2             | 'rdacarrier'
 
 // lisäys päättyy
 
@@ -312,52 +267,8 @@
 110$b | 110$b  | S; Delete (';', At Ending)				 
 110$e | 110$e  | Table ('Funktiot.tbl')
 
-245I1 | 245I1  | If (Exists(@100) Or Exists(@110) Or Exists(@111) Or Exists(@130)) Then '1' Else '0'
-245I2 | 245I2  | S
 
-//// 245 punctuation. Modified by nvolk on 2021-09-15
-// Add ' :' between $a and $b
-#if (Exists(@245$a)) And (Exists(@245$b))
-245$a            | 245$a          | If (RegFind(S, ':\$' ) >= 0 ) S Else S + ' :'
-#endif
-// Add ' /' before $c if needed:
-#if (Exists(@245$c))
-245$b            | 245$b          | If (RegFind(S, '/\$' ) >= 0 ) S Else S + ' /'
-#endif
-#if (Exists(@245$c)) And (Not Exists(@245$b))
-245$a            | 245$a          | If (RegFind(S, '/\$') >= 0 ) S Else S + ' /'
-#endif
-
-// Add '.' after $c if needed:
-#if (Exists(@245$c))
-245$c            | 245$c          | if (RegFind(S, '[\\.]\S') >= 0 ) S Else S + '.'
-#endif
-
-
-245$h            | <DEL           | S
-//245$f            | 245$f          | S
-//245$g            | 245$g          | S
-//245$k            | 245$k          | S
-//245$n            | 245$n          | S
-//245$p            | 245$p          | S
-//245$6            | 245$6          | S
-//245$8            | 245$8          | S
-
-// lisäys loppuu
-// alkuperäinen 2.4.2019 LL
-// Aineiston yleismäärettä 245$h ei enää käytetä, sitä ei siis kopioida.
-// 245$a            | <F45$a          | If Exists(@245$h) And Not Exists(@245$b) Then S + ' /' Else S
-// 245$b            | <F45$b          | S
-// 245$c            | <F45$c          | S
-// 245$f            | <F45$f          | S
-// 245$g            | <F45$g          | S
-// 245$k            | <F45$k          | S
-// 245$n            | <F45$n          | S
-// 245$p            | <F45$p          | S
-// 245$6            | <F45$6          | S
-// 245$8            | <F45$8          | S
-// F45 | 245 | S
-// alkuperäinen loppuu
+#include "field245.rul"
 
 246I1            | 246I1           | S
 246I2            | 246I2           | S
@@ -460,10 +371,15 @@ K47 | 247 | S
 300$c            | <DEL           | S
 // lisäys loppuu
 
+#include "modify336.rul"
 
-#if Exists(@336$a)
-336$a | 336$a | If (RegFind(S, '^текст\$') >= 0 ) 'teksti' Else S
-#endif
+#include "arvaa336.rul"
+#include "arvaa337.rul"
+#include "arvaa338.rul"
+
+//#if Exists(@336$a)
+//336$a | 336$a | If (RegFind(S, '^текст\$') >= 0 ) 'teksti' Else S
+//#endif
 
 #if Exists(@337$a)
 337$a | 337$a | If (RegFind(S, '^неопосредованный\$') >= 0 ) 'käytettävissä ilman laitetta' Else S
