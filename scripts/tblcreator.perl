@@ -32,7 +32,7 @@ my @rdacontent_types = ( 'crd', 'cri', 'crm', 'crt', 'crn', 'crf', 'cod', 'cop',
 my @rdamedia_types = ('s', 'c', 'h', 'p', 'g', 'e', 'n', 'v', 'x', 'z');
 
 my @rdacarrier_types = ('ca', 'cb', 'cd', 'ce', 'cf', 'ch', 'ck', 'cr', 'cz', 'eh', 'es', 'ez', 'gc', 'gd', 'gf', 'gs', 'gt', 'ha', 'hb', 'hc', 'hd', 'he', 'hf', 'hg', 'hh', 'hj', 'hz', 'mc', 'mf', 'mo', 'mr', 'mz', 'na', 'nb', 'nc', 'nn', 'no', 'nr', 'nz', 'pp', 'pz', 'sb', 'sd', 'se', 'sg', 'si', 'sq', 'ss', 'st', 'sw', 'sz', 'vc', 'vd', 'vf', 'vr', 'vz', 'zu' );
-my @languages = ('fin', 'swe', 'eng', 'ger', 'fre');
+my @languages = ('fin', 'swe', 'eng', 'ger', 'fre', 'rus');
 for my $term ( @rdacontent_types ) {
     $rda{$term} = ();
 }
@@ -125,7 +125,7 @@ $rda{'txt'}{'fin'} = 'teksti';
 $rda{'txt'}{'swe'} = 'text';
 $rda{'txt'}{'ger'} = "Text";
 $rda{'txt'}{'fre'} = "texte";
-$rda{'txt'}{'rus'} = 'текст'; # Does not work in usemarcon rules
+$rda{'txt'}{'rus'} = 'текст';
 
 
 
@@ -187,7 +187,7 @@ $rda{'n'}{'swe'} = 'omedierad';
 $rda{'n'}{'fin'} = 'käytettävissä ilman laitetta';
 $rda{'n'}{'eng'} = 'unmediated';
 $rda{'n'}{'ger'} = "ohne Hilfsmittel zu benutzen";
-$rda{'n'}{'rus'} = 'неопосредованный'; # won't work in usemarcon rules
+#$rda{'n'}{'rus'} = 'неопосредованный'; # won't work in usemarcon rules
 
 $rda{'p'}{'eng'} = 'microscopic';
 $rda{'p'}{'fin'} = 'mikroskooppinen';
@@ -364,7 +364,7 @@ $rda{'nb'}{'swe'} = 'ark';
 $rda{'nc'}{'eng'} = 'volume';
 $rda{'nc'}{'fin'} = 'nide';
 $rda{'nc'}{'swe'} = 'volym';
-$rda{'nc'}{'rus'} = 'том'; # won't work in usemarcon rules
+#$rda{'nc'}{'rus'} = 'том'; # won't work in usemarcon rules
 
 $rda{'nn'}{'eng'} = 'flipchart';
 $rda{'nn'}{'fin'} = 'lehtiötaulu';
@@ -511,6 +511,13 @@ sub normalize_term($) {
     $term =~ s/Ä/0xC3 0x84/g;
     $term =~ s/ö/0xC3 0xB6/g;
     $term =~ s/å/0xC3 0xA5/g;
+
+    # Cyrillic (done with https://r12a.github.io/app-conversion/ ):
+    $term =~ s/т/0xD1 0x82 /g;
+    $term =~ s/е/0xD0 0xB5 /g;
+    $term =~ s/к/0xD0 0xBa /g;
+    $term =~ s/с/0xD1 0x81 /g;
+   
     if ( 1 ) { # sanity check
 	my $tmp = $term;
 	while ( $tmp =~ s/^(0x[a-fA-F0-9]{2}|[A-Za-z\-;\(\)]) // ) {}
