@@ -1,0 +1,9 @@
+000000001 LDR   L XXXXXcom a2200XXXXi 4500
+000000001 005   L 20200202020202.0
+000000001 007   L ou
+000000001 008   L 170207s2014^^^^fi^|||||||||^|||||||eng|c
+000000001 300   L $$a1 kirja ([36] sivua), 1 CD-äänilevy)
+000000001 336   L $$aTeksti$$btxt$$2rdacontent
+000000001 337   L $$aei välittävää laitetta$$2rdamedia$$bn
+000000001 337   L $$akäytettävissä ilman laitetta$$2rdamedia$$bn
+000000001 338   L $$2rdacarrier$$anide$bnc

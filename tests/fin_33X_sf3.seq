@@ -1,0 +1,14 @@
+000000001 LDR   L XXXXXcam^a2200XXXXi^4500
+000000001 005   L 20200202020202.0
+000000001 007   L aj|^^a|||
+000000001 008   L 170207s2014^^^^fi^|||||||||^|||||||eng|c
+000000001 040   L $$bfin
+000000001 1001  L $$aSukunimi, Etunimi.
+000000001 24510 L $$aFillariopas.
+000000001 336   L $$3Nide$$astillkuva$$bsti$$2rdacontent
+000000001 336   L $$3Nide$$ateksti$$btxt$$2rdacontent
+000000001 336   L $$3CD-äänilevy$$aesitetty musiikki$$bprm$$2rdacontent
+000000001 337   L $$3Nide$$akäytettävissä ilman laitetta$$bn$$2rdamedia
+000000001 337   L $$3CD-äänilevy$$aaudio$$bs$$2rdamedia
+000000001 338   L $$3Nide$$anide$$bnc$$2rdacarrier
+000000001 338   L $$3CD-äänilevy$$aäänilevy$$bsd$$2rdacarrier
