@@ -38,7 +38,7 @@
 // PROJECTED (LDR/06=k, partial)
 #if (Not Exists(@336)) And (Not Exists(@B36)) And (000/7/ = 'g') And \
     (007/1/ = 'g' )
-000 | <B36$b | 'sti'    
+000 | <B36$b | 'sti'
 #endif
 
 #if (Not Exists(@336)) And (Not Exists(@B36)) And (000/7/ = 'g') And \
@@ -74,7 +74,7 @@
 #endif
 
 #if (Not Exists(@336)) And (Not Exists(@B36)) And (000/7/ = 'k')
-
+000 | <B36$b | 'sti'
 #endif
 
 
@@ -183,13 +183,15 @@
 000 | <B36$b | 'txt'
 #endif
 
-#if (Not Exists(@336)) And (Not Exists(@B36)) And (000/7/ = 'o' Or 000/7/ = 'p')
-000 | <B36$b | 'xxx'
-#endif
-
 #if (Not Exists(@336)) And (Not Exists(@B36)) And (000/7/ = 'r')
 000 | <B36$b | 'tdf'
 #endif
+
+
+//#if (Not Exists(@336)) And (Not Exists(@B36)) And (000/7/ = 'o' Or 000/7/ = 'p')
+//000 | <B36$b | 'xxx'
+//#endif
+
 
 #if (Not Exists(@336)) And (Not Exists(@B36))
 000 | <B36$b | 'zzz'
