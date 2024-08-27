@@ -3,6 +3,8 @@
 
 #define version 317
 
+#include "makrot.rul"
+
 #define macro F776i_KAANNOKSET | RegReplace('Online version|Onlineresurs', 'Verkkoaineisto', 'g'); \
                            RegReplace('Print version|Pappersutfåva|Tryckt', 'Painettu', 'g')
 			   
@@ -153,7 +155,7 @@
 040I1 | 040I1  | ' '
 040I2 | 040I2  | ' '
 040$a | 040$a  | S
-040$b | 040$b  | 'mul'
+040$b | 040$b  | If ( S = 'fin' ) Then S Else 'mul'
 
 #if (Not Exists(@040$b))
 000   | 040$b  | 'mul'
@@ -345,43 +347,12 @@ X64$? | 264$?  | S
 262I2 | <DELI2 | S
 262   | <DEL   | S
 
-300I1 | 300I1  | S
-300I2 | 300I2  | S
-300   | 300    | KAANNOKSET; Delete('.', At Ending)
+#include "field300.rul"
 
 #include "modify336.rul"
+#include "modify337.rul"
+#include "modify338.rul"
 
-337I1 | 337I1 | S
-337I2 | 337I2 | S
-337$a | 337$a | Table ('337_a.tbl')
-
-#if Not (Exists(@337$b))
-337$a | 337$b | If (InTable(S, '337_b.tbl')) Then Table ('337_b.tbl')
-#endif
-
-#if Not (Exists(@337$2))
-337$a | 337$2 | 'rdamedia'
-#endif
-
-#if (Exists(@337$b))
-337$b | 337$b | S
-337$2 | 337$2 | S
-#endif
-
-337$8 | 337$8 | S
-
-// LUODAAN 338-KENTÄT, JOS NIITÄ EI OLE TIETUEESSA VALMIINA
-
-
-
-#if (Exists(@338))
-338I1 | 338I1 | S
-338I2 | 338I2 | S
-338$a | 338$a | Table ('338_a.tbl')
-338$a | 338$b | If (InTable(S, '338_b.tbl')) Then Table ('338_b.tbl')
-338$b | 338$b | If (Not Exists(%338$b)) Then S
-338$2 | 338$2 | 'rdacarrier'
-#endif
 
 #include "arvaa336.rul"
 #include "arvaa337.rul"
