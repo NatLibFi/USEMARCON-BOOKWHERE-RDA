@@ -358,6 +358,13 @@ X64$? | 264$?  | S
 #include "arvaa337.rul"
 #include "arvaa338.rul"
 
+
+347I1 | 347I1 | S
+347I2 | 347I2 | S
+347$a | 347$a | S; FI347A
+// Should we handle/remove $2 and $0?
+347$? | 347$? | S
+
 350I1 | <DELI1 | S
 350I2 | <DELI2 | S
 350   | <DEL   | S
