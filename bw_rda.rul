@@ -358,6 +358,14 @@ X64$? | 264$?  | S
 #include "arvaa337.rul"
 #include "arvaa338.rul"
 
+344I1 | 344I1 | S
+344I2 | 344I2 | S
+344$a | 344$a | S; FI344A
+344$b | 344$b | S; FI344B
+344$c | 344$c | S; FI344C
+344$2 | <DEL | S
+344$? | 344$? | S
+
 
 347I1 | 347I1 | S
 347I2 | 347I2 | S
