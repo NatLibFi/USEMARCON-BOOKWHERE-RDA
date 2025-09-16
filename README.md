@@ -22,7 +22,7 @@ KÄYTTÖ
 
 Kopioi konversiopaketti päätteellesi esimerkiksi esimerkiksi yläreunan valikosta "Clone or download" -- "Download ZIP". Pura paketti haluamaasi sijaintiin esimerkiksi C:\Usemarcon\ -hakemiston alle. Jos käytät USEMARCON GUI -käyttöliittymää, valitse haluamasi konversiosääntö "Conversion rule"-kohdassa (oletuksena bookwhere_utf8.ini).
 
-Yksityiskohtainen ohje BookWhere-poiminnasta ja tietueiden konvertoinnista löytyy osoitteesta: https://wiki.helsinki.fi/display/rdasovellusohje/BookWhere .
+Yksityiskohtainen ohje BookWhere-poiminnasta ja tietueiden konvertoinnista löytyy osoitteesta: https://wiki.helsinki.fi/xwiki/bin/view/rdasovellusohje/RDA-kuvailu%20MARC%2021%20-formaatilla/Lis%C3%A4ohjeita/BookWhere/ .
 
 PALAUTE
 
